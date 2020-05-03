@@ -34,5 +34,5 @@ git diff README.txt
 ```
 ## get or update an existing repository from the command line
 ```
-git pull git@114.215.30.132:/home/git/jinxiao.git
+git pull https://github.com/555chy/MiniProgram-Shop.git
 ```
