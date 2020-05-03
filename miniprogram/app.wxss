@@ -1,0 +1,7 @@
+/**app.wxss**/
+@import "./style/iconfont.wxss";
+
+.divide-line{
+  background-color: gray;
+  height: 1rpx;
+}

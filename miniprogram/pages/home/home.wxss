@@ -1,0 +1,88 @@
+/* pages/home/home.wxss */
+text{
+  font-size: 36rpx;
+}
+
+.top{
+  padding-left: 20rpx;
+  height: 90rpx;
+  background-color: #FDDDAE;
+}
+
+swiper{
+  width: 90%;
+  height: calc(90vw * 360 / 990);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.swiper-image{
+  width: 100%;
+  border-radius: 20rpx;
+}
+
+.option{
+  display: flex;
+  padding: 20rpx;
+}
+
+.option-item{
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+image{
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.yuyue{
+  width: 90%;
+  height: 400rpx;
+  background-color: #FDDDAE;
+  border-radius: 20rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20rpx;
+}
+
+.shangmen{
+  display: flex;
+  justify-content: center;
+  padding: 30rpx;
+}
+
+.bg-line{
+  width: 35rpx;
+  height: 7rpx;
+  background-color: #FF9900;
+
+}
+
+.yuyue-car{
+  width: 310rpx;
+  height: 180rpx;
+  align-content: center;
+}
+
+.yuyue-button{
+  font-size: 32rpx;
+  color: white;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.money{
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+}
+
+.money-detail{
+  display: flex;
+  justify-content: center;
+  padding: 30rpx;
+  margin-top: 15rpx;
+}

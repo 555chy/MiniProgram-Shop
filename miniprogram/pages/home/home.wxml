@@ -1,0 +1,72 @@
+<!--pages/home/home.wxml-->
+<view class="divide-line"></view>
+<view class="top">
+  <text class="iconfont icon-location">  
+    <text>{{address}}</text>
+    <text class="iconfont icon-xiala"></text>
+  </text>
+</view>
+
+<scroll-view scroll-x="true" height="1800px">
+  <!-- 990 * 360  后续从服务器拿链接-->
+  <swiper indicator-dots="true" autoplay="true" interval="4000"circular="true" indicator-active-color="#FFFFFF">
+    <swiper-item><image class="swiper-image" mode="widthFix" src="//i3.meishichina.com/attachment/magic/2018/05/07/2018050715256619061988197577.jpg"/></swiper-item>
+    <swiper-item><image class="swiper-image" mode="widthFix" src="//i3.meishichina.com/attachment/magic/2020/04/13/2020041315867448189338197577.jpg" /></swiper-item>
+    <swiper-item><image class="swiper-image" mode="widthFix" src="//i3.meishichina.com/attachment/magic/2020/04/23/2020042315876364213708197577.jpg"/></swiper-item>
+  </swiper>
+
+  <view class="option">
+    <view class="option-item">
+      <image src="../../icon/垃圾分类.png"></image>
+      <view>垃圾分类</view>
+    </view>
+    <view class="option-item">
+      <image src="../../icon/呼叫流程.png"></image>
+      <view>呼叫流程</view>
+    </view>
+    <view class="option-item">
+      <image src="../../icon/合作伙伴.png"></image>
+      <view>合作伙伴</view>
+    </view>
+    <view class="option-item">
+      <image src="../../icon/敬请期待.png"></image>
+      <view>敬请期待</view>
+    </view>
+  </view>
+
+  <view class="yuyue">
+    <view class="shangmen">
+      <view class="bg-line"></view>
+      <view >上门回收</view>
+      <view class="bg-line"></view>
+    </view>
+    <image class="yuyue-car" src="../../icon/车.png"></image>
+    <navigator class="yuyue-button">立即预约</navigator>
+  </view>
+
+  <view class="money">
+    <text>我的资金</text>
+    <view class="money-detail">
+      <view class="money-detail-item">
+        <view>0.00</view>
+        <view>当前资金</view>
+      </view>
+      <view class="money-detail-item">
+        <view>0</view>
+        <view>呼叫次数</view>
+      </view>
+      <view class="money-detail-item">
+        <view>0.00</view>
+        <view>累计资金</view>
+      </view>
+    
+    </view>
+ 
+  </view>
+
+</scroll-view>
+
+
+
+ 
+

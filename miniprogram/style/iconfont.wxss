@@ -1,0 +1,28 @@
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1796188_3d890st2x97.eot?t=1588491189681'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1796188_3d890st2x97.eot?t=1588491189681#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPsAAsAAAAACFQAAAOfAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqEFINYATYCJAMQCwoABCAFhG0HRBtGBxEVnO/Ifg64rfFxkuSEimrBy2vvbc41xd7AScrMzDeCaK2snpm7nwfARCWnQhZYEiom/zZhz8rFOJbANnqH9N6/16QgtnayHBSeSAVT/cUN2ppzDMJETZbkLHrUpaTl9PIZCSsGd/X/HC5uUZSF81uWUIhzLI56AUZja0B7Y9S+E7sDPkG6YezKizhPoMcCFYxdlvbugE1hTAvEtZioEMCWUik1uFCl7ZK1RTzXUtODdAZ45v9+/AUbgo2klRkX7b9gEQ6Mf/C/0YWQBsnpjFodzwC2iYwOoBCXSk1nQGGoA9KjDIZtAVRVYqwusTe6/xvE2Yuomv/yCEkm2ozMPrAJhTM/+G0qwQ8xKokfuioZosrkin68xVeAmRtZVNE32N8/MsiO3zp2df6cJAhqh1ZuXFTbI+S6SJtj2myXMhw5CbuhKglnAvOIiKJxb3dPCve6patIFxLLI0kPhAALODgOM0TeUwya9iII9wID8OqN/1aK8hnYQDer1pE1z8ohZLhqFB1x1/h5VqBSKDyyQXmLcARn/SPRKI7Gxsiv5bFTMLaUthSeZLEZ/ZLkdOVndzamFV3ekKKgCnPeH8t6z4S/aDAagvjWbNxZrqRsMgJ73/CPBuYTy0QmChRp1OJvEohMlAFya+SnoY9ncPM+QywjqknTw2XYb3TJVt2p2hlq/nc2JbsO/f4CDzh1osFe4/wsyTat7y8D7oWKB1eZ+ln6UfqR0okCWUqZSpFKUd85j82UIitmKmV9o9PL6gO0k9wA/2yWrYrZt0yCX2o40IiRJZEVjBYMuwWgQezMqD950x3IECCvJuP/Pc7fp4qNIF79/5Xzgis+E3XzyNkgA/3YP43dmv132S2Liso11KXIPJulpRfHsPGyFHpMLf80xoj7MSTjrXGEZDyGpMs8ZNVaRMF0oKXXJmirtkKP9aw29xqVChKlG+uUAAhDJiEZ8A6yIeeIgrmDlgmNPwysIsPEM7Z7Tu3i8uQgGCjGEP4gi7gmS6uTIPuKyasMJMn1CU8Uk3nBtZxs9II1yhgLzDvxVAlIuIIzuAzLkqERzjFSK1Vt9rZNZTeyIq5aEwcCBRSKgdAPyERYjdzyapL7+SuUeCkFpKagQvuEhJH1DlwWpwXiIqpbFVzLNcZbwqMUAUSwCjgDAyrNEANN+agciihL2iPQ2LNRKWorsuaXVE+4AQA4GAvhKDKe0TWOAr2DpcMKjQkS7H+zoAxaLQA=') format('woff2'),
+  url('//at.alicdn.com/t/font_1796188_3d890st2x97.woff?t=1588491189681') format('woff'),
+  url('//at.alicdn.com/t/font_1796188_3d890st2x97.ttf?t=1588491189681') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1796188_3d890st2x97.svg?t=1588491189681#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-location:before {
+  content: "\e611";
+}
+
+.icon-message:before {
+  content: "\e618";
+}
+
+.icon-xiala:before {
+  content: "\e63a";
+}
