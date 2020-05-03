@@ -11,29 +11,28 @@
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
 ## 创建项目
-
+```
 echo "# MiniProgram-Shop" >> README.md
 git init
 git add *
 git commit -m "first commit"
 git remote add origin https://github.com/555chy/MiniProgram-Shop.git
 git push -u origin master             
-
+```
 ## 首次提交项目
-
+```
 git remote add origin https://github.com/555chy/MiniProgram-Shop.git
 git push -u origin master
-
+```
 ## 查看更改的文件
-
+```
 git status
-
-
+```
 ## 查看差异
-
+```
 git diff README.txt
-
-
+```
 ## get or update an existing repository from the command line
+```
 git pull git@114.215.30.132:/home/git/jinxiao.git
-
+```
