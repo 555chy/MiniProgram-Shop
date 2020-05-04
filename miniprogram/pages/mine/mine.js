@@ -5,7 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    items: [
+      {
+        icon: "icon-location",
+        text: "我的订单",
+        rightIcon: "icon-xiala",
+      },
+      {
+        icon: "icon-location",
+        text: "关于我们",
+        rightIcon: "icon-xiala",
+      },
+      {
+        icon: "icon-location",
+        text: "帮助中心",
+        rightIcon: "icon-xiala",
+      },
+      {
+        icon: "icon-location",
+        text: "设置",
+        rightIcon: "icon-xiala",
+      }
+    ]
   },
 
   /**

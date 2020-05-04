@@ -55,7 +55,7 @@ swiper{
 .option{
   display: flex;
   padding: 20rpx;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
