@@ -36,7 +36,6 @@ Page({
     ]
   },
   changeTab: function(e) {
-    console.log(e.currentTarget.dataset.index)
     this.setData({
       currentTab: e.currentTarget.dataset.index
     });

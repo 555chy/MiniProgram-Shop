@@ -53,8 +53,14 @@
   margin: 40rpx;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
-.active {
+.tab-active {
   font-weight: bold;
+}
+.tab-line {
+  margin: 20rpx auto;
+  width: 90rpx;
+  height: 8rpx;
+  background-color: orange;
 }

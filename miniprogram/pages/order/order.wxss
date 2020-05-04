@@ -1,1 +1,43 @@
 /* pages/order/order.wxss */
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx;
+}
+.tab-active {
+  font-weight: bold;
+}
+.tab-line {
+  margin: 20rpx auto;
+  width: 90rpx;
+  height: 8rpx;
+  background-color: orange;
+}
+.empty-box {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.empty-img {
+  width: 300rpx;
+  height: 300rpx;
+}
+.empty-tip {
+  padding-top: 50rpx;
+  padding-bottom: 80rpx;
+}
+.empty-btn {
+  border-radius: 80rpx;
+  background-color: orange;
+  font-weight: normal;
+  box-shadow: 0rpx 0rpx 20rpx orange;
+}

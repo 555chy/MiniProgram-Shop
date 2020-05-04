@@ -38,7 +38,7 @@
 }
 .price {
   width: 80%;
-  margin: -70rpx auto 100rpx auto;
+  margin: -70rpx auto 30rpx auto;
   border-radius: 20rpx;
   background-image: linear-gradient(to bottom right, #F2E194, #E3C962);
   background-color: rgb(245, 227, 126);
