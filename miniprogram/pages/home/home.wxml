@@ -1,5 +1,4 @@
 <!--pages/home/home.wxml-->
-<view class="divide-line"></view>
 <view class="tip">
   <text class="iconfont icon-location">
     <text class="location-text">{{address}}</text>
@@ -14,9 +13,11 @@
 <scroll-view scroll-x="true" height="1800px">
   <!-- 990 * 360  后续从服务器拿链接-->
   <swiper indicator-dots="true" autoplay="true" interval="4000"circular="true" indicator-active-color="#FFFFFF">
-    <swiper-item><image class="swiper-image" mode="widthFix" src="//i3.meishichina.com/attachment/magic/2018/05/07/2018050715256619061988197577.jpg"/></swiper-item>
-    <swiper-item><image class="swiper-image" mode="widthFix" src="//i3.meishichina.com/attachment/magic/2020/04/13/2020041315867448189338197577.jpg" /></swiper-item>
-    <swiper-item><image class="swiper-image" mode="widthFix" src="//i3.meishichina.com/attachment/magic/2020/04/23/2020042315876364213708197577.jpg"/></swiper-item>
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+      <navigator>
+        <image class="swiper-image" mode="widthFix" src="{{item.url}}"/>
+      </navigator>
+    </swiper-item>
   </swiper>
 
   <view class="option">
