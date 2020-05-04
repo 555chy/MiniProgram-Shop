@@ -1,4 +1,7 @@
 /* pages/shop.wxss */
+.box {
+  background-color: #EFEFF4;
+}
 .weui-search-bar {
   position: relative;
   padding: 8px 10px;
@@ -7,8 +10,8 @@
   display: flex;
   box-sizing: border-box;
   background-color: #EFEFF4;
-  border-top: 1rpx solid #D7D6DC;
-  border-bottom: 1rpx solid #D7D6DC;
+  border-top: 0rpx solid #D7D6DC;
+  border-bottom: 0rpx solid #D7D6DC;
 }
 .weui-icon-search {
   margin-right: 4px;
@@ -67,12 +70,47 @@
 
 .goods {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.goods-img {
+  width: 42vw;
+  height: 40vw;
 }
 
 .goods-item {
-  width: 100%;
-  flex: 1;
+  width: 50%;
+  color: #797979;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.goods-img {
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.goods-box {
+  margin: 20rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  box-shadow: 5rpx 5rpx 20rpx lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.goods-name {
+  margin: 20rpx 20rpx 10rpx 20rpx;
+}
+.goods-price {
+  margin: 0rpx 20rpx 20rpx 20rpx;
+  color: darkorange;
 }

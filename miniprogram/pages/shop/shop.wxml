@@ -1,4 +1,5 @@
 <!--pages/shop.wxml-->
+<view class="box">
 <view class="weui-search-bar">
 	<view class="weui-search-bar__form">
 		<!-- 最初始时的搜索框 -->
@@ -18,10 +19,12 @@
 <view class="goods">
     <block wx:for="{{items}}" wx:key="index">
         <view class="goods-item">
-            <image class="goods-img"  mode="aspectFill" style="width: 100%" src="{{item.img}}"></image>
-            <text class="goods-name">{{item.name}}</text>
-            <text class="goods-price">{{item.price}}</text>
-            <text class="goods-price-unit">元</text>
+            <view class="goods-box">
+                <image class="goods-img"  mode="scaleToFill" src="{{item.img}}"></image>
+                <text class="goods-name">{{item.name}}</text>
+                <text class="goods-price">￥{{item.price}}</text>
+            </view>
         </view>
     </block>
+</view>
 </view>

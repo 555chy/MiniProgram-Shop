@@ -8,54 +8,144 @@ Page({
     inputShowed: false,  //初始文本框不显示内容
     items: [
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
+        img: "https://img-blog.csdnimg.cn/20190927143929209.jpg",  
+        name: "C++",
         price: 6.60
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
+        img: "https://img-blog.csdnimg.cn/20200427180158481.png",  
+        name: "OpenCV",
+        price: 32.00
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927144643118.jpg",  
+        name: "HTML5",
+        price: 12.86
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927160621712.jpg",  
+        name: "Java",
+        price: 198.99
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927143404513.png",  
+        name: "Android",
+        price: 999.99
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927150124341.png",  
+        name: "Lua",
+        price: 0.01
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
+        name: "Lua",
+        price: 88.88
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927143929209.jpg",  
+        name: "C++",
         price: 6.60
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
+        img: "https://img-blog.csdnimg.cn/20200427180158481.png",  
+        name: "OpenCV",
+        price: 32.00
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927144643118.jpg",  
+        name: "HTML5",
+        price: 12.86
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927160621712.jpg",  
+        name: "Java",
+        price: 198.99
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927143404513.png",  
+        name: "Android",
+        price: 999.99
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927150124341.png",  
+        name: "Lua",
+        price: 0.01
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
+        name: "Lua",
+        price: 88.88
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927143929209.jpg",  
+        name: "C++",
         price: 6.60
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
+        img: "https://img-blog.csdnimg.cn/20200427180158481.png",  
+        name: "OpenCV",
+        price: 32.00
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927144643118.jpg",  
+        name: "HTML5",
+        price: 12.86
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927160621712.jpg",  
+        name: "Java",
+        price: 198.99
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927143404513.png",  
+        name: "Android",
+        price: 999.99
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927150124341.png",  
+        name: "Lua",
+        price: 0.01
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
+        name: "Lua",
+        price: 88.88
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20190927143929209.jpg",  
+        name: "C++",
         price: 6.60
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
-        price: 6.60
+        img: "https://img-blog.csdnimg.cn/20200427180158481.png",  
+        name: "OpenCV",
+        price: 32.00
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
-        price: 6.60
+        img: "https://img-blog.csdnimg.cn/20190927144643118.jpg",  
+        name: "HTML5",
+        price: 12.86
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
-        price: 6.60
+        img: "https://img-blog.csdnimg.cn/20190927160621712.jpg",  
+        name: "Java",
+        price: 198.99
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
-        price: 6.60
+        img: "https://img-blog.csdnimg.cn/20190927143404513.png",  
+        name: "Android",
+        price: 999.99
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
-        price: 6.60
+        img: "https://img-blog.csdnimg.cn/20190927150124341.png",  
+        name: "Lua",
+        price: 0.01
       },
       {
-        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
-        name: "圣斗士星矢",
-        price: 6.60
+        img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
+        name: "Lua",
+        price: 88.88
       },
     ],
   },
