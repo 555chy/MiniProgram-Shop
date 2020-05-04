@@ -1,13 +1,76 @@
-// pages/shop/shop.js
+// pages/shop.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    inputShowed: false,  //初始文本框不显示内容
+    items: [
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+      {
+        img: "https://avatar.csdnimg.cn/9/2/F/3_qq_37138818.jpg",  
+        name: "圣斗士星矢",
+        price: 6.60
+      },
+    ],
   },
-
+  // 使文本框进入可编辑状态
+  showInput: function () {
+    this.setData({
+      inputShowed: true   //设置文本框可以输入内容
+    });
+  },
+  // 取消搜索
+  hideInput: function () {
+    this.setData({
+      inputShowed: false
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,9 +1,10 @@
 <!--pages/home/home.wxml-->
 <view class="tip">
-  <text class="iconfont icon-location">
+  <view class="location">
+    <text class="iconfont icon-location"></text>
     <text class="location-text">{{address}}</text>
     <text class="iconfont icon-xiala"></text>
-  </text>
+  </view>
   <view class="msg">
     <text class="msg-icon iconfont icon-location"></text>
     <text class="msg-text">消息</text>
