@@ -3,10 +3,33 @@ text{
   font-size: 36rpx;
 }
 
-.top{
-  padding-left: 20rpx;
-  height: 90rpx;
-  background-color: #FDDDAE;
+.tip{
+  width: 90%;
+  margin: 0 auto;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location-text {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.msg-icon {
+
+}
+
+.msg-text {
+  font-size: x-small;
 }
 
 swiper{
@@ -14,7 +37,6 @@ swiper{
   height: calc(90vw * 360 / 990);
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
 
@@ -26,12 +48,14 @@ swiper{
 .option{
   display: flex;
   padding: 20rpx;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .option-item{
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  font-size: 35rpx;
+  color: gray;
 }
 
 image{
@@ -39,50 +63,95 @@ image{
   height: 90rpx;
 }
 
-.yuyue{
+.todoor-recycle{
   width: 90%;
-  height: 400rpx;
   background-color: #FDDDAE;
   border-radius: 20rpx;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20rpx;
-}
-
-.shangmen{
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.todoor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 30rpx;
+  color: #FF9900;
 }
 
-.bg-line{
-  width: 35rpx;
-  height: 7rpx;
+.todoor-text {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  font-weight: bold;
+}
+
+.line{
+  width: 40rpx;
+  height: 8rpx;
+  border-radius: 5rpx;
   background-color: #FF9900;
-
 }
 
-.yuyue-car{
-  width: 310rpx;
-  height: 180rpx;
-  align-content: center;
+.todoor-car{
+  width: 380rpx;
+  height: 200rpx;
+  margin: 20rpx;
 }
 
-.yuyue-button{
-  font-size: 32rpx;
+.todoor-btn{
+  font-size: 35rpx;
   color: white;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  width: 280rpx;
+  padding: 5rpx;
   text-align: center;
-  margin-top: 30rpx;
+  border-radius: 50rpx;
+  background-image: linear-gradient(#FFBD71, #FF6E89);
 }
 
 .money{
-  margin-top: 20rpx;
+  width: 90%;
+  margin: 20rpx auto;
+}
+
+.money-mime {
+  font-size: small;
+  font-weight: bold;
+  font-size: 35rpx;
+}
+
+.money-box {
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.money-item {
+  text-align: center;
+  flex: 1
+}
+
+.money-current {
+  flex-grow: 1.3;
+  text-align: left;
   padding-left: 20rpx;
 }
 
-.money-detail{
-  display: flex;
-  justify-content: center;
-  padding: 30rpx;
-  margin-top: 15rpx;
+.money-price {
+  font-weight: bold;
+  font-size: large;
 }
+
+.money-text {
+  font-size: small;
+  color: gray;
+}
+

@@ -1,10 +1,14 @@
 <!--pages/home/home.wxml-->
 <view class="divide-line"></view>
-<view class="top">
-  <text class="iconfont icon-location">  
-    <text>{{address}}</text>
+<view class="tip">
+  <text class="iconfont icon-location">
+    <text class="location-text">{{address}}</text>
     <text class="iconfont icon-xiala"></text>
   </text>
+  <view class="msg">
+    <text class="msg-icon iconfont icon-location"></text>
+    <text class="msg-text">消息</text>
+  </view>
 </view>
 
 <scroll-view scroll-x="true" height="1800px">
@@ -17,51 +21,49 @@
 
   <view class="option">
     <view class="option-item">
-      <image src="../../icon/垃圾分类.png"></image>
+      <image src="../../icon/category.png"></image>
       <view>垃圾分类</view>
     </view>
     <view class="option-item">
-      <image src="../../icon/呼叫流程.png"></image>
+      <image src="../../icon/circle.png"></image>
       <view>呼叫流程</view>
     </view>
     <view class="option-item">
-      <image src="../../icon/合作伙伴.png"></image>
+      <image src="../../icon/search.png"></image>
       <view>合作伙伴</view>
     </view>
     <view class="option-item">
-      <image src="../../icon/敬请期待.png"></image>
+      <image src="../../icon/more.png"></image>
       <view>敬请期待</view>
     </view>
   </view>
 
-  <view class="yuyue">
-    <view class="shangmen">
-      <view class="bg-line"></view>
-      <view >上门回收</view>
-      <view class="bg-line"></view>
+  <view class="todoor-recycle">
+    <view class="todoor">
+      <view class="line"></view>
+      <view class="todoor-text">上门回收</view>
+      <view class="line"></view>
     </view>
-    <image class="yuyue-car" src="../../icon/车.png"></image>
-    <navigator class="yuyue-button">立即预约</navigator>
+    <image class="todoor-car" src="../../icon/car.png"></image>
+    <navigator class="todoor-btn">立即预约</navigator>
   </view>
 
   <view class="money">
-    <text>我的资金</text>
-    <view class="money-detail">
-      <view class="money-detail-item">
-        <view>0.00</view>
-        <view>当前资金</view>
+    <text class="money-mime">我的资金</text>
+    <view class="money-box">
+      <view class="money-item money-current">
+        <view class="money-price">0.00</view>
+        <view class="money-text">当前资金</view>
       </view>
-      <view class="money-detail-item">
-        <view>0</view>
-        <view>呼叫次数</view>
+      <view class="money-item">
+        <view class="money-price">0</view>
+        <view class="money-text">呼叫次数</view>
       </view>
-      <view class="money-detail-item">
-        <view>0.00</view>
-        <view>累计资金</view>
+      <view class="money-item">
+        <view class="money-price">0.00</view>
+        <view class="money-text">累计资金</view>
       </view>
-    
     </view>
- 
   </view>
 
 </scroll-view>

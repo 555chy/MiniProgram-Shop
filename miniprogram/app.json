@@ -3,11 +3,13 @@
     "pages/home/home",
     "pages/find/find",
     "pages/mine/mine",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/order/order",
+    "pages/shop/shop"
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
   "window": {
@@ -17,21 +19,42 @@
     "navigationBarTitleText": "集品回收",
     "navigationBarTextStyle": "black"
   },
-  "tabBar":{"list":[
-    {"pagePath":"pages/home/home",
-    "text":"首页",
-    "iconPath":"icon/首页-未点击.png",
-    "selectedIconPath":"icon/首页-点击.png"},
-    {"pagePath":"pages/find/find",
-      "text":"发现",
-      "iconPath":"icon/发现-未点击.png",
-      "selectedIconPath":"icon/发现-点击.png"},
-    {"pagePath":"pages/mine/mine",
-      "text":"我的",
-      "iconPath":"icon/我的-未点击.png",
-      "selectedIconPath":"icon/我的-点击.png"}],
-    "color":"#999999",
-    "selectedColor":"#FFB974"},
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "icon/home_normal.png",
+        "selectedIconPath": "icon/home_down.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "icon/find_normal.png",
+        "selectedIconPath": "icon/find_down.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "发现",
+        "iconPath": "icon/shop_normal.png",
+        "selectedIconPath": "icon/shop_down.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "发现",
+        "iconPath": "icon/order_normal.png",
+        "selectedIconPath": "icon/order_down.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "icon/mime_normal.png",
+        "selectedIconPath": "icon/mime_down.png"
+      }
+    ],
+    "color": "#999999",
+    "selectedColor": "#FFB974"
+  },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }
