@@ -7,7 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: "获取定位中"
+    address: "获取定位中",
+    swiperList:[{
+      id:1,
+      url:"//i3.meishichina.com/attachment/magic/2018/05/07/2018050715256619061988197577.jpg"
+    },{
+      id:2,
+      url:"//i3.meishichina.com/attachment/magic/2020/04/13/2020041315867448189338197577.jpg"
+    },{
+      id:3,
+      url:"//i3.meishichina.com/attachment/magic/2020/04/23/2020042315876364213708197577.jpg"
+    }]
   },
 
   /**
