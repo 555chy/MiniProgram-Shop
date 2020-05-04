@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/shop/shop",
     "pages/home/home",
     "pages/find/find",
     "pages/mine/mine",
     "pages/index/index",
-    "pages/order/order",
-    "pages/shop/shop"
+    "pages/order/order"
   ],
   "permission": {
     "scope.userLocation": {
@@ -35,13 +35,13 @@
       },
       {
         "pagePath": "pages/shop/shop",
-        "text": "发现",
+        "text": "商城",
         "iconPath": "icon/shop_normal.png",
         "selectedIconPath": "icon/shop_down.png"
       },
       {
         "pagePath": "pages/order/order",
-        "text": "发现",
+        "text": "订单",
         "iconPath": "icon/order_normal.png",
         "selectedIconPath": "icon/order_down.png"
       },

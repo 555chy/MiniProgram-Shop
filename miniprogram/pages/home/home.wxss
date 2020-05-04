@@ -12,9 +12,16 @@ text{
   align-items: center;
 }
 
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .location-text {
   margin-left: 20rpx;
   margin-right: 20rpx;
+  font-size: 30rpx;
 }
 
 .msg {

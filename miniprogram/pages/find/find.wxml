@@ -1,2 +1,4 @@
-<!--pages/find/find.wxml-->
-<text>pages/find/find.wxml</text>
+<view class="box">
+  <text>活动</text>
+  <text>更多活动</text>
+</view>
