@@ -1,29 +1,27 @@
 // pages/home/home.js
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
+const db = wx.cloud.database()
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    address: "获取定位中",
-    swiperList:[{
-      id:1,
-      url:"//i3.meishichina.com/attachment/magic/2018/05/07/2018050715256619061988197577.jpg"
-    },{
-      id:2,
-      url:"//i3.meishichina.com/attachment/magic/2020/04/13/2020041315867448189338197577.jpg"
-    },{
-      id:3,
-      url:"//i3.meishichina.com/attachment/magic/2020/04/23/2020042315876364213708197577.jpg"
-    }]
+    address: "获取定位中...",
+    swiperList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //从数据库读取banner数据
+    db.collection('Home_Data').doc('982133855eafd2ac000a28c41b6f058d').get().then(res => {
+      this.setData({
+        swiperList:res.data.banner
+      })
+    })
+
     wx.getLocation({
       fail: (res) => {},
       success: (result) => {
