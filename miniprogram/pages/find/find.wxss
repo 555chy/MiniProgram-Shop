@@ -1,1 +1,60 @@
 /* pages/find/find.wxss */
+.title-box {
+  width: 90%;
+  margin: 30rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-size: large;
+}
+.more {
+  font-size: small;
+}
+.activity-box {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.activity {
+  flex: 1;
+}
+.activity-content {
+  width: 75%;
+  margin: 0 auto;
+  padding: 40rpx 30rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
+  box-shadow: 3rpx 3rpx 10rpx gray;
+}
+.activity-name {
+  font-size: large;
+}
+.activity-description {
+  font-size: x-small;
+  margin: 30rpx 0;
+}
+.activity-btn {
+  font-size: x-small;
+  padding: 8rpx 30rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid white;
+  margin-bottom: 30rpx;
+}
+.tab-title {
+  margin: 40rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.active {
+  font-weight: bold;
+}

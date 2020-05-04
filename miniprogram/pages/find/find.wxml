@@ -1,4 +1,25 @@
-<view class="box">
-  <text>活动</text>
-  <text>更多活动</text>
+<view>
+	<view class="title-box">
+		<text class="title">活动</text>
+		<text class="more">更多活动</text>
+	</view>
+	<view class="activity-box">
+		<block wx:for="{{activitys}}" wx:key="index">
+			<view class="activity">
+				<view class="activity-content" style="background-color:{{item.color}}">
+					<text class="activity-name">{{item.name}}</text>
+					<text class="activity-description">{{item.description}}</text>
+					<text class="activity-btn">{{item.btn}}</text>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class="tab-title">
+		<block wx:for="{{tabs}}" wx:key="index">
+			<text class="{{currentTab == index ? 'active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.text}}</text>
+		</block>
+		<view class="tab-box">
+
+		</view>
+	</view>
 </view>

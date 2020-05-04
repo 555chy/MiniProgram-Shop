@@ -39,7 +39,7 @@ Page({
       },
       {
         img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
-        name: "Lua",
+        name: "Mariadb",
         price: 88.88
       },
       {
@@ -74,7 +74,7 @@ Page({
       },
       {
         img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
-        name: "Lua",
+        name: "Mariadb",
         price: 88.88
       },
       {
@@ -109,7 +109,7 @@ Page({
       },
       {
         img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
-        name: "Lua",
+        name: "Mariadb",
         price: 88.88
       },
       {
@@ -144,7 +144,7 @@ Page({
       },
       {
         img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
-        name: "Lua",
+        name: "Mariadb",
         price: 88.88
       },
     ],
