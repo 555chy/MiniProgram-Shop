@@ -1,76 +1,71 @@
 <!--pages/home/home.wxml-->
 <view class="tip">
-  <view class="location">
-    <text class="iconfont icon-location"></text>
-    <text class="location-text">{{address}}</text>
-    <text class="iconfont icon-xiala"></text>
-  </view>
-  <view class="msg">
-    <text class="msg-icon iconfont icon-location"></text>
-    <text class="msg-text">消息</text>
-  </view>
+	<view class="location">
+		<text class="iconfont icon-location"></text>
+		<text class="location-text">{{address}}</text>
+		<text class="iconfont icon-xiala"></text>
+	</view>
+	<view class="msg">
+		<text class="msg-icon iconfont icon-location"></text>
+		<text class="msg-text">消息</text>
+	</view>
 </view>
 
 <scroll-view scroll-x="true" height="1800px">
-  <!-- 990 * 360  后续从服务器拿链接-->
-  <swiper indicator-dots="true" autoplay="true" interval="4000"circular="true" indicator-active-color="#FFFFFF">
-    <swiper-item wx:for="{{swiperList}}" wx:key="id">
-      <navigator>
-        <image class="swiper-image" mode="widthFix" src="{{item.url}}"/>
-      </navigator>
-    </swiper-item>
-  </swiper>
+	<!-- 990 * 360  后续从服务器拿链接-->
+	<swiper indicator-dots="true" autoplay="true" interval="4000" circular="true" indicator-active-color="#FFFFFF">
+		<swiper-item wx:for="{{swiperList}}" wx:key="id">
+			<navigator>
+				<image class="swiper-image" mode="widthFix" src="{{item.url}}" />
+			</navigator>
+		</swiper-item>
+	</swiper>
 
-  <view class="option">
-    <view class="option-item">
-      <image src="../../icon/category.png"></image>
-      <view>垃圾分类</view>
-    </view>
-    <view class="option-item">
-      <image src="../../icon/circle.png"></image>
-      <view>呼叫流程</view>
-    </view>
-    <view class="option-item">
-      <image src="../../icon/search.png"></image>
-      <view>合作伙伴</view>
-    </view>
-    <view class="option-item">
-      <image src="../../icon/more.png"></image>
-      <view>敬请期待</view>
-    </view>
-  </view>
+	<view class="option">
+		<view class="option-item">
+			<image src="../../icon/category.png"></image>
+			<view>上门回收</view>
+		</view>
+		<view class="option-item">
+			<image src="../../icon/circle.png"></image>
+			<view>呼叫流程</view>
+		</view>
+		<view class="option-item">
+			<image src="../../icon/search.png"></image>
+			<view>合作伙伴</view>
+		</view>
+		<view class="option-item">
+			<image src="../../icon/more.png"></image>
+			<view>敬请期待</view>
+		</view>
+	</view>
 
-  <view class="todoor-recycle">
-    <view class="todoor">
-      <view class="line"></view>
-      <view class="todoor-text">上门回收</view>
-      <view class="line"></view>
-    </view>
-    <image class="todoor-car" src="../../icon/car.png"></image>
-    <navigator class="todoor-btn">立即预约</navigator>
-  </view>
+	<view class="todoor-recycle">
+		<view class="todoor">
+			<view class="line"></view>
+			<view class="todoor-text">上门回收</view>
+			<view class="line"></view>
+		</view>
+		<image class="todoor-car" src="../../icon/car.png"></image>
+		<navigator class="todoor-btn" url="../recovery/recovery" open-type="redirect">立即预约</navigator>
+	</view>
 
-  <view class="money">
-    <text class="money-mime">我的资金</text>
-    <view class="money-box">
-      <view class="money-item money-current">
-        <view class="money-price">0.00</view>
-        <view class="money-text">当前资金</view>
-      </view>
-      <view class="money-item">
-        <view class="money-price">0</view>
-        <view class="money-text">呼叫次数</view>
-      </view>
-      <view class="money-item">
-        <view class="money-price">0.00</view>
-        <view class="money-text">累计资金</view>
-      </view>
-    </view>
-  </view>
+	<view class="money">
+		<text class="money-mime">我的资金</text>
+		<view class="money-box">
+			<view class="money-item money-current">
+				<view class="money-price">0.00</view>
+				<view class="money-text">当前资金</view>
+			</view>
+			<view class="money-item">
+				<view class="money-price">0</view>
+				<view class="money-text">呼叫次数</view>
+			</view>
+			<view class="money-item">
+				<view class="money-price">0.00</view>
+				<view class="money-text">累计资金</view>
+			</view>
+		</view>
+	</view>
 
 </scroll-view>
-
-
-
- 
-

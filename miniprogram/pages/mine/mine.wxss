@@ -7,6 +7,7 @@
   justify-content: flex-start;
   align-items: stretch;
 }
+
 .info-profile {
   margin: 40rpx;
   width: 170rpx;
@@ -15,20 +16,24 @@
   border: 2rpx solid orange;
   box-shadow: 20rpx 20rpx 50rpx rgb(247, 155, 18);
 }
+
 .info-person {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
+
 .info-nickname {
   font-weight: bold;
   padding-bottom: 20rpx;
 }
+
 .info-mobile {
   padding-bottom: 60rpx;
   font-size: small;
 }
+
 .coupon {
   position: absolute;
   right: 0rpx;
@@ -36,6 +41,7 @@
   padding: 30rpx;
   font-size: small;
 }
+
 .price {
   width: 80%;
   margin: -70rpx auto 30rpx auto;
@@ -48,16 +54,19 @@
   justify-content: space-between;
   align-items: stretch;
 }
+
 .price-info {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
+
 .price-amount {
   margin-top: 30rpx;
   font-weight: bold;
   font-size: large;
 }
+
 .price-btn {
   padding: 40rpx 20rpx 40rpx 40rpx;
   border-left: 2rpx solid rgba(85, 85, 85, 0.5);
@@ -65,15 +74,17 @@
   justify-content: center;
   align-items: center;
 }
+
 .func-item {
   margin: 0 50rpx;
   border-bottom: 1rpx solid #eee;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 30rpx;
   padding-top: 30rpx;
 }
+
 .func-text {
   flex-grow: 1;
   padding: 0 20rpx;

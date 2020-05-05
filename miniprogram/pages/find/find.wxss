@@ -6,12 +6,15 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .title {
   font-size: large;
 }
+
 .more {
   font-size: small;
 }
+
 .activity-box {
   width: 95%;
   margin: 0 auto;
@@ -20,9 +23,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .activity {
   flex: 1;
 }
+
 .activity-content {
   width: 75%;
   margin: 0 auto;
@@ -35,13 +40,16 @@
   color: white;
   box-shadow: 3rpx 3rpx 10rpx gray;
 }
+
 .activity-name {
   font-size: large;
 }
+
 .activity-description {
   font-size: x-small;
   margin: 30rpx 0;
 }
+
 .activity-btn {
   font-size: x-small;
   padding: 8rpx 30rpx;
@@ -49,15 +57,18 @@
   border: 1rpx solid white;
   margin-bottom: 30rpx;
 }
+
 .tab-title {
   margin: 40rpx;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
 }
+
 .tab-active {
   font-weight: bold;
 }
+
 .tab-line {
   margin: 20rpx auto;
   width: 90rpx;

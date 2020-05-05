@@ -16,10 +16,10 @@
 	</view>
 	<view class="tab-title">
 		<block wx:for="{{tabs}}" wx:key="index">
-      <view>
-			<text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.text}}</text>
-      <view class="tab-line" hidden="{{currentTab != index}}"></view>
-      </view>
+			<view>
+				<text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.text}}</text>
+				<view class="tab-line" hidden="{{currentTab != index}}"></view>
+			</view>
 		</block>
 		<view class="tab-box">
 

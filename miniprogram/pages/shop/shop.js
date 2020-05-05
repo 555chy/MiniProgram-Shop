@@ -6,7 +6,7 @@ Page({
    */
   data: {
     inputShowed: false,  //初始文本框不显示内容
-    items: [
+    goods: [
       {
         img: "https://img-blog.csdnimg.cn/20190927143929209.jpg",  
         name: "C++",
@@ -146,6 +146,11 @@ Page({
         img: "https://img-blog.csdnimg.cn/20200210230553185.png",  
         name: "Mariadb",
         price: 88.88
+      },
+      {
+        img: "https://img-blog.csdnimg.cn/20200427180158481.png",  
+        name: "OpenCV",
+        price: 32.00
       },
     ],
   },

@@ -1,0 +1,69 @@
+/* pages/recovery/recovery.wxss */
+.goods {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-item-box {
+  width: 42.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.goods-cover-box {
+  width: 42.5vw;
+  height: 42.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb364;
+  border-radius: 3rpx;
+}
+.goods-img {
+  width: 20vw;
+  height: 20vw;
+}
+.goods-name {
+  padding-top: 4vw;
+}
+.goods-price-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: small;
+  margin: 5rpx 0;
+}
+.goods-num-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.add, .sub {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 20rpx;
+  background-color: #bbb;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods-num {
+  padding: 10rpx;
+}
+.goods-total {
+  color: red;
+  font-size: x-small;
+  margin-bottom: 40rpx;
+  display: block;
+  text-align: end;
+}

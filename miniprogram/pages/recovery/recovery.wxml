@@ -1,0 +1,22 @@
+<!--pages/recovery/recovery.wxml-->
+<view class="goods">
+	<block wx:for="{{goods}}" wx:key="index">
+		<view class="goods-item">
+			<view class="goods-box">
+				<view class="goods-cover-box">
+					<image class="goods-img" mode="scaleToFill" src="{{item.img}}"></image>
+					<text class="goods-name">{{item.name}}</text>
+				</view>
+				<view class="goods-price-box">
+					<text class="goods-price">{{item.price}} 元/斤</text>
+					<view class="goods-num-box">
+						<view class="sub" data-index="{{index}}"  bindtap="sub">-</view>
+						<text class="goods-num">{{item.num}}</text>
+						<view class="add" data-index="{{index}}" bindtap="add">+</view>
+					</view>
+				</view>
+				<text class="goods-total">预计 {{item.total}} 元</text>
+			</view>
+		</view>
+	</block>
+</view>

@@ -30,11 +30,15 @@ Page({
       emptyBtn: this.data.tabs[index].emptyBtn
     });
   },
+  toRecovery: function() {
+    wx.navigateTo({
+      url: '../recovery/recovery',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       emptyTip: this.data.tabs[this.data.currentTab].emptyTip,
       emptyBtn: this.data.tabs[this.data.currentTab].emptyBtn,

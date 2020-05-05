@@ -10,5 +10,5 @@
 <view class="empty-box" hidden="{{!isEmpty}}">
   <image class="empty-img" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=863354001,33760034&fm=26&gp=0.jpg"></image>
   <text class="empty-tip">{{emptyTip}}</text>
-  <button class="empty-btn">{{emptyBtn}}</button>
+  <navigator class="empty-btn" url="../recovery/recovery">{{emptyBtn}}</navigator>
 </view>
