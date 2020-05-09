@@ -1,14 +1,15 @@
 <!--pages/recovery/recovery.wxml-->
 <view class="goods">
-	<block wx:for="{{goods}}" wx:key="index">
+	<block wx:for="{{goods}}" wx:key="id">
 		<view class="goods-item">
 			<view class="goods-box">
-				<view class="goods-cover-box">
-					<image class="goods-img" mode="scaleToFill" src="{{item.img}}"></image>
+				<image class="goods-cover-box" mode="scaleToFill" src="{{item.url}}">
+					<!-- <image class="goods-img" ></image> -->
 					<text class="goods-name">{{item.name}}</text>
-				</view>
+				</image>
 				<view class="goods-price-box">
-					<text class="goods-price">{{item.price}} 元/斤</text>
+					<text class="goods-price" wx:if="{{item.type == 0}}">{{item.price}} 元/斤</text>
+					<text class="goods-price" wx:else>{{item.price}} 元/个</text>
 					<view class="goods-num-box">
 						<view class="sub" data-index="{{index}}"  bindtap="sub">-</view>
 						<text class="goods-num">{{item.num}}</text>
@@ -20,3 +21,4 @@
 		</view>
 	</block>
 </view>
+<text class="tip">*以上价格为参考，具体以上门报价为主</text>

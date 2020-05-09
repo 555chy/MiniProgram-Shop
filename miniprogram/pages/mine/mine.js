@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLogin: false,
+    username:"",
+    headUrl:"../../icon/head.png",
     items: [
       {
         icon: "icon-location",
@@ -32,8 +35,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  goLogin: function(e){
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  
+  },
 
+  onLoad: function (options) {
+    
   },
 
   /**

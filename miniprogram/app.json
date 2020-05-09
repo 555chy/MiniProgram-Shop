@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/home/home",
     "pages/find/find",
     "pages/order/order",
     "pages/shop/shop",
     "pages/mine/mine",
     "pages/recovery/recovery",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/register/register"
   ],
   "permission": {
     "scope.userLocation": {

@@ -16,22 +16,24 @@
   align-items: center;
   flex: 1;
 }
-.goods-cover-box {
+.goods-cover-box{
   width: 42.5vw;
   height: 42.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ffb364;
+  background-color: #FEBF72;
   border-radius: 3rpx;
 }
 .goods-img {
-  width: 20vw;
-  height: 20vw;
+  width: 200rpx;
+  height: 140rpx;
 }
 .goods-name {
-  padding-top: 4vw;
+  /* padding-top: 4vw; */
+  font-size: 40rpx;
+  color: white;
 }
 .goods-price-box {
   display: flex;
@@ -66,4 +68,12 @@
   margin-bottom: 40rpx;
   display: block;
   text-align: end;
+}
+
+.tip{
+  color: red;
+  font-size: 20rpx;
+  text-align: center;
+  display: block;
+  margin-bottom: 25rpx;
 }

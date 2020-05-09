@@ -1,15 +1,18 @@
 <!--pages/mine/mine.wxml-->
 <view class="info">
-	<image class="info-profile" src="https://avatar.csdnimg.cn/E/1/B/3_chy555chy.jpg"></image>
+	<image class="info-profile" src="{{headUrl}}" mode="aspectFill"></image>
 	<view class="info-person">
-		<text class="info-nickname">您的昵称</text>
-		<text class="info-mobile">手机号</text>
+		<button wx:if="{{!isLogin}}" bindtap="goLogin">登录/注册</button>
+		<block wx:else>
+			<text class="info-nickname">{{username}}</text>
+			<text class="info-mobile"></text>
+		</block>
 	</view>
 </view>
 <text class="coupon">我的优惠券</text>
 <view class="price">
 	<view class="price-info">
-		<text class="price-text">交易额</text>
+		<text class="price-text">交易金额</text>
 		<text class="price-amount">1000.00</text>
 	</view>
 	<text class="price-btn">查看订单</text>

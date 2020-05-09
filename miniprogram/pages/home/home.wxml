@@ -6,12 +6,11 @@
 		<text class="iconfont icon-xiala"></text>
 	</view>
 	<view class="msg">
-		<text class="msg-icon iconfont icon-location"></text>
+		<text class="iconfont icon-message"></text>
 		<text class="msg-text">消息</text>
 	</view>
 </view>
 
-<scroll-view scroll-x="true" height="1800px">
 	<!-- 990 * 360  后续从服务器拿链接-->
 	<swiper indicator-dots="true" autoplay="true" interval="4000" circular="true" indicator-active-color="#FFFFFF">
 		<swiper-item wx:for="{{swiperList}}" wx:key="id">
@@ -47,7 +46,7 @@
 			<view class="line"></view>
 		</view>
 		<image class="todoor-car" src="../../icon/car.png"></image>
-		<navigator class="todoor-btn" url="../recovery/recovery" open-type="redirect">立即预约</navigator>
+		<navigator class="todoor-btn" url="../recovery/recovery" open-type="navigate">立即预约</navigator>
 	</view>
 
 	<view class="money">
@@ -67,5 +66,3 @@
 			</view>
 		</view>
 	</view>
-
-</scroll-view>

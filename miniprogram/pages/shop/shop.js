@@ -1,4 +1,6 @@
 // pages/shop.js
+const db = wx.cloud.database()
+
 Page({
 
   /**
@@ -152,7 +154,7 @@ Page({
         name: "OpenCV",
         price: 32.00
       },
-    ],
+    ]
   },
   // 使文本框进入可编辑状态
   showInput: function () {
@@ -170,7 +172,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
