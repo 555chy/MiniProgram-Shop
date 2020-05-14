@@ -1,4 +1,7 @@
 // pages/mine/mine.js
+const app = getApp()
+const Bmob = app.globalData.Bmob
+
 Page({
 
   /**
@@ -8,6 +11,7 @@ Page({
     isLogin: false,
     username:"",
     headUrl:"../../icon/head.png",
+    money: 0,
     items: [
       {
         icon: "icon-location",
@@ -43,21 +47,34 @@ Page({
   },
 
   onLoad: function (options) {
-    
+    let current = Bmob.User.current()
+    if(current != null){
+      this.setData({
+        isLogin: true,
+        username: current.username
+      })
+    }
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let current = Bmob.User.current()
+    if(current != null){
+      this.setData({
+        isLogin: true,
+        username: current.username
+      })
+    }
   },
 
   /**
@@ -74,24 +91,5 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })

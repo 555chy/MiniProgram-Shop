@@ -1,14 +1,19 @@
 {
   "pages": [
+    "pages/register/register",
     "pages/login/login",
+    
+    "pages/mine/mine",
+    "pages/sign/sign",
+    "pages/address/address",
+    "pages/recovery/recovery",
+    "pages/reserve/reserve",
     "pages/home/home",
     "pages/find/find",
     "pages/order/order",
     "pages/shop/shop",
-    "pages/mine/mine",
-    "pages/recovery/recovery",
-    "pages/index/index",
-    "pages/register/register"
+    "pages/index/index"
+  
   ],
   "permission": {
     "scope.userLocation": {
@@ -35,12 +40,6 @@
         "text": "发现",
         "iconPath": "icon/find_normal.png",
         "selectedIconPath": "icon/find_down.png"
-      },
-      {
-        "pagePath": "pages/shop/shop",
-        "text": "商城",
-        "iconPath": "icon/shop_normal.png",
-        "selectedIconPath": "icon/shop_down.png"
       },
       {
         "pagePath": "pages/order/order",

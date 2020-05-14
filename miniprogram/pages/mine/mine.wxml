@@ -9,7 +9,9 @@
 		</block>
 	</view>
 </view>
-<text class="coupon">我的优惠券</text>
+<navigator open-type="navigate" url="../sign/sign">
+	<text class="coupon">跳转我的优惠券</text>
+</navigator>
 <view class="price">
 	<view class="price-info">
 		<text class="price-text">交易金额</text>

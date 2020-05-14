@@ -1,12 +1,16 @@
 // pages/recovery/recovery.js
 const db = wx.cloud.database()
+const app = getApp()
+const Bmob = app.globalData.Bmob
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    goods: []
+    goods: [],
+    isShow: false,
+    waste:[]
   },
   change: function(index, step) {
     console.log(index)
@@ -31,10 +35,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    db.collection('Waste_List').get().then(res => {
+    const query = Bmob.Query('Waste');
+    query.find().then(res =>{
       this.setData({
-        goods: res.data
+        waste: res,
+        isShow: true
       })
+    }).catch(err =>{
+      console.log(err)
     })
   },
+  //立即提交
+  commit: function(e){
+    wx.navigateTo({
+      url: '../reserve/reserve',
+      success: function(e){
+        e.eventChannel.emit('commit',{price: 4811})
+      }
+    })
+  }
+
+
 })
