@@ -1,17 +1,65 @@
 /* pages/register/register.wxss */
-image{
-  margin: 40rpx;
-  width: 170rpx;
-  height: 170rpx;
-  border-radius: 85rpx;
-  border: 1rpx solid orange;
- 
-}
-
-.container{
-  background-color: cornflowerblue;
-  width: 400rpx;
+.profile-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: 60rpx;
+}
+.profile {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+  margin-bottom: 40rpx;
+  background-color: lightsalmon;
+}
+.profile-text {
+  color: gray;
+}
+.box{
+  padding: 50rpx 30rpx;
+  margin: 0rpx 50rpx;
+  border-radius: 20rpx;
+  box-shadow:0 4rpx 8rpx 0 rgba(186,94,2,0.15), 0 6rpx 30rpx 0 rgba(186,94,2,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.iconfont {
+  padding-right: 30rpx;
+}
+.input-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+.input {
+  padding: 10rpx;
+  border-bottom: 1rpx solid lightgrey;
+  width: 100%;
+}
+.use-wechat {
+  color: gray;
+  font-size: small;
+  align-self: flex-end;
+  margin-bottom: 40rpx;
+}
+.register {
+  font-weight: lighter;
+  width: 100% !important;
+  padding: 15rpx;
+  color: white;
+  border-radius: 60rpx; 
+  background: linear-gradient(rgba(253, 169, 50, 1), rgba(254, 128, 9, 1));
+  display: block;
+}
+.login-box {
+  margin-top: 40rpx;
+  font-size: small;
+}
+.login {
+  color: orange
 }

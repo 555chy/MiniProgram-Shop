@@ -1,13 +1,32 @@
-<view class="container">
-  <image src="{{headimg}}"></image>
-  <input placeholder="{{username}}" bindinput="getUsername"/>
-  <input placeholder="密码" bindinput="getPassword"></input>
-  <input placeholder="确认密码" bindinput="getConfirm"></input>
-  <input placeholder="电话" bindinput="getPhoneNumber"></input>
-  <input placeholder="邮箱" bindinput="getEmail"></input>
+<view class="profile-box">
+	<image class="profile" src="{{headimg}}"></image>
+	<text class="profile-text">请选择头像</text>
 </view>
 
+<view class="box">
+	<view class="input-box">
+		<text class="iconfont icon-zhuceyonghu"></text>
+		<input class="input" placeholder="{{username}}" bindinput="getUsername" />
+	</view>
+	<view class="input-box">
+		<text class="iconfont icon-mima-1"></text>
+		<input class="input" placeholder="密码" bindinput="getPassword"></input>
+	</view>
+	<view class="input-box">
+		<text class="iconfont icon-mima-1"></text>
+		<input class="input" placeholder="确认密码" bindinput="getConfirm"></input>
+	</view>
+	<view class="input-box" style="display:none">
+		<text class="iconfont icon-zhuceyonghu"></text>
+		<input class="input" placeholder="电话" bindinput="getPhoneNumber"></input>
+	</view>
+	<view class="input-box" style="display:none">
+		<text class="iconfont icon-zhuceyonghu"></text>
+		<input class="input" placeholder="邮箱" bindinput="getEmail"></input>
+	</view>
+	<text class="use-wechat" open-type="getUserInfo" bindgetuserinfo="getUserInfo">使用微信默认信息</text>
 
-<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">使用微信默认信息</button>
-<button bindtap="register">注册</button>
+	<button class="register" bindtap="register">马上注册</button>
 
+	<text class="login-box" bindtap="login">已有账号, <text class="login">马上登录</text></text>
+</view>

@@ -2,6 +2,7 @@
   "pages": [
     "pages/login/login",
     "pages/register/register",
+
     "pages/mine/mine",
     "pages/sign/sign",
     "pages/address/address",
