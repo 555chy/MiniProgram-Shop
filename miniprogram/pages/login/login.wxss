@@ -1,0 +1,68 @@
+image{
+  width: 444rpx;
+  height: 360rpx;
+  background-color: orangered;
+  margin: auto;
+  display: flex;
+  margin-top: 50rpx;
+}
+
+.input-container{
+  width: 641rpx;
+  height: 637rpx;
+  margin-top: 35rpx;
+  background-color: orange;
+  border-radius: 35rpx;
+}
+
+.input-username{
+  display: flex;
+  justify-content: center;
+  font-size: 31rpx;
+  padding-top: 90rpx;
+}
+
+.input-password{
+  display: flex;
+  justify-content: center;
+  font-size: 31rpx;
+  padding-top: 50rpx;
+}
+
+text{
+  padding-right: 20rpx;
+}
+
+button{
+  font-size: 35rpx;
+  color: white;
+  height: 83rpx;
+  width: 534rpx;
+  margin-top: 50rpx;
+  text-align: center;
+  border-radius: 41rpx;
+  background-image: linear-gradient(#FFBD71, #FF6E89);
+}
+
+.regist{
+  margin-top: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  
+}
+
+.line{
+  background-color: black;
+  height: 10rpx;
+}
+
+.forget{
+  width: 300rpx;
+  font-size: 25rpx;
+  margin-top: 33rpx;
+  text-align: right;
+ 
+}
+
+
+

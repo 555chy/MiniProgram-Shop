@@ -1,0 +1,4 @@
+<view>已连续签到天数 {{days}}</view>
+<view>{{integral}} 积分</view>
+<button bindtap="signin">立即签到</button>
+<button bindtap="test">test</button>

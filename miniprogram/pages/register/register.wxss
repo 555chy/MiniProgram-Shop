@@ -1,0 +1,17 @@
+/* pages/register/register.wxss */
+image{
+  margin: 40rpx;
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 85rpx;
+  border: 1rpx solid orange;
+ 
+}
+
+.container{
+  background-color: cornflowerblue;
+  width: 400rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

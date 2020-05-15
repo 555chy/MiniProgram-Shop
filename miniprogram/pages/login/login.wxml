@@ -1,0 +1,25 @@
+<!--pages/login/login.wxml-->
+<image></image>
+<view class="input-container">
+  <view class="input-username">
+    <text class="iconfont icon-zhuceyonghu"></text>
+    <input bindinput="getUsername" placeholder="用户名"/>
+    <view class="line"></view>
+  </view>
+  <view class="input-password">
+    <text class="iconfont icon-mima-1"></text>
+    <input bindinput="getPassword" placeholder="密码"/>
+    <view class="line"></view>
+  </view>
+
+  <button class="btn-login" bindtap="login">登录</button>
+  <view class="forget">忘记密码</view>
+  <view class="regist" bindtap="goRegister">还没有账号,现在注册</view>
+</view>
+
+
+
+
+
+
+

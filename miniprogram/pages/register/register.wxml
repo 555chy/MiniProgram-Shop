@@ -1,0 +1,13 @@
+<view class="container">
+  <image src="{{headimg}}"></image>
+  <input placeholder="{{username}}" bindinput="getUsername"/>
+  <input placeholder="密码" bindinput="getPassword"></input>
+  <input placeholder="确认密码" bindinput="getConfirm"></input>
+  <input placeholder="电话" bindinput="getPhoneNumber"></input>
+  <input placeholder="邮箱" bindinput="getEmail"></input>
+</view>
+
+
+<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">使用微信默认信息</button>
+<button bindtap="register">注册</button>
+
