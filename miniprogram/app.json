@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/register/register",
     "pages/login/login",
-    
+    "pages/register/register",
     "pages/mine/mine",
     "pages/sign/sign",
     "pages/address/address",
@@ -13,7 +12,6 @@
     "pages/order/order",
     "pages/shop/shop",
     "pages/index/index"
-  
   ],
   "permission": {
     "scope.userLocation": {

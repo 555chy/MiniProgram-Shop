@@ -1,68 +1,62 @@
 image{
-  width: 444rpx;
-  height: 360rpx;
-  background-color: orangered;
-  margin: auto;
+  width: 500rpx;
+  height: 350rpx;
   display: flex;
-  margin-top: 50rpx;
+  margin: 50rpx auto;
 }
 
-.input-container{
-  width: 641rpx;
-  height: 637rpx;
-  margin-top: 35rpx;
-  background-color: orange;
-  border-radius: 35rpx;
-}
-
-.input-username{
+.box{
+  padding: 80rpx;
+  margin: 0rpx 50rpx;
+  border-radius: 20rpx;
+  box-shadow:0 4rpx 8rpx 0 rgba(186,94,2,0.15), 0 6rpx 30rpx 0 rgba(186,94,2,0.1);
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: 31rpx;
-  padding-top: 90rpx;
+  align-items: center;
 }
-
-.input-password{
+.iconfont {
+  padding-right: 30rpx;
+}
+.username-box, .password-box {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: 31rpx;
-  padding-top: 50rpx;
+  align-items: center;
+  margin-bottom: 20rpx;
 }
 
-text{
-  padding-right: 20rpx;
+.username-box {
+  margin-bottom: 50rpx;
 }
 
-button{
-  font-size: 35rpx;
+.username, .password {
+  padding: 10rpx;
+  border-bottom: 1rpx solid lightgrey;
+  width: 100%;
+}
+
+.forget {
+  color: gray;
+  font-size: small;
+  align-self: flex-end;
+  margin-bottom: 40rpx;
+}
+
+.login {
+  font-weight: lighter;
+  width: 100% !important;
+  padding: 15rpx;
   color: white;
-  height: 83rpx;
-  width: 534rpx;
-  margin-top: 50rpx;
-  text-align: center;
-  border-radius: 41rpx;
-  background-image: linear-gradient(#FFBD71, #FF6E89);
+  border-radius: 60rpx; 
+  background: linear-gradient(rgba(253, 169, 50, 1), rgba(254, 128, 9, 1));
+  display: block;
 }
 
-.regist{
-  margin-top: 50rpx;
-  text-align: center;
-  font-size: 30rpx;
-  
+.register-box {
+  margin-top: 40rpx;
+  font-size: small;
 }
-
-.line{
-  background-color: black;
-  height: 10rpx;
+.register {
+  color: orange
 }
-
-.forget{
-  width: 300rpx;
-  font-size: 25rpx;
-  margin-top: 33rpx;
-  text-align: right;
- 
-}
-
-
-
