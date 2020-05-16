@@ -50,10 +50,11 @@ Page({
   },
   //立即提交
   commit: function(e){
+    let that = this
     wx.navigateTo({
       url: '../reserve/reserve',
       success: function(e){
-        e.eventChannel.emit('commit',{price: 4811})
+        e.eventChannel.emit('commit',{ goods: that.data.goods})
       }
     })
   }

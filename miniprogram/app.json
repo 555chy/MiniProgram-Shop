@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/recovery/recovery",
+    
     "pages/home/home",
     "pages/login/login",
-    
+    "pages/recovery/recovery",
     "pages/reserve/reserve",
     "pages/address/address",
 
