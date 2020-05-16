@@ -52,10 +52,17 @@
   display: block;
 }
 
+.ress{
+  display: flex;
+  flex-direction: row;
+ 
+}
 .register-box {
   margin-top: 40rpx;
   font-size: small;
 }
 .register {
-  color: orange
+  margin-top: 40rpx;
+  color: orange;
+  font-size: small;
 }

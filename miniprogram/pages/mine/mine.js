@@ -36,16 +36,32 @@ Page({
     ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   goLogin: function(e){
     wx.navigateTo({
       url: '../login/login',
     })
   
   },
+  //退出登录
+  logout: function(e){
+    Bmob.User.logout()
+    wx.showLoading({
+      title: '加载中',
+    })
 
+    let that = this
+    setTimeout(function () {
+      wx.hideLoading()
+      that.setData({
+        isLogin: false
+      })
+    }, 2000)
+  
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
     let current = Bmob.User.current()
     if(current != null){
@@ -57,12 +73,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
+  
 
   /**
    * 生命周期函数--监听页面显示
@@ -77,12 +88,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
+ 
 
   /**
    * 生命周期函数--监听页面卸载

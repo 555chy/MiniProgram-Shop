@@ -34,15 +34,22 @@ Page({
    * 登录
    */
   login: function(e){
-    
+    wx.showLoading({
+      title: '加载中',
+    })
     Bmob.User.login(this.data.username,this.data.password).then(res =>{
       console.log(res)
-      wx.switchTab({
-        url: '../mine/mine',
-      })
+      setTimeout(function () {
+        wx.hideLoading()
+        wx.switchTab({
+          url: '../mine/mine',
+        })
+      }, 2000)
+    
 
     }).catch(err =>{
       console.log(err)
+      wx.hideLoading()
       let code = err.code
       var message = ""
       if(code === 101){
