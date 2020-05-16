@@ -1,6 +1,6 @@
-<scroll-view scroll-y="true" >
-	<view class="box">
-		<view class="reserve-info-box">
+<scroll-view class="scroll" scroll-y="true" scroll-x="false">
+	<view class="content">
+		<view class="card">
 			<view class="info-box">
 				<view class="user-address-box">
 					<view class="user-box">
@@ -18,26 +18,38 @@
 		</view>
 
 
-		<view class="wastes-list">
-			<view class="waste-item" wx:for="{{waste}}" wx:key="index">
+		<view class="goods-list card">
+			<view class="goods-item" wx:for="{{goods}}" wx:key="index">
+				<image src="{{item.url}}"></image>
 				<view>{{item.name}}</view>
 				<view>{{item.price}}</view>
 			</view>
 		</view>
 
-		<view class="waste-image">
-			<view bindtap="getPhoto">
-				<image src="{{imageUrl}}"></image>
-				<view>上传照片</view>
+		<view class="goods-image card">
+			<image wx:if="{{hasPhoto}}" src="{{imageUrl}}"></image>
+			<view class="select-image-box" wx:else bindtap="getPhoto">
+				<image class="select-image" src="{{imageUrl}}" />
+				<text>上传照片</text>
 			</view>
 		</view>
 
-		<view class="other">
-			<view bindtap="selectTime">预约时间</view>
-			<view>留言备注</view>
-			<view>服务费</view>
+		<view class="info-list card">
+			<view class="info-item" bindtap="selectTime">
+				<text>预约时间</text>
+				<text class="info-item-desc">选择预约上门的时间</text>
+			</view>
+			<view class="info-item">
+				<text>留言备注</text>
+				<text class="info-item-desc">可描述商品状态、特殊要求等</text>	
+			</view>
+			<view class="info-item">
+				<text>服务费</text>
+				<text class="info-item-desc stress">限时减免</text>
+			</view>
 		</view>
-		<text>确认预约等于同意<text>《集品上门回收免责条款》</text></text>
+
+		<view class="tip">确认预约等于同意<text class="article">《集品上门回收免责条款》</text></view>
 	</view>
 </scroll-view>
 <view class="reserve-price-box">
