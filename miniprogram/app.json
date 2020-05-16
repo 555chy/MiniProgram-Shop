@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/order/order",
     "pages/home/home",
     "pages/reserve/reserve",
     
@@ -13,7 +14,7 @@
     "pages/sign/sign",
     
     "pages/find/find",
-    "pages/order/order",
+    "pages/detail/detail",
     "pages/shop/shop",
     "pages/index/index"
   ],

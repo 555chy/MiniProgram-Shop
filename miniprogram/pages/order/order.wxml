@@ -1,14 +1,8 @@
-<!--pages/order/order.wxml-->
-<view class="tabs">
-  <block wx:for="{{tabs}}" wx:key="index">
-    <view class="tab">
-      <text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.text}}</text>
-      <view class="tab-line" hidden="{{currentTab != index}}"></view>
+<view class="box">
+  <view wx:for="{{order}}" wx:key="index" wx:for-index="index">
+    <view class="order-item" bindtap="goDetail" data-index="{{index}}">
+         <text>{{item.wasteInfo}}</text>
     </view>
-  </block>
-</view>
-<view class="empty-box" hidden="{{!isEmpty}}">
-  <image class="empty-img" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=863354001,33760034&fm=26&gp=0.jpg"></image>
-  <text class="empty-tip">{{emptyTip}}</text>
-  <navigator class="empty-btn" url="../recovery/recovery">{{emptyBtn}}</navigator>
+ 
+  </view>
 </view>
