@@ -5,11 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hasPhoto: false,
     name: "收件人姓名",
     phone: "手机号码",
     address: "收货地址",
     imageUrl: "../../icon/category.png",
-    waste:[{
+    goods:[{
       name: "报废车",
       price: 100
     },{
@@ -62,6 +63,7 @@ getPhoto: function(e){
       // tempFilePath可以作为img标签的src属性显示图片
       const tempFilePaths = res.tempFilePaths
       that.setData({
+        hasPhoto: true,
         imageUrl: tempFilePaths
       })
     }

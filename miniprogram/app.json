@@ -1,16 +1,13 @@
 {
   "pages": [
+    "pages/reserve/reserve",
     "pages/recovery/recovery",
     "pages/home/home",
     "pages/login/login",
-    
-    "pages/reserve/reserve",
     "pages/address/address",
-
     "pages/register/register",
     "pages/mine/mine",
     "pages/sign/sign",
-    
     "pages/find/find",
     "pages/order/order",
     "pages/shop/shop",
