@@ -10,5 +10,6 @@ App({
   },
   globalData: {
     Bmob: Bmob
-  }
+  },
+  
 })

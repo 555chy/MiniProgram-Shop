@@ -80,6 +80,7 @@ Page({
    */
   onShow: function () {
     let current = Bmob.User.current()
+    console.log(current)
     if(current != null){
       this.setData({
         isLogin: true,

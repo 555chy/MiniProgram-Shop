@@ -139,18 +139,19 @@
   color: orange;
 }
 .goods-list {
-  display: flex;
+  /* height: auto; */
+  /* display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 .goods-item {
   width: 45%;
-  height: 100rpx;
+  height: 10rpx;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* flex: 1; */
 }

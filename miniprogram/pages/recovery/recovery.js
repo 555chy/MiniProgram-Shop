@@ -35,6 +35,9 @@ Page({
    */
   onLoad: function (options) {
     const query = Bmob.Query('Waste');
+    wx.showLoading({
+      title: '加载中',
+    })
     query.find().then(res =>{
       res.forEach(element => {
         element.num = 0;
@@ -44,12 +47,31 @@ Page({
         goods: res,
         isShow: true
       })
+      wx.hideLoading()
     }).catch(err =>{
       console.log(err)
+      wx.hideLoading()
     })
   },
   //立即提交
   commit: function(e){
+    let list = this.data.goods
+    var isNull = false
+    for(let i = 0; i < list.length; i++){
+      const number = list[i].num
+      if(number !== 0){
+        isNull = true
+      }
+    }
+
+    if(!isNull){
+      wx.showToast({
+        title: '还未选择回收物品',
+        duration: 3000
+      })
+      return
+    }
+
     let that = this
     wx.navigateTo({
       url: '../reserve/reserve',
