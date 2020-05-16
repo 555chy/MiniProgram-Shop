@@ -19,10 +19,22 @@
 	</view>
 	<text class="price-btn">查看订单</text>
 </view>
-<block wx:for="{{items}}" wx:key="index">
+<block>
 	<view class="func-item">
-		<text class="iconfont {{item.icon}}"></text>
-		<text class="func-text">{{item.text}}</text>
-		<text class="iconfont {{item.rightIcon}}"></text>
+		<text class="iconfont icon-location}"></text>
+		<text class="func-text">我的订单</text>
+		<text class="iconfont icon-right}"></text>
+	</view>
+	<view class="func-item">
+		<text class="iconfont icon-location}"></text>
+		<text class="func-text">关于我们</text>
+		<text class="iconfont icon-right}"></text>
+	</view>
+	<view class="func-item">
+		<text class="iconfont icon-location"></text>
+		<!-- <view class="func-text">帮助中心 -->
+			<button open-type="feedback" plain="true" size="mini">意见反馈</button>
+		<!-- </view> -->
+		<text class="iconfont icon-right}"></text>
 	</view>
 </block>

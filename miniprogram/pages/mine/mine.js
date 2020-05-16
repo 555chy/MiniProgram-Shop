@@ -3,7 +3,6 @@ const app = getApp()
 const Bmob = app.globalData.Bmob
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,28 +11,6 @@ Page({
     username:"",
     headUrl:"../../icon/head.png",
     money: 0,
-    items: [
-      {
-        icon: "icon-location",
-        text: "我的订单",
-        rightIcon: "icon-xiala",
-      },
-      {
-        icon: "icon-location",
-        text: "关于我们",
-        rightIcon: "icon-xiala",
-      },
-      {
-        icon: "icon-location",
-        text: "帮助中心",
-        rightIcon: "icon-xiala",
-      },
-      {
-        icon: "icon-location",
-        text: "设置",
-        rightIcon: "icon-xiala",
-      }
-    ]
   },
 
 
@@ -88,15 +65,10 @@ Page({
       })
     }
   },
+  test: function(e){
+    console.log(1231)
+  }
 
- 
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
 
   
 })
