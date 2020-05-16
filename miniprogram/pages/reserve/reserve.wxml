@@ -1,42 +1,45 @@
-<view class="box">
-	<view class="reserve-info-box">
-		<view class="info-box">
-			<view class="user-address-box">
-				<view class="user-box">
-					<view class="name">{{name}}</view>
-					<view class="mobile" selectable="true">{{phone}}</view>
+<scroll-view scroll-y="true" >
+	<view class="box">
+		<view class="reserve-info-box">
+			<view class="info-box">
+				<view class="user-address-box">
+					<view class="user-box">
+						<view class="name">{{name}}</view>
+						<view class="mobile" selectable="true">{{phone}}</view>
+					</view>
+					<view class="address-box">
+						<text class="iconfont icon-location"></text>
+						<text class="address">{{address}}</text>
+					</view>
 				</view>
-				<view class="address-box">
-					<text class="iconfont icon-location"></text>
-					<text class="address">{{address}}</text>
-				</view>
+				<text bindtap="addressManager" class="iconfont icon-right"></text>
 			</view>
-			<text bindtap="addressManager" class="iconfont icon-right"></text>
+			<view class="letter"></view>
 		</view>
-		<view class="letter"></view>
-	</view>
 
 
-	<view class="wastes-list">
-		<view class="waste-item" wx:for="{{waste}}" wx:key="index">
-			<view>{{item.name}}</view>
-			<view>{{item.price}}</view>
+		<view class="wastes-list">
+			<view class="waste-item" wx:for="{{waste}}" wx:key="index">
+				<view>{{item.name}}</view>
+				<view>{{item.price}}</view>
+			</view>
 		</view>
-	</view>
 
-	<view class="waste-image">
-		<view bindtap="getPhoto">
-			<image src="{{imageUrl}}"></image>
-			<view>上传照片</view>
+		<view class="waste-image">
+			<view bindtap="getPhoto">
+				<image src="{{imageUrl}}"></image>
+				<view>上传照片</view>
+			</view>
 		</view>
-	</view>
 
-	<view class="other">
-		<view bindtap="selectTime">预约时间</view>
-		<view>留言备注</view>
-		<view>服务费</view>
+		<view class="other">
+			<view bindtap="selectTime">预约时间</view>
+			<view>留言备注</view>
+			<view>服务费</view>
+		</view>
+		<text>确认预约等于同意<text>《集品上门回收免责条款》</text></text>
 	</view>
-</view>
+</scroll-view>
 <view class="reserve-price-box">
 	<view class="price-box">
 		<text>预估价格: <text class="price">--元</text></text>

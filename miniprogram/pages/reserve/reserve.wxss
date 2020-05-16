@@ -12,6 +12,7 @@
 .box {
   background: #ddd;
   padding: 30rpx;
+  height: 82vh;
 }
 .reserve-info-box {
   background-color: white;
@@ -57,9 +58,8 @@
 }
 
 .reserve-price-box {
-  position: fixed;
   width: 90%;
-  bottom: 0;
+  height: 100%;
   padding: 30rpx 50rpx;
   background-color: white;
   display: flex;
