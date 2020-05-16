@@ -9,8 +9,7 @@ Page({
    */
   data: {
     goods: [],
-    isShow: false,
-    waste:[]
+    isShow: false
   },
   change: function(index, step) {
     console.log(index)
@@ -37,8 +36,12 @@ Page({
   onLoad: function (options) {
     const query = Bmob.Query('Waste');
     query.find().then(res =>{
+      res.forEach(element => {
+        element.num = 0;
+        element.total = element.num * element.price;
+      });
       this.setData({
-        waste: res,
+        goods: res,
         isShow: true
       })
     }).catch(err =>{
@@ -54,6 +57,4 @@ Page({
       }
     })
   }
-
-
 })

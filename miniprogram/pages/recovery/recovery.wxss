@@ -1,4 +1,7 @@
 /* pages/recovery/recovery.wxss */
+.goods-list {
+  height: 92vh;
+}
 .goods {
   width: 90%;
   margin: 0 auto;
@@ -25,6 +28,7 @@
   align-items: center;
   background-color: #FEBF72;
   border-radius: 3rpx;
+  position: relative;
 }
 .goods-img {
   width: 200rpx;
@@ -34,6 +38,10 @@
   /* padding-top: 4vw; */
   font-size: 40rpx;
   color: white;
+  position: absolute;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translate(-50%);
 }
 .goods-price-box {
   display: flex;
@@ -70,10 +78,20 @@
   text-align: end;
 }
 
-.tip{
+.tip {
+  width: 100%;
   color: red;
   font-size: 20rpx;
   text-align: center;
   display: block;
   margin-bottom: 25rpx;
+}
+.commit {
+  width: 100% !important;
+  height: 100%;
+  color: white;
+  font-weight: normal;
+  background-color: orange;
+  border-radius: 0;
+  box-shadow: 0 0 0rpx 1rpx white;
 }

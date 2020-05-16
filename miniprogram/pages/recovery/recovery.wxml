@@ -1,27 +1,29 @@
 <!--pages/recovery/recovery.wxml-->
-<view class="goods">
-	<block wx:for="{{waste}}" wx:key="objectId">
-		<view class="goods-item">
-			<view class="goods-box">
-				<image class="goods-cover-box" mode="scaleToFill" src="{{item.url}}">
-					<!-- <image class="goods-img" ></image> -->
-					<text class="goods-name">{{item.name}}</text>
-				</image>
-				<view class="goods-price-box">
-					<text class="goods-price" wx:if="{{item.type == 0}}">{{item.price}} 元/斤</text>
-					<text class="goods-price" wx:else>{{item.price}} 元/个</text>
-					<view class="goods-num-box">
-						<view class="sub" data-index="{{index}}"  bindtap="sub">-</view>
-						<text class="goods-num">{{item.num}}</text>
-						<view class="add" data-index="{{index}}" bindtap="add">+</view>
+<scroll-view scroll-y="true" class="goods-list">
+	<view class="goods">
+		<block wx:for="{{goods}}" wx:key="objectId">
+			<view class="goods-item">
+				<view class="goods-box">
+					<image class="goods-cover-box" mode="scaleToFill" src="{{item.url}}">
+						<!-- <image class="goods-img" ></image> -->
+						<text class="goods-name">{{item.name}}</text>
+					</image>
+					<view class="goods-price-box">
+						<text class="goods-price" wx:if="{{item.type == 0}}">{{item.price}} 元/斤</text>
+						<text class="goods-price" wx:else>{{item.price}} 元/个</text>
+						<view class="goods-num-box">
+							<view class="sub" data-index="{{index}}" bindtap="sub">-</view>
+							<text class="goods-num">{{item.num}}</text>
+							<view class="add" data-index="{{index}}" bindtap="add">+</view>
+						</view>
 					</view>
+					<text class="goods-total">预计 {{item.total}} 元</text>
 				</view>
-				<text class="goods-total">预计 {{item.total}} 元</text>
 			</view>
-		</view>
-	</block>
-</view>
+		</block>
+		<text class="tip">*以上价格为参考，具体以上门报价为主</text>
+	</view>
+</scroll-view>
 <block wx:if="{{isShow}}">
-	<text class="tip">*以上价格为参考，具体以上门报价为主</text>
-	<button bindtap="commit">立即提交</button>
+	<button class="commit" bindtap="commit">立即提交</button>
 </block>
