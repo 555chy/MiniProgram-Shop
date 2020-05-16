@@ -8,7 +8,10 @@ Page({
    */
   data: {
     address: "获取定位中...",
-    swiperList:[]
+    swiperList:[{
+      id: 0,
+      url: "https://img-blog.csdnimg.cn/20200506135707911.png"
+    }]
   },
 
   /**
@@ -16,11 +19,13 @@ Page({
    */
   onLoad: function (options) {
     //从数据库读取banner数据
-    db.collection('Home_Data').doc('982133855eafd2ac000a28c41b6f058d').get().then(res => {
-      this.setData({
-        swiperList:res.data.banner
-      })
-    })
+    // db.collection('Home_Data').doc('982133855eafd2ac000a28c41b6f058d').get().then(res => {
+    //   this.setData({
+    //     swiperList:res.data.banner
+    //   })
+    // })
+
+    
 
     wx.getLocation({
       fail: (res) => {},

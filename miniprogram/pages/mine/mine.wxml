@@ -2,10 +2,10 @@
 <view class="info">
 	<image class="info-profile" src="{{headUrl}}" mode="aspectFill"></image>
 	<view class="info-person">
-		<button wx:if="{{!isLogin}}" bindtap="goLogin">登录/注册</button>
+		<button wx:if="{{!isLogin}}" bindtap="goLogin" size="mini">登录/注册</button>
 		<block wx:else>
 			<text class="info-nickname">{{username}}</text>
-			<text class="info-mobile"></text>
+			<button size="mini" bindtap="logout">退出登录</button>
 		</block>
 	</view>
 </view>

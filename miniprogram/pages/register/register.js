@@ -15,6 +15,7 @@ Page({
   },
   //获取用户微信信息
   getUserInfo: function(e){
+    console.log(e)
     let {avatarUrl, nickName} = e.detail.userInfo
     if(avatarUrl != null){
       this.setData({
@@ -26,6 +27,19 @@ Page({
         title: '获取信息失败'
       })
     }
+  },
+  //选择头像
+  chooseImage: function(e){
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album'],
+      complete: (res) => {
+        this.setData({
+          headimg: res.tempFilePaths
+        })
+      },
+    })
   },
  
   /**
@@ -63,6 +77,9 @@ Page({
         duration: 3000
       })
     })
+  },
+  goLogin: function(e){
+    wx.navigateBack()
   },
  
   //input变化监听

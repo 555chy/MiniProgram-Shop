@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 60rpx;
+  margin: 50rpx;
 }
 .profile {
   width: 200rpx;
@@ -45,7 +45,7 @@
   color: gray;
   font-size: small;
   align-self: flex-end;
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx;
 }
 .register {
   font-weight: lighter;
@@ -56,10 +56,17 @@
   background: linear-gradient(rgba(253, 169, 50, 1), rgba(254, 128, 9, 1));
   display: block;
 }
+
+.back{
+  display: flex;
+}
+
 .login-box {
   margin-top: 40rpx;
   font-size: small;
 }
 .login {
+  margin-top: 40rpx;
+  font-size: small;
   color: orange
 }
