@@ -1,42 +1,92 @@
 /* pages/reserve/reserve.wxss */
-.top{
-  width: 690rpx;
-  height: 165rpx;
-  background-color: orange;
-  margin: 0 auto;
-  margin-top: 25rpx;
-  padding: 10rpx;
+.letter {
+  width: 100%;
+  height: 10rpx;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #f25953 12.5%, #fbfaf5 12.5%, #fbfaf5 25%, #5590d6 25%, #5590d6 37.5%, #fbfaf5 37.5%, #fbfaf5 50%, #f25953 50%, #f25953 62.5%, #fbfaf5 62.5%, #fbfaf5 75%, #5590d6 75%, #5590d6 87.5%, #fbfaf5 87.5%, #fbfaf5 100%);
+  background-size: 150rpx 150rpx;
 }
-
-.wastes-list{
-  width: 690rpx;
-  height: auto;
-  background-color: orange;
-  margin: 0 auto;
-  padding: 10rpx;
-  margin-top: 25rpx;
+.iconfont {
+  margin-right: 10rpx;
 }
-
-.waste-item{
+.box {
+  background: #ddd;
+  padding: 30rpx;
+}
+.reserve-info-box {
+  background-color: white;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.info-box {
   display: flex;
-}
-
-.waste-image{
-  width: 690rpx;
-  height: 250rpx;
-  background-color: orange;
-  margin: 0 auto;
-  margin-top: 25rpx;
-  display: flex;
-  padding: 10rpx;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  padding: 10rpx;
+}
+.user-address-box {
+  width: 100%;
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.user-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10rpx;
+}
+.name {
+  margin-right: 30rpx;
+  font-weight: bold;
+}
+.mobile {
+  font-size: small;
+}
+.address-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx 10rpx;
+  font-size: small;
+  color: gray;
 }
 
-image{
-  width: 130rpx;
-  height: 130rpx;
+.reserve-price-box {
+  position: fixed;
+  width: 90%;
+  bottom: 0;
+  padding: 30rpx 50rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
-
+.price-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: small;
+}
+.price {
+  color: red;
+}
+.price-desc {
+  padding-top: 30rpx;
+  color: gray;
+  font-size: x-small;
+}
+.reserve {
+  color: white;
+  font-weight: normal;
+  border-radius: 50rpx;
+  background: linear-gradient(to left, rgba(40, 137, 199, 1), rgba(90, 175, 227, 1));
+  padding: 15rpx 50rpx;
+}
