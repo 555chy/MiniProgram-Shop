@@ -1,0 +1,3 @@
+<map latitude="{{latitude}}" longitude="{{longitude}}" show-location="true" markers="{{markers}}" polyline="{{polyline}}"></map>
+
+

@@ -1,22 +1,20 @@
 {
   "pages": [
+    "pages/myorder/myorder",
     "pages/order/order",
+    "pages/detail/detail",
     "pages/home/home",
     "pages/reserve/reserve",
-    
     "pages/login/login",
     "pages/recovery/recovery",
-   
     "pages/address/address",
-
     "pages/register/register",
     "pages/mine/mine",
     "pages/sign/sign",
-    
     "pages/find/find",
-    "pages/detail/detail",
     "pages/shop/shop",
     "pages/index/index"
+   
   ],
   "permission": {
     "scope.userLocation": {
@@ -62,4 +60,5 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
+
 }

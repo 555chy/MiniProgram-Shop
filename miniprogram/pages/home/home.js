@@ -1,6 +1,6 @@
 // pages/home/home.js
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
-const db = wx.cloud.database()
+
 
 Page({
   /**
@@ -18,15 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //从数据库读取banner数据
-    // db.collection('Home_Data').doc('982133855eafd2ac000a28c41b6f058d').get().then(res => {
-    //   this.setData({
-    //     swiperList:res.data.banner
-    //   })
-    // })
-
-    
-
     wx.getLocation({
       fail: (res) => {},
       success: (result) => {
@@ -49,7 +40,7 @@ Page({
         })
         
       },
-      type: 'wgs84',
+      type: 'gcj02',
     })
 
   },
