@@ -5,17 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: {
+    address: [{
       name: "bob",
       mobile: "1378956758",
-      district: "福建省福州市",
-      detail: "详细信息"
-    }
+      district: "福建省福州市鼓楼区",
+      detail: "这是一个山上的地址"
+    },{
+      name: "tina",
+      mobile: "18985632454",
+      district: "福建省福州市台江区",
+      detail: "这是一个闹市的地址，而且地址很长很长"
+    }]
   },
   add: function() {
     wx.navigateTo({
       url: '../addressAdd/addressAdd',
     });
+  },
+  select: function(event) {
+    const addr = this.data.address[event.currentTarget.dataset.index];
+    console.log(addr)
   },
   /**
    * 生命周期函数--监听页面加载
