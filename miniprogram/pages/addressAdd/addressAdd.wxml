@@ -1,0 +1,19 @@
+<!--pages/addressAdd/addressAdd.wxml-->
+<view class="box">
+	<text class="name">收货人</text>
+	<input class="value" placeholder="姓名"></input>
+</view>
+<view class="box">
+	<text class="name">手机号码</text>
+	<input class="value" placeholder="11位手机号" type="number"></input>
+</view>
+<view class="box">
+	<text class="name">地区信息</text>
+	<input class="value" placeholder="地区信息"></input>
+	<text class="iconfont icon-location" bindtap="toMap"></text>
+</view>
+<view class="box">
+	<text class="name">详细地址</text>
+	<input class="value" placeholder="街道门牌信息"></input>
+</view>
+<button bindtap="save">保存</button>

@@ -1,32 +1,27 @@
-// pages/address/address.js
+// pages/addressAdd/addressAdd.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address: {
-      name: "bob",
-      mobile: "1378956758",
-      district: "福建省福州市",
-      detail: "详细信息"
-    }
   },
-  add: function() {
-    wx.navigateTo({
-      url: '../addressAdd/addressAdd',
-    });
+  toMap: function() {
+    wx.chooseLocation({
+      success: (res) => {
+        console.log(res)
+      },
+    })
+  },
+  
+  save: function() {
+ 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(Math.round(new Date() / 1000))
 
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('address', function(data) {
-      console.log(data)
-    })
   },
 
   /**
