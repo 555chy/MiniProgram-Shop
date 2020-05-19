@@ -1,1 +1,6 @@
-/* pages/address/address.wxss */
+.address{
+  padding: 20rpx;
+  background-color: blue;
+  margin-bottom: 20rpx;
+}
+

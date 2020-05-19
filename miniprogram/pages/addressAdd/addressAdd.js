@@ -1,75 +1,116 @@
-// pages/addressAdd/addressAdd.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    name: '',
+    phone: '',
+    address: '地区信息',
+    detail: '',
+    location: {},
+    cacheLocation: [],
   },
-  toMap: function() {
+
+  toMap: function () {
     wx.chooseLocation({
       success: (res) => {
-        console.log(res)
+        let location = {
+          latitude: res.latitude,
+          longitude: res.longitude
+        }
+        let address = res.name
+        this.setData({
+          location,
+          address
+        })
       },
     })
   },
-  
-  save: function() {
- 
+  getName: function (e) {
+    this.setData({
+      name: e.detail.value
+    })
   },
+
+  getPhone: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+  getAddress: function (e) {
+    this.setData({
+      detail: e.detail.value
+    })
+  },
+
+  save: function () {
+    let {
+      name,
+      phone,
+      address,
+      detail,
+      location,
+      cacheLocation
+    } = this.data
+
+    if (name != '' && phone != '' && address != '地区信息' && detail != '') {
+      let obj = {
+        name,
+        phone,
+        address,
+        detail,
+        location
+      }
+
+      cacheLocation.push(obj)
+    
+      wx.setStorage({
+        data: cacheLocation,
+        key: 'address',
+        success: function(e){
+          wx.showToast({
+            title: '保存成功',
+          })
+        }
+      })
+
+    }else{
+      wx.showToast({
+        title: '请输入完整数据',
+        icon: 'none',
+        duration: 3000
+      })
+    }
+
+  },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.getStorage({
+      key: 'address',
+      success: function(res){
+        that.setData({
+          cacheLocation: res.data
+        })
+      },
+    })
+   
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  get: function(e){
+    
+    wx.getStorage({
+      key: 'address',
+      success: function(res){
+        console.log(res)
+      },
+      fail: function(err){
+        console.log('err'+err)
+      }
+    })
   }
+ 
 })

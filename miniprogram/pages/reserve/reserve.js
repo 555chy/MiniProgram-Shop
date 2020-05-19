@@ -59,17 +59,14 @@ Page({
    */
   addressManager: function(e){
     let that = this
-    wx.chooseAddress({
-      success (res) {
+    wx.navigateTo({
+      url: '../address/address',
+      success: function(res){
         console.log(res)
-        let add = res.provinceName + res.cityName + res.countyName + res.detailInfo
-        that.setData({
-          name: res.userName,
-          phone: res.telNumber,
-          address: add
-        })
       }
     })
+
+
   },
 /**
  * 选择图片
