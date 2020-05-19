@@ -12,7 +12,6 @@ Page({
     isShow: false
   },
   change: function(index, step) {
-    console.log(index)
     const data = this.data;
     const goods = data.goods[index];
     goods.num = goods.num + step;
@@ -55,29 +54,8 @@ Page({
   },
   //立即提交
   commit: function(e){
-    let list = this.data.goods
-    var isNull = false
-    for(let i = 0; i < list.length; i++){
-      const number = list[i].num
-      if(number !== 0){
-        isNull = true
-      }
-    }
-
-    if(!isNull){
-      wx.showToast({
-        title: '还未选择回收物品',
-        duration: 3000
-      })
-      return
-    }
-
-    let that = this
     wx.navigateTo({
       url: '../reserve/reserve',
-      success: function(e){
-        e.eventChannel.emit('commit',{ goods: that.data.goods})
-      }
     })
   }
 })

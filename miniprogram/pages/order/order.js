@@ -39,9 +39,13 @@ Page({
   //打开详情界面
   goDetail: function(e){
     let index = e.currentTarget.dataset.index
-    console.log(index)
+    let order = this.data.order[index]
+
     wx.navigateTo({
       url: '../detail/detail',
+      success: function(e){
+        e.eventChannel.emit('order',{order})
+      }
     })
   }
 })

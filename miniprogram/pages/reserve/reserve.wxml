@@ -45,10 +45,6 @@
 				<text>留言备注</text>
 				<input class="info-item-desc" placeholder="{{remark}}" bindinput="getRemark" style="direction: rtl;"></input>	
 			</view>
-			<view class="info-item">
-				<text>服务费</text>
-				<text class="info-item-desc stress">限时减免</text>
-			</view>
 		</view>
 
 		<view class="tip">确认预约等于同意<text class="article">《集品上门回收免责条款》</text></view>

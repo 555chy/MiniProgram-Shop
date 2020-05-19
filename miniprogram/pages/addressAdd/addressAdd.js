@@ -71,6 +71,9 @@ Page({
           wx.showToast({
             title: '保存成功',
           })
+          wx.navigateBack({
+            delta: 1,
+          })
         }
       })
 
@@ -81,9 +84,7 @@ Page({
         duration: 3000
       })
     }
-    wx.navigateBack({
-      delta: 1,
-    })
+   
   },
  
   /**
