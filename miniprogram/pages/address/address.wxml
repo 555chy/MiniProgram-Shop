@@ -1,5 +1,9 @@
-<view wx:for="{{address}}" wx:key="index" class="box" data-index="{{index}}" bindtap="select">
-	<text class="name-mobile">{{item.name}}, {{item.mobile}}</text>
-	<text class="address">{{item.district}} {{item.detail}}</text>
-</view>
+<block class="box" wx:for="{{address}}" wx:key="index" wx:for-index="index">
+	<view class="address" bindtap="choose" data-index="{{index}}">
+		<text>{{item.name}}, {{item.phone}}</text>
+		<view>{{item.address}}</view>
+		<view>{{item.detail}}</view>
+	</view>
+</block>
+
 <button class="add" bindtap="add">添加地址</button>

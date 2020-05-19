@@ -1,28 +1,6 @@
-/* pages/address/address.wxss */
-.box {
-  margin: 0 30rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 30rpx;
-  border-bottom: 1px solid lightgray;
-  font-size: small;
-}
-.name-mobile {
-  font-weight: bold;
-  font-size: small;
+.address{
+  padding: 20rpx;
+  background-color: blue;
   margin-bottom: 20rpx;
 }
-.address {
-  color: gray;
-  font-size: x-small;
-}
-button {
-  width: 90% !important;
-  margin: 50rpx auto;
-  color: white;
-  background-color: orange;
-  font-weight: normal !important;
-  font-size: small;
-}
+
