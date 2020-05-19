@@ -1,4 +1,4 @@
-<view class="box">
+<view>
   <block wx:for="{{order}}" wx:key="index" wx:for-index="index">
     <view class="order-item" bindtap="goDetail" data-index="{{index}}">
          <text>{{item.wasteInfo}}</text>

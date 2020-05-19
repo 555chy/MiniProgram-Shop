@@ -16,18 +16,14 @@
 			</view>
 			<view class="letter"></view>
 		</view>
-
-
 		<view class="goods-list card" style="display: none">
 			<view class="goods-item" wx:for="{{goods}}" wx:key="index">
 				<block wx:if="{{item.num > 0}}">
 						<view>{{item.name}}</view>
 						<view>{{item.num}}{{item.type === 1 ? '个' : '斤'}}</view>
 				</block>
-			
 			</view>
 		</view>
-
 		<view class="goods-image card">
 			<image wx:if="{{hasPhoto}}" src="{{imageUrl}}"></image>
 			<view class="select-image-box" wx:else bindtap="getPhoto">
@@ -35,7 +31,6 @@
 				<text>上传废品照片</text>
 			</view>
 		</view>
-
 		<view class="info-list card">
 			<view class="info-item" >
 				<text>预约日期</text>
@@ -50,7 +45,6 @@
 				<text class="info-item-desc stress">限时减免</text>
 			</view>
 		</view>
-
 		<view class="tip">确认预约等于同意<text class="article">《集品上门回收免责条款》</text></view>
 	</view>
 </scroll-view>

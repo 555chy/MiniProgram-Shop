@@ -1,9 +1,6 @@
-.box {
-  background-color: rgba(243, 243, 243, 1);
-}
 .order-item{
-  margin: 40rpx 40rpx 0 40rpx;
   padding: 40rpx 30rpx;
-  border-radius: 5rpx;
-  box-shadow: 1rpx 1rpx 5rpx lightgray;
+  margin-bottom: 1px;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
 }
