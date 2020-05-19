@@ -17,8 +17,8 @@ Page({
     detailTime: '选择具体的时间',
     remark: "可描述商品状态、特殊要求等",
     timeList: [['今天', '明天'], ['上午 9:30-10:30', '上午 10:30-11:30','下午 2:00-4:00','下午 4:00-6:00','晚上 6:00-8:00']],
-    wasteInfo: ""
-    
+    location: {},
+    detail: ''
   },
 
   /**
@@ -26,68 +26,72 @@ Page({
    */
   onLoad: function (option) {
     let that = this
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('commit', function(data) {
-      console.log(data)
-      let goodsArr = data.goods
-      var price = 0
-      var waste = ""
-
-      for (let i = 0; i < goodsArr.length; i++) {
-        const pri = goodsArr[i].price;
-        const number = goodsArr[i].num
-        const name = goodsArr[i].name
-        const type = goodsArr[i].type === 1 ? '个' : '斤'
-        
-        if(number > 0){
-          price += pri * 100 * number / 100
-          var temp = ""
-          temp = name + number + type
-          waste += temp
-        }
-  
+    wx.getStorage({
+      key: 'defaultIndex',
+      success: function(e){
+        let index = e.data
+        wx.getStorage({
+          key: 'address',
+          success: function(res){
+            let info = res.data[index]
+            console.log(info)
+            that.setData({
+              name: info.name,
+              phone: info.phone,
+              address: info.address,
+              detail: info.detail,
+              location: info.location
+            })
+          }
+        })
       }
-      that.setData({
-        goods: goodsArr,
-        totalPrice: price,
-        wasteInfo: waste
-      })
     })
   },
+  onShow: function(options){
+    let that = this
+    wx.getStorage({
+      key: 'defaultIndex',
+      success: function(e){
+        let index = e.data
+        wx.getStorage({
+          key: 'address',
+          success: function(res){
+            let info = res.data[index]
+            console.log(info)
+            that.setData({
+              name: info.name,
+              phone: info.phone,
+              address: info.address,
+              location: info.location
+            })
+          }
+        })
+      }
+    })
+  },
+
   /**
    * 进入收货地址管理
    */
   addressManager: function(e){
-    let that = this
     wx.navigateTo({
       url: '../address/address',
-      success: function(res){
-        console.log(res)
-      }
     })
-
-
   },
 /**
  * 选择图片
  */
 getPhoto: function(e){
-  var that = this
-  wx.showActionSheet({
-    itemList: ['拍照','相册'],
-    success(res){
-      wx.chooseImage({
-        count: 1,
-        sizeType: ['compressed'],
-        sourceType: [res.tapIndex === 1 ? 'album' : 'camera'],
-        success (res) {
-          // tempFilePath可以作为img标签的src属性显示图片
-          const tempFilePaths = res.tempFilePaths
-          that.setData({
-            hasPhoto: true,
-            imageUrl: tempFilePaths
-          })
-        }
+  wx.chooseImage({
+    count: 1,
+    sizeType: ['compressed'],
+    sourceType: ['camera'],
+    success (res) {
+      // tempFilePath可以作为img标签的src属性显示图片
+      const tempFilePaths = res.tempFilePaths
+      that.setData({
+        hasPhoto: true,
+        imageUrl: tempFilePaths
       })
     }
   })
@@ -118,13 +122,11 @@ commit: function(e){
   wx.showLoading({
     title:'提交中'
   })
-  let name = this.data.name
-  let phone = this.data.phone
-  let address = this.data.address
+
+  let {name,phone,address,remark,wasteInfo,detail,location} = this.data
   let time = this.data.yuyueTime
-  let remark = this.data.remark
-  let wasteInfo = this.data.wasteInfo
   let obj = Bmob.User.current().objectId
+  let loca = [location.latitude,location.longitude]
 
   const query = Bmob.Query('Recycle_Order');
   const pointer = Bmob.Pointer('_User')
@@ -132,18 +134,20 @@ commit: function(e){
 
   query.set("name",name)
   query.set("phone",phone)
-  query.set("address",address)
+  query.set("address",address + detail)
   query.set("time",time)
   query.set("remark",remark)
-  query.set('wasteInfo',wasteInfo)
+  query.set('wasteInfo','废品信息')
   query.set("user",objectId)
+  query.set('location',loca)
+  query.set('state','open')
 
   query.save().then(res => {
     console.log(res)
     setTimeout(function () {
       wx.hideLoading()
-      wx.showToast({
-        title: '预约成功',
+      wx.redirectTo({
+        url: '../myorder/myorder',
       })
     }, 2000)
  
