@@ -81,7 +81,9 @@ Page({
         duration: 3000
       })
     }
-
+    wx.navigateBack({
+      delta: 1,
+    })
   },
  
   /**
