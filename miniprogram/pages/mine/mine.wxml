@@ -5,7 +5,7 @@
 		<button wx:if="{{!isLogin}}" bindtap="goLogin" size="mini">登录/注册</button>
 		<block wx:else>
 			<text class="info-nickname">{{username}}</text>
-			<button size="mini" bindtap="logout">退出登录</button>
+			<button class="text-button" size="mini" bindtap="logout">退出登录</button>
 		</block>
 	</view>
 </view>
@@ -32,9 +32,7 @@
 	</view>
 	<view class="func-item">
 		<text class="iconfont icon-location"></text>
-		<!-- <view class="func-text">帮助中心 -->
-			<button open-type="feedback" plain="true" size="mini">意见反馈</button>
-		<!-- </view> -->
+		<button class="text-button func-text" open-type="feedback">意见反馈</button>
 		<text class="iconfont icon-right}"></text>
 	</view>
 </block>

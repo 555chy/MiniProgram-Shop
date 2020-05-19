@@ -1,7 +1,10 @@
-<view>
-  <block wx:for="{{order}}" wx:key="index" wx:for-index="index">
-    <view class="order-item" bindtap="goDetail" data-index="{{index}}">
-         <text>{{item.wasteInfo}}</text>
-    </view>
-  </block>
+<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index">
+	<view class="order-item" bindtap="goDetail" data-index="{{index}}">
+    <text class="garbage {{item.open ? 'green' : 'red'}}">{{item.open ? "待回收" : "已回收"}}</text>
+		<view class="info">
+			<text class="address">{{item.address}}</text>
+			<text class="time">{{item.updatedAt}}</text>
+			<text class="desc">{{item.wasteInfo}}</text>
+		</view>
+	</view>
 </view>

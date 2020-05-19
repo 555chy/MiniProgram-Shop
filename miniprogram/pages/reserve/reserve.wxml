@@ -16,6 +16,7 @@
 			</view>
 			<view class="letter"></view>
 		</view>
+		
 		<view class="goods-list card" style="display: none">
 			<view class="goods-item" wx:for="{{goods}}" wx:key="index">
 				<block wx:if="{{item.num > 0}}">
@@ -24,6 +25,7 @@
 				</block>
 			</view>
 		</view>
+
 		<view class="goods-image card">
 			<image wx:if="{{hasPhoto}}" src="{{imageUrl}}"></image>
 			<view class="select-image-box" wx:else bindtap="getPhoto">

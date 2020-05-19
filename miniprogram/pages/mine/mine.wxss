@@ -34,6 +34,14 @@
   font-size: small;
 }
 
+.text-button {
+  background-color: transparent;
+  font-weight: normal;
+  text-align: start;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .coupon {
   position: absolute;
   right: 0rpx;
@@ -87,5 +95,5 @@
 
 .func-text {
   flex-grow: 1;
-  padding: 0 20rpx;
+  padding: 0 20rpx !important;
 }
