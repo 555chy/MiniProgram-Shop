@@ -4,7 +4,6 @@ const Bmob = app.globalData.Bmob
 Page({
   data: {
     order:[],
-    
   },
  
   onLoad: function (options) {

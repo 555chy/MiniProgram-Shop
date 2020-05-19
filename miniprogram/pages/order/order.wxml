@@ -1,8 +1,7 @@
 <view class="box">
-  <view wx:for="{{order}}" wx:key="index" wx:for-index="index">
+  <block wx:for="{{order}}" wx:key="index" wx:for-index="index">
     <view class="order-item" bindtap="goDetail" data-index="{{index}}">
          <text>{{item.wasteInfo}}</text>
     </view>
- 
-  </view>
+  </block>
 </view>
