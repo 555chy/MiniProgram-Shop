@@ -64,7 +64,7 @@
 	<view class="goods-popup-content">
 		<view class="tab-title">
 			<view class="tab-title-item" wx:for="{{tabs}}" wx:key="index">
-				<text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.text}}</text>
+				<text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.name}}</text>
 				<view class="tab-line" wx:if="{{currentTab == index}}"></view>
 			</view>
 		</view>

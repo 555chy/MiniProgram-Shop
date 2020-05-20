@@ -22,21 +22,96 @@ Page({
     ],
     location: {},
     detail: '',
-    tabs: [
-      {
-        text: "大宗商品"
+    tabs: [{
+        name: "大宗商品",
+        types: [{
+            "name": "纸类"
+          },
+          {
+            "name": "金属"
+          },
+          {
+            "name": "塑料"
+          },
+          {
+            "name": "电动车"
+          }
+        ]
       },
       {
-        text: "家用电器"
+        name: "家用电器",
+        types: [{
+            "name": "电视",
+            "size": [
+              'CRT14-21寸',
+              '34寸>CRT>22寸',
+              '液晶27-31寸'
+            ]
+          },
+          {
+            "name": "冰箱",
+            'size': [
+              '<120L<60CM',
+              '<120L>60CM',
+              '>120L'
+            ]
+          },
+          {
+            "name": "空调",
+            'size': [
+              '窗机',
+              '挂/柜机<=1.5P',
+              '挂/柜机>=2P'
+            ]
+          },
+          {
+            "name": "洗衣机",
+            'size': ['波轮<4L', '波轮>4L', '滚筒', '脱水机']
+          },
+          {
+            "name": "其他家电",
+            'size': ['']
+          }
+        ]
       },
       {
-        text: "3C数码"
+        name: "3C数码",
+        types: [{
+            "name": "台式电脑"
+          },
+          {
+            "name": "智能手机"
+          },
+          {
+            "name": "平板电脑"
+          },
+          {
+            "name": "功能机"
+          },
+          {
+            "name": "音箱"
+          }
+        ]
       },
     ],
     currentTab: 0,
     showModalStatus: true,
-    types: [{"name":"台式电脑"}, {"name":"智能手机"}, {"name":"笔记本平板电脑"}, {"name":"功能机"} ],
-    sizes: [{"name":"液晶屏<14寸"}, {"name":"液晶屏>=14寸"}, {"name":"台式主机"}]
+    types: [{
+      "name": "台式电脑"
+    }, {
+      "name": "智能手机"
+    }, {
+      "name": "笔记本平板电脑"
+    }, {
+      "name": "功能机"
+    }],
+    sizes: [{
+      "name": "液晶屏<14寸"
+    }, {
+      "name": "液晶屏>=14寸"
+    }, {
+      "name": "台式主机"
+    }]
   },
 
   /**
@@ -225,36 +300,36 @@ Page({
       })
     }.bind(this), duration)
   },
-  togglePopup: function() {
+  togglePopup: function () {
     console.log(this.data.showModalStatus)
-    if(this.data.showModalStatus) {
+    if (this.data.showModalStatus) {
       this.hideModal();
     } else {
       this.showModal();
     }
   },
-  changeTab: function(e) {
+  changeTab: function (e) {
     this.setData({
       currentTab: e.currentTarget.dataset.index
     });
   },
-  selectType: function(e) {
+  selectType: function (e) {
     const index = e.currentTarget.dataset.index;
-    this.data.types[index].checked = ! this.data.types[index].checked;
+    this.data.types[index].checked = !this.data.types[index].checked;
     this.setData({
-      types: this.data.types 
+      types: this.data.types
     })
   },
-  selectSize: function(e) {
+  selectSize: function (e) {
     const index = e.currentTarget.dataset.index;
-    this.data.sizes[index].checked = ! this.data.sizes[index].checked;
+    this.data.sizes[index].checked = !this.data.sizes[index].checked;
     this.setData({
-      sizes: this.data.sizes 
+      sizes: this.data.sizes
     })
   },
-  add: function(e) {
+  add: function (e) {
     //返回用户选中的值
-    let value = this.data.types.filter((item,index)=>{
+    let value = this.data.types.filter((item, index) => {
       return item.checked == true;
     })
     console.log(value)
