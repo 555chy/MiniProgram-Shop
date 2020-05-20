@@ -21,8 +21,7 @@
 				<view class="tab-line" hidden="{{currentTab != index}}"></view>
 			</view>
 		</block>
-		<view class="tab-box">
-
+		<view class="tab-content">
 		</view>
 	</view>
 </view>

@@ -11,14 +11,32 @@ Page({
     phone: "手机号码",
     address: "收货地址",
     imageUrl: "../../icon/category.png",
-    goods:[],
+    goods: [],
     totalPrice: 0,
     yuyueTime: "选择预约上门的时间",
     detailTime: '选择具体的时间',
     remark: "可描述商品状态、特殊要求等",
-    timeList: [['今天', '明天'], ['上午 9:30-10:30', '上午 10:30-11:30','下午 2:00-4:00','下午 4:00-6:00','晚上 6:00-8:00']],
+    timeList: [
+      ['今天', '明天'],
+      ['上午 9:30-10:30', '上午 10:30-11:30', '下午 2:00-4:00', '下午 4:00-6:00', '晚上 6:00-8:00']
+    ],
     location: {},
-    detail: ''
+    detail: '',
+    tabs: [
+      {
+        text: "大宗商品"
+      },
+      {
+        text: "家用电器"
+      },
+      {
+        text: "3C数码"
+      },
+    ],
+    currentTab: 0,
+    showModalStatus: true,
+    types: [{"name":"台式电脑"}, {"name":"智能手机"}, {"name":"笔记本平板电脑"}, {"name":"功能机"} ],
+    sizes: [{"name":"液晶屏<14寸"}, {"name":"液晶屏>=14寸"}, {"name":"台式主机"}]
   },
 
   /**
@@ -28,11 +46,11 @@ Page({
     let that = this
     wx.getStorage({
       key: 'defaultIndex',
-      success: function(e){
+      success: function (e) {
         let index = e.data
         wx.getStorage({
           key: 'address',
-          success: function(res){
+          success: function (res) {
             let info = res.data[index]
             console.log(info)
             that.setData({
@@ -47,15 +65,15 @@ Page({
       }
     })
   },
-  onShow: function(options){
+  onShow: function (options) {
     let that = this
     wx.getStorage({
       key: 'defaultIndex',
-      success: function(e){
+      success: function (e) {
         let index = e.data
         wx.getStorage({
           key: 'address',
-          success: function(res){
+          success: function (res) {
             let info = res.data[index]
             console.log(info)
             that.setData({
@@ -73,87 +91,172 @@ Page({
   /**
    * 进入收货地址管理
    */
-  addressManager: function(e){
+  addressManager: function (e) {
     wx.navigateTo({
       url: '../address/address',
     })
   },
-/**
- * 选择图片
- */
-getPhoto: function(e){
-  wx.chooseImage({
-    count: 1,
-    sizeType: ['compressed'],
-    sourceType: ['camera'],
-    success (res) {
-      // tempFilePath可以作为img标签的src属性显示图片
-      const tempFilePaths = res.tempFilePaths
-      that.setData({
-        hasPhoto: true,
-        imageUrl: tempFilePaths
-      })
-    }
-  })
-},
-//选择预约日期
-selectTime: function(e){
-  let time = e.detail.value
-  let i1 = time[0]
-  let i2 = time[1]
+  /**
+   * 选择图片
+   */
+  getPhoto: function (e) {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        that.setData({
+          hasPhoto: true,
+          imageUrl: tempFilePaths
+        })
+      }
+    })
+  },
+  //选择预约日期
+  selectTime: function (e) {
+    let time = e.detail.value
+    let i1 = time[0]
+    let i2 = time[1]
 
-  let date = this.data.timeList
-  let str = date[0][i1] + " " + date[1][i2]
-  this.setData({
-    yuyueTime: str
-  })
-  
-},
-//获取留言备注
-getRemark: function(e){
-  this.setData({
-    remark: e.detail.value
-  })
+    let date = this.data.timeList
+    let str = date[0][i1] + " " + date[1][i2]
+    this.setData({
+      yuyueTime: str
+    })
 
-},
+  },
+  //获取留言备注
+  getRemark: function (e) {
+    this.setData({
+      remark: e.detail.value
+    })
 
-//立即预约
-commit: function(e){
-  wx.showLoading({
-    title:'提交中'
-  })
+  },
 
-  let {name,phone,address,remark,wasteInfo,detail,location} = this.data
-  let time = this.data.yuyueTime
-  let obj = Bmob.User.current().objectId
-  let loca = [location.latitude,location.longitude]
+  //立即预约
+  commit: function (e) {
+    wx.showLoading({
+      title: '提交中'
+    })
 
-  const query = Bmob.Query('Recycle_Order');
-  const pointer = Bmob.Pointer('_User')
-  const objectId = pointer.set(obj)
+    let {
+      name,
+      phone,
+      address,
+      remark,
+      wasteInfo,
+      detail,
+      location
+    } = this.data
+    let time = this.data.yuyueTime
+    let obj = Bmob.User.current().objectId
+    let loca = [location.latitude, location.longitude]
 
-  query.set("name",name)
-  query.set("phone",phone)
-  query.set("address",address + detail)
-  query.set("time",time)
-  query.set("remark",remark)
-  query.set('wasteInfo','废品信息')
-  query.set("user",objectId)
-  query.set('location',loca)
-  query.set('state','open')
+    const query = Bmob.Query('Recycle_Order');
+    const pointer = Bmob.Pointer('_User')
+    const objectId = pointer.set(obj)
 
-  query.save().then(res => {
-    console.log(res)
+    query.set("name", name)
+    query.set("phone", phone)
+    query.set("address", address + detail)
+    query.set("time", time)
+    query.set("remark", remark)
+    query.set('wasteInfo', '废品信息')
+    query.set("user", objectId)
+    query.set('location', loca)
+    query.set('state', 'open')
+
+    query.save().then(res => {
+      console.log(res)
+      setTimeout(function () {
+        wx.hideLoading()
+        wx.redirectTo({
+          url: '../myorder/myorder',
+        })
+      }, 2000)
+
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  //显示对话框
+  showModal: function () {
+    const duration = 500;
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: duration,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(500).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    })
     setTimeout(function () {
-      wx.hideLoading()
-      wx.redirectTo({
-        url: '../myorder/myorder',
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
       })
-    }, 2000)
- 
-  }).catch(err => {
-    console.log(err)
-  })
-}
-
+    }.bind(this), duration)
+  },
+  //隐藏对话框
+  hideModal: function () {
+    const duration = 500;
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: duration,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(500).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), duration)
+  },
+  togglePopup: function() {
+    console.log(this.data.showModalStatus)
+    if(this.data.showModalStatus) {
+      this.hideModal();
+    } else {
+      this.showModal();
+    }
+  },
+  changeTab: function(e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.index
+    });
+  },
+  selectType: function(e) {
+    const index = e.currentTarget.dataset.index;
+    this.data.types[index].checked = ! this.data.types[index].checked;
+    this.setData({
+      types: this.data.types 
+    })
+  },
+  selectSize: function(e) {
+    const index = e.currentTarget.dataset.index;
+    this.data.sizes[index].checked = ! this.data.sizes[index].checked;
+    this.setData({
+      sizes: this.data.sizes 
+    })
+  },
+  add: function(e) {
+    //返回用户选中的值
+    let value = this.data.types.filter((item,index)=>{
+      return item.checked == true;
+    })
+    console.log(value)
+  }
 })

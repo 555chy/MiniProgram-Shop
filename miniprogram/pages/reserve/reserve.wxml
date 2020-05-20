@@ -16,14 +16,19 @@
 			</view>
 			<view class="letter"></view>
 		</view>
-		
+
 		<view class="goods-list card" style="display: none">
 			<view class="goods-item" wx:for="{{goods}}" wx:key="index">
 				<block wx:if="{{item.num > 0}}">
-						<view>{{item.name}}</view>
-						<view>{{item.num}}{{item.type === 1 ? '个' : '斤'}}</view>
+					<view>{{item.name}}</view>
+					<view>{{item.num}}{{item.type === 1 ? '个' : '斤'}}</view>
 				</block>
 			</view>
+		</view>
+
+		<view class="card goods-add-box">
+			<text class="goods-add-desc">请您添加需要上门回收的物品吧</text>
+			<text class="goods-add" bindtap="togglePopup">立即添加</text>
 		</view>
 
 		<view class="goods-image card">
@@ -34,13 +39,13 @@
 			</view>
 		</view>
 		<view class="info-list card">
-			<view class="info-item" >
-				<text>预约日期</text>
+			<view class="info-item">
+				<text class="info-item-name">预约日期</text>
 				<picker class='info-item-desc' mode="multiSelector" bindchange="selectTime" range="{{timeList}}">{{yuyueTime}}</picker>
 			</view>
 			<view class="info-item">
-				<text>留言备注</text>
-				<input class="info-item-desc" placeholder="{{remark}}" bindinput="getRemark" style="direction: rtl;"></input>	
+				<text class="info-item-name">留言备注</text>
+				<input class="info-item-desc" placeholder="{{remark}}" bindinput="getRemark" style="direction: rtl;"></input>
 			</view>
 		</view>
 		<view class="tip">确认预约等于同意<text class="article">《集品上门回收免责条款》</text></view>
@@ -52,4 +57,34 @@
 		<text class="price-desc">成交价格以实际评估为准</text>
 	</view>
 	<text class="reserve" bindtap="commit">立即预约</text>
+</view>
+
+<view class="goods-popup" animation="{{animationData}}" wx:if="{{showModalStatus}}">
+	<view class="goods-popup-title">添加废品</view>
+	<view class="goods-popup-content">
+		<view class="tab-title">
+			<view class="tab-title-item" wx:for="{{tabs}}" wx:key="index">
+				<text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item.text}}</text>
+				<view class="tab-line" wx:if="{{currentTab == index}}"></view>
+			</view>
+		</view>
+		<view class="tab-content">
+			<view class="tab-content-item">
+				<text class="tab-content-item-name">类型</text>
+				<view class="tab-content-item-category">
+					<text class="tab-content-item-category-item {{item.checked ? 'checked' : ''}}" wx:for="{{types}}" wx:key="index" data-index="{{index}}" bindtap="selectType">{{item.name}}</text>
+				</view>
+			</view>
+			<view class="tab-content-item">
+				<text class="tab-content-item-name">规格</text>
+				<view class="tab-content-item-category">
+					<text class="tab-content-item-category-item {{item.checked ? 'checked' : ''}}" wx:for="{{sizes}}" wx:key="index" data-index="{{index}}" bindtap="selectSize">{{item.name}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="goods-popup-bottom">
+		<text class="goods-popup-price">预估回收价格2元</text>
+		<text class="goods-popup-add" bindtap="add">加入回收清单</text>
+	</view>
 </view>
