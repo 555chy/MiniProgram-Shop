@@ -11,7 +11,6 @@ Page({
     phone: "手机号码",
     address: "收货地址",
     imageUrl: "../../icon/category.png",
-    goods: [],
     totalPrice: 0,
     yuyueTime: "选择预约上门的时间",
     detailTime: '选择具体的时间',
@@ -26,7 +25,7 @@ Page({
         name: "大宗商品",
         types: [{
             "name": "纸类",
-            'size':[
+            'sizes':[
               {'name':'5-10kg','price':'4-8'},
               {'name':'10-15kg','price':'8-12'},
               {'name':'15-20kg','price':'12-16'}
@@ -34,7 +33,7 @@ Page({
           },
           {
             "name": "金属",
-            'size':[
+            'sizes':[
               {'name':'5-10kg','price':'6-12'},
               {'name':'10-15kg','price':'12-18'},
               {'name':'15-20kg','price':'18-24'}
@@ -42,7 +41,7 @@ Page({
           },
           {
             "name": "塑料",
-            'size':[
+            'sizes':[
               {'name':'5-10kg','price':'3.5-7'},
               {'name':'10-15kg','price':'7-10.5'},
               {'name':'15-20kg','price':'10.5-14'}
@@ -50,7 +49,7 @@ Page({
           },
           {
             "name": "车类",
-            'size':[
+            'sizes':[
               {'name':'自行车','price':'5'},
               {'name':'电动车','price':'50'}
             ]
@@ -61,7 +60,7 @@ Page({
         name: "家用电器",
         types: [{
             "name": "电视",
-            "size": [
+            "sizes": [
               {'name':'14-21寸','price':'5-15'},
               {'name':'22-34寸','price':'15-20'},
               {'name':'34寸以上','price':'20-30'}
@@ -69,7 +68,7 @@ Page({
           },
           {
             "name": "冰箱",
-            'size': [
+            'sizes': [
               {'name':'<120L<60CM','price':'10-20'},
               {'name':'<120L>60CM','price':'20-30'},
               {'name':'>120L','price':'30-40'}
@@ -77,7 +76,7 @@ Page({
           },
           {
             "name": "空调",
-            'size': [
+            'sizes': [
               {'name':'窗机','price':'50-100'},
               {'name':'挂/柜机<1.5P','price':'80-150'},
               {'name':'挂/柜机<2P','price':'100-200'}
@@ -85,7 +84,7 @@ Page({
           },
           {
             "name": "洗衣机",
-            'size': [
+            'sizes': [
               {'name':'波轮<4L','price':'10-30'},
               {'name':'波轮>4L','price':'20-40'},
               {'name':'滚筒','price':'15-40'},
@@ -94,7 +93,7 @@ Page({
           },
           {
             "name": "其他家电",
-            'size': [
+            'sizes': [
               {'name':'热水器','price':'5-30'},
               {'name':'微波炉','price':'5-20'},
               {'name':'其它小家电','price':'2-20'}
@@ -106,7 +105,7 @@ Page({
         name: "3C数码",
         types: [{
             "name": "台式电脑",
-            'size':[
+            'sizes':[
               {'name':'液晶屏<14寸','price':'3'},
               {'name':'液晶屏>14寸','price':'5-15'},
               {'name':'台式机','price':'10-25'}
@@ -114,13 +113,13 @@ Page({
           },
           {
             "name": "智能手机",
-            'size':[
+            'sizes':[
               {'name':'不可开机','price':'5-15'}
             ]
           },
           {
             "name": "笔记本平板",
-            'size':[
+            'sizes':[
               {'name':'其它笔记本','price':'10-30'},
               {'name':'苹果笔记本','price':'30'},
               {'name':'其它平板','price':'5'},
@@ -129,7 +128,7 @@ Page({
           },
           {
             "name": "功能机",
-            'size':[
+            'sizes':[
               {'name':'带电池','price':'2-5'}
             ]
           },
@@ -137,23 +136,11 @@ Page({
       },
     ],
     currentTab: 0,
-    showModalStatus: true,
-    types: [{
-      "name": "台式电脑"
-    }, {
-      "name": "智能手机"
-    }, {
-      "name": "笔记本平板电脑"
-    }, {
-      "name": "功能机"
-    }],
-    sizes: [{
-      "name": "液晶屏<14寸"
-    }, {
-      "name": "液晶屏>=14寸"
-    }, {
-      "name": "台式主机"
-    }]
+    currentType: 0,
+    currentSize: 0,
+    showModalStatus: false,
+    price: 20,
+    goods: []
   },
 
   /**
@@ -352,28 +339,42 @@ Page({
   },
   changeTab: function (e) {
     this.setData({
-      currentTab: e.currentTarget.dataset.index
+      currentTab: e.currentTarget.dataset.index,
+      currentType: 0,
+      currentSize: 0
     });
   },
   selectType: function (e) {
-    const index = e.currentTarget.dataset.index;
-    this.data.types[index].checked = !this.data.types[index].checked;
     this.setData({
-      types: this.data.types
-    })
+      currentType: e.currentTarget.dataset.index,
+      currentSize: 0
+    });
   },
   selectSize: function (e) {
     const index = e.currentTarget.dataset.index;
-    this.data.sizes[index].checked = !this.data.sizes[index].checked;
     this.setData({
-      sizes: this.data.sizes
-    })
+      currentSize: index,
+    });
   },
-  add: function (e) {
+  add: function () {
     //返回用户选中的值
-    let value = this.data.types.filter((item, index) => {
-      return item.checked == true;
+    const type = this.data.tabs[this.data.currentTab].types[this.data.currentType];
+    const item = {
+      "type": type.name,
+      "size": type.sizes[this.data.currentSize].name,
+      "price": type.sizes[this.data.currentSize].price
+    };
+    this.data.goods.push(item);
+    this.setData({
+      goods: this.data.goods
     })
-    console.log(value)
+    console.log(this.data.goods)
+  },
+  sub: function(e) {
+    const index = e.currentTarget.dataset.index;
+    this.data.goods.splice(index, 1);
+    this.setData({
+      goods: this.data.goods
+    });
   }
 })

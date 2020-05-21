@@ -62,7 +62,7 @@
   margin-bottom: 10rpx;
 }
 .goods-add-box {
-  padding: 30rpx;
+  padding: 20rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,6 +70,7 @@
 }
 .goods-add {
   padding: 30rpx;
+  align-self: center;
 }
 .goods-add-desc {
   color: gray;
@@ -191,13 +192,14 @@
 .goods-popup-title {
   font-weight: bold;
   width: 100%;
-  text-align: center;
-  padding: 30rpx;
+  padding: 30rpx 0;
   border-bottom: 1px solid lightgray;
+  text-align: center;
 }
 .goods-popup-content {
   padding: 20rpx 30rpx;
   font-size: small;
+  min-height: 400rpx;
 }
 .goods-popup-bottom {
   padding: 20rpx 30rpx;
@@ -268,4 +270,66 @@
   color: white;
   background-color: rgba(40, 137, 199, 1);
 }
-
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(102, 101, 101, 0.5)
+}
+.goods-add-box2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.goods-add-title {
+  font-size: small;
+  margin: 0 20rpx;
+  padding: 20rpx;
+  border-bottom: 1px solid lightgray;
+}
+.goods-add-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch; 
+  margin: 0 20rpx;
+  padding: 20rpx 20rpx 0 20rpx;
+}
+.goods-add-item-type-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10rpx;
+}
+.goods-add-item-type {
+  flex-grow: 1;
+  font-size: small;
+}
+.goods-add-item-price {
+  font-size: small;
+  color: gray;
+}
+.sub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+  width: 50rpx;
+  height: 48rpx;
+  border-radius: 25rpx;
+  font-size: large;
+  margin-left: 30rpx;
+}
+.goods-add-item-size {
+  font-size: small;
+  color: gray;
+  border-bottom: 1px solid lightgray;
+  padding-top: 20rpx;
+  padding-bottom: 30rpx;
+}
