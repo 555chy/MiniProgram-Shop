@@ -21,18 +21,23 @@
 </view>
 <block>
 	<view class="func-item">
-		<text class="iconfont icon-location}"></text>
+		<text class="iconfont icon-dingdan}"></text>
 		<text class="func-text">我的订单</text>
 		<text class="iconfont icon-right}"></text>
 	</view>
 	<view class="func-item">
 		<text class="iconfont icon-location}"></text>
+		<text class="func-text">我的地址</text>
+		<text class="iconfont icon-right}"></text>
+	</view>
+	<view class="func-item">
+		<text class="iconfont icon-gantanhao}"></text>
 		<text class="func-text">关于我们</text>
 		<text class="iconfont icon-right}"></text>
 	</view>
 	<view class="func-item">
-		<text class="iconfont icon-location"></text>
-		<button class="text-button func-text" open-type="feedback">意见反馈</button>
+		<text class="iconfont icon-wenhao"></text>
+		<button class="text-button func-text" open-type="feedback">帮助中心</button>
 		<text class="iconfont icon-right}"></text>
 	</view>
 </block>

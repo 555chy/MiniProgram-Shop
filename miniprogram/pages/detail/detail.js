@@ -21,9 +21,7 @@ Page({
       let location = order.location
       let latitude = location[0]
       let longitude = location[1]
-
       console.log(latitude + "|" + longitude)
-
       that.setData({
         latitude: latitude,
         longitude: longitude,
@@ -40,13 +38,12 @@ Page({
         }]
       })
     })
-
     var qqmapsdk = new QQMapWX({
       key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
     })
   
     qqmapsdk.direction({
-      mode: 'bicycling',
+      mode: 'walking',
       from: {
         latitude: 26.084461,
         longitude: 119.254060

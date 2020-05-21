@@ -4,6 +4,7 @@ const Bmob = app.globalData.Bmob
 Page({
   data: {
     order:[],
+    hasData: false
   },
  
   onLoad: function (options) {
@@ -18,9 +19,11 @@ Page({
       query.equalTo('state', '==', 'open')
       query.find().then(res => {
         console.log(res)
-
+        let length = res.length
+        let hasData = length !== 0
         this.setData({
-          order: res
+          order: res,
+          hasData
         })
       });
     }else{
@@ -29,10 +32,14 @@ Page({
       let poiID = pointer.set(objectId)
       query.equalTo('user', '==', poiID)
       query.find().then(res => {
-        console.log(res)
+        let length = res.length
+        let hasData = length !== 0
         this.setData({
-          order: res
+          order: res,
+          hasData
         })
+      }).catch(err =>{
+        console.log(err)
       });
     }
   },
