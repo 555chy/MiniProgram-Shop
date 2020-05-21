@@ -58,7 +58,8 @@ Page({
         message = err.error
       }
       wx.showToast({
-        title: message
+        title: message,
+        icon: 'none'
       })
       
     })
