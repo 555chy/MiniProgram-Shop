@@ -2,11 +2,11 @@ var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 
 Page({
   data: {
+    showPopup: true,
     latitude: 26.084461,
     longitude: 119.254060,
     markers: [],
     polyline: []
-
   },
 
   /**
@@ -15,22 +15,24 @@ Page({
   onLoad: function (options) {
     var that = this
     const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('order', function(data) {
+    eventChannel.on('order', function (data) {
       console.log(data)
       let order = data.order
+      order.imgUrl = "../../icon/car.png";
       let location = order.location
       let latitude = location[0]
       let longitude = location[1]
       console.log(latitude + "|" + longitude)
       that.setData({
+        order: order,
         latitude: latitude,
         longitude: longitude,
-        markers:[{
+        markers: [{
           id: 0,
           latitude: 26.084461,
           longitude: 119.254060,
           iconPath: '../../icon/start.png'
-        },{
+        }, {
           id: 1,
           latitude: latitude,
           longitude: longitude,
@@ -41,7 +43,7 @@ Page({
     var qqmapsdk = new QQMapWX({
       key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
     })
-  
+
     qqmapsdk.direction({
       mode: 'walking',
       from: {
@@ -52,15 +54,18 @@ Page({
         latitude: that.data.latitude,
         longitude: that.data.longitude
       },
-      success: (res =>{
+      success: (res => {
         var coors = res.result.routes[0].polyline
         var pl = []
-        for (var i = 2; i < coors.length ; i++){
-          coors[i] = coors[i-2] + coors[i]/1000000
+        for (var i = 2; i < coors.length; i++) {
+          coors[i] = coors[i - 2] + coors[i] / 1000000
         }
 
         for (var i = 0; i < coors.length; i += 2) {
-          pl.push({ latitude: coors[i], longitude: coors[i + 1] })
+          pl.push({
+            latitude: coors[i],
+            longitude: coors[i + 1]
+          })
         }
         that.setData({
           polyline: [{
@@ -71,10 +76,22 @@ Page({
         })
 
       }),
-      fail: (err =>{
+      fail: (err => {
         console.log(err)
       })
     })
-  
+
   },
+  showPopup: function () {
+    if(this.data.showPopup) return;
+    this.setData({
+      showPopup: true
+    })
+  },
+  hidePopup: function () {
+    if (!this.data.showPopup) return;
+      this.setData({
+        showPopup: false
+      })
+  }
 })
