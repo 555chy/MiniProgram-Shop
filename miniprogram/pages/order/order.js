@@ -21,10 +21,10 @@ Page({
         console.log(res)
         let length = res.length
         let hasData = length !== 0
-        this.setData({
-          order: res,
-          hasData
-        })
+        // this.setData({
+        //   order: res,
+        //   hasData
+        // })
       });
     }else{
       //不是管理员查询当前登录用户的所有订单
@@ -34,10 +34,10 @@ Page({
       query.find().then(res => {
         let length = res.length
         let hasData = length !== 0
-        this.setData({
-          order: res,
-          hasData
-        })
+        // this.setData({
+        //   order: res,
+        //   hasData
+        // })
       }).catch(err =>{
         console.log(err)
       });
