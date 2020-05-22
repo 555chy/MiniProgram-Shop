@@ -1,7 +1,7 @@
 <scroll-view class="scroll" scroll-y="true" scroll-x="false">
 	<view class="content">
 		<view class="card">
-			<view class="info-box">
+			<view class="info-box" bindtap="addressManager">
 				<view class="user-address-box">
 					<view class="user-box">
 						<view class="name">{{name}}</view>
@@ -12,14 +12,18 @@
 						<text class="address">{{address}}</text>
 					</view>
 				</view>
-				<text bindtap="addressManager" class="iconfont icon-right"></text>
+				<text class="iconfont icon-right"></text>
 			</view>
 			<view class="letter"></view>
 		</view>
 
 		<view class="card goods-add-box" wx:if="{{goods.length == 0}}">
 			<text class="goods-add-desc">请您添加需要上门回收的物品吧</text>
-			<text class="goods-add" bindtap="togglePopup">立即添加</text>
+			<view class="goods-add">
+				<text class="iconfont icon-jiahao"></text>
+				<text class="goods-add" bindtap="togglePopup">立即添加</text>
+			</view>
+		
 		</view>
 
 		<view class="card goods-add-box2" wx:if="{{goods.length != 0}}">
@@ -27,8 +31,8 @@
 			<view class="goods-add-item" wx:for="{{goods}}" wx:key="index">
 				<view class="goods-add-item-type-box">
 					<text class="goods-add-item-type">{{item.type}}</text>
-					<text class="goods-add-item-price">{{item.price}}</text>
-					<text class="sub" data-index="{{index}}" bindtap="sub">-</text>
+					<text class="goods-add-item-price">{{item.price}} 元</text>
+					<text class="sub" data-index="{{index}}" bindtap="sub">－</text>
 				</view>
 				<text class="goods-add-item-size">{{item.size}}</text>
 			</view>
@@ -36,7 +40,7 @@
 		</view>
 
 		<view class="goods-image card">
-			<image wx:if="{{hasPhoto}}" src="{{imageUrl}}"></image>
+			<image bindtap="getPhoto" wx:if="{{hasPhoto}}" src="{{imageUrl}}"></image>
 			<view class="select-image-box" wx:else bindtap="getPhoto">
 				<image class="select-image" src="{{imageUrl}}" />
 				<text>上传废品照片</text>
@@ -62,6 +66,9 @@
 	</view>
 	<text class="reserve" bindtap="commit">立即预约</text>
 </view>
+
+<view class="bg" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+
 <view class="goods-popup" animation="{{animationData}}" wx:if="{{showModalStatus}}">
 	<view class="goods-popup-title">添加废品</view>
 	<view class="goods-popup-content">
@@ -87,8 +94,12 @@
 		</view>
 	</view>
 	<view class="goods-popup-bottom">
-		<text class="goods-popup-price">预估回收价格 {{tabs[currentTab].types[currentType].sizes[currentSize].price}} 元</text>
+		<view>
+				<text class="goods-popup-text">预估回收价格  </text>
+				<text class="goods-popup-price">{{tabs[currentTab].types[currentType].sizes[currentSize].price}}</text>
+				<text class="goods-popup-text">  元</text>
+		</view>
 		<text class="goods-popup-add" bindtap="add">加入回收清单</text>
 	</view>
 </view>
-<cover-view class="bg" bindtap="hideModal" wx:if="{{showModalStatus}}"></cover-view>
+

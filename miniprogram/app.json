@@ -3,7 +3,6 @@
     "pages/reserve/reserve",
     "pages/home/home",
     "pages/order/order",
-
     "pages/address/address",
     "pages/addressAdd/addressAdd",
     "pages/login/login",
@@ -13,7 +12,8 @@
     "pages/sign/sign",
     "pages/find/find",
     "pages/shop/shop",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/tip/tip"
   ],
   "permission": {
     "scope.userLocation": {

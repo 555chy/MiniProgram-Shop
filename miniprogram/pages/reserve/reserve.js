@@ -12,6 +12,7 @@ Page({
     address: "收货地址",
     imageUrl: "../../icon/category.png",
     totalPrice: 0,
+    wasteInfo: "",
     yuyueTime: "选择预约上门的时间",
     detailTime: '选择具体的时间',
     remark: "可描述商品状态、特殊要求等",
@@ -28,7 +29,8 @@ Page({
             'sizes':[
               {'name':'5-10kg','price':'4-8'},
               {'name':'10-15kg','price':'8-12'},
-              {'name':'15-20kg','price':'12-16'}
+              {'name':'15-20kg','price':'12-16'},
+              {'name':'20kg以上','price':'16-'}
             ]
           },
           {
@@ -36,7 +38,8 @@ Page({
             'sizes':[
               {'name':'5-10kg','price':'6-12'},
               {'name':'10-15kg','price':'12-18'},
-              {'name':'15-20kg','price':'18-24'}
+              {'name':'15-20kg','price':'18-24'},
+              {'name':'20kg以上','price':'24-'}
             ]
           },
           {
@@ -44,14 +47,15 @@ Page({
             'sizes':[
               {'name':'5-10kg','price':'3.5-7'},
               {'name':'10-15kg','price':'7-10.5'},
-              {'name':'15-20kg','price':'10.5-14'}
+              {'name':'15-20kg','price':'10.5-14'},
+              {'name':'20kg以上','price':'14-'}
             ]
           },
           {
             "name": "车类",
             'sizes':[
-              {'name':'自行车','price':'5'},
-              {'name':'电动车','price':'50'}
+              {'name':'自行车','price':'5-'},
+              {'name':'电动车','price':'50-'}
             ]
           }
         ]
@@ -71,7 +75,8 @@ Page({
             'sizes': [
               {'name':'<120L<60CM','price':'10-20'},
               {'name':'<120L>60CM','price':'20-30'},
-              {'name':'>120L','price':'30-40'}
+              {'name':'>120L','price':'30-40'},
+              {'name':'冰柜展示柜','price':'20-40'}
             ]
           },
           {
@@ -166,6 +171,23 @@ Page({
             })
           }
         })
+      },
+      fail: function(e){
+        let index = 0
+        wx.getStorage({
+          key: 'address',
+          success: function (res) {
+            let info = res.data[index]
+            console.log(info)
+            that.setData({
+              name: info.name,
+              phone: info.phone,
+              address: info.address,
+              detail: info.detail,
+              location: info.location
+            })
+          }
+        })
       }
     })
   },
@@ -188,6 +210,23 @@ Page({
             })
           }
         })
+      },
+      fail: function(e){
+        let index = 0
+        wx.getStorage({
+          key: 'address',
+          success: function (res) {
+            let info = res.data[index]
+            console.log(info)
+            that.setData({
+              name: info.name,
+              phone: info.phone,
+              address: info.address,
+              detail: info.detail,
+              location: info.location
+            })
+          }
+        })
       }
     })
   },
@@ -204,6 +243,7 @@ Page({
    * 选择图片
    */
   getPhoto: function (e) {
+    var that = this
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
@@ -241,10 +281,6 @@ Page({
 
   //立即预约
   commit: function (e) {
-    wx.showLoading({
-      title: '提交中'
-    })
-
     let {
       name,
       phone,
@@ -255,20 +291,54 @@ Page({
       location
     } = this.data
     let time = this.data.yuyueTime
-    let obj = Bmob.User.current().objectId
+    let currentUser = Bmob.User.current() 
+    var isLogin = currentUser != null
+    console.log('haslogin' + isLogin)
     let loca = [location.latitude, location.longitude]
+
+    if(name == '收件人姓名'){
+      wx.showToast({
+        title: '请设置上门地址',
+        icon: 'none'
+      })
+      return
+    }
+    
+    if(wasteInfo == ''){
+      wx.showToast({
+        title: '请添加回收物品',
+        icon: 'none'
+      })
+      return
+    }
+
+    if(time == '选择预约上门的时间'){
+      wx.showToast({
+        title: '请选择上门时间',
+        icon: 'none'
+      })
+      return
+    }
+
+    wx.showLoading({
+      title: '提交中'
+    })
 
     const query = Bmob.Query('Recycle_Order');
     const pointer = Bmob.Pointer('_User')
-    const objectId = pointer.set(obj)
+
+    if(isLogin){
+      let obj = currentUser.objectId
+      const objectId = pointer.set(obj)
+      query.set("user", objectId)
+    }
 
     query.set("name", name)
     query.set("phone", phone)
     query.set("address", address + detail)
     query.set("time", time)
     query.set("remark", remark)
-    query.set('wasteInfo', '废品信息')
-    query.set("user", objectId)
+    query.set('wasteInfo', wasteInfo)
     query.set('location', loca)
     query.set('state', 'open')
 
@@ -277,12 +347,18 @@ Page({
       setTimeout(function () {
         wx.hideLoading()
         wx.redirectTo({
-          url: '../myorder/myorder',
+          url: '../tip/tip',
         })
       }, 2000)
 
     }).catch(err => {
+      wx.hideLoading()
+      console.log('bmob error')
       console.log(err)
+      wx.showToast({
+        title: '预约失败',
+        icon: 'none'
+      })
     })
   },
   //显示对话框
@@ -365,16 +441,58 @@ Page({
       "price": type.sizes[this.data.currentSize].price
     };
     this.data.goods.push(item);
+  
+    let data = this.data.goods
+    var total = 0
+    var waste = ""
+
+    for(var i = 0; i < data.length; i++){
+      let price = data[i].price
+      let str = price.split('-')
+      let numStr = str[0]
+      let num = parseInt(numStr)
+
+      let name = data[i].type + data[i].size
+      waste += name
+      total += num
+    }
     this.setData({
-      goods: this.data.goods
+      goods: this.data.goods,
+      totalPrice: total,
+      wasteInfo: waste
+    })
+    wx.showToast({
+      title: '添加成功',
+      icon: 'none',
+      duration: 1800
     })
     console.log(this.data.goods)
+   
   },
   sub: function(e) {
     const index = e.currentTarget.dataset.index;
     this.data.goods.splice(index, 1);
+
+    let data = this.data.goods
+    var total = 0
+    var waste = ""
+
+    for(var i = 0; i < data.length; i++){
+      let price = data[i].price
+      let str = price.split('-')
+      let numStr = str[0]
+      let num = parseInt(numStr)
+
+      let name = data[i].type + data[i].size
+      waste += name
+      total += num
+    }
     this.setData({
-      goods: this.data.goods
-    });
+      goods: this.data.goods,
+      totalPrice: total,
+      wasteInfo: waste
+    })
+
+   
   }
 })

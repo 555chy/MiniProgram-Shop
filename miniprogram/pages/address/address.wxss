@@ -19,18 +19,20 @@
 .name {
   color: black;
   margin-bottom: 20rpx;
+  font-size: 28rpx;
 }
 .default {
   font-size: x-small;
-  color: red;
+  color: rgba(90, 174, 227, 1);
   flex-shrink: 0;
+  font-size: 28rpx;
 }
 button {
   width: 90% !important;
   margin: 50rpx auto;
   color: white;
-  background-color: orange;
+  background-color: rgba(90, 174, 227, 1);
   font-weight: normal !important;
-  font-size: small;
+  font-size: 35rpx;
 }
 
