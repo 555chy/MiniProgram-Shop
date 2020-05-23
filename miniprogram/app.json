@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/tip/tip",
     "pages/home/home",
+    "pages/order/order",
+    "pages/tip/tip",
     "pages/through/through",
     "pages/reserve/reserve",
-    "pages/order/order",
     "pages/address/address",
     "pages/addressAdd/addressAdd",
     "pages/login/login",
@@ -15,8 +15,6 @@
     "pages/find/find",
     "pages/shop/shop",
     "pages/index/index"
-    
- 
   ],
   "permission": {
     "scope.userLocation": {

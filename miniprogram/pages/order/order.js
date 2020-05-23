@@ -4,45 +4,103 @@ const Bmob = app.globalData.Bmob
 Page({
   data: {
     order:[],
-    hasData: false
+    hasData: true,
+    isLogin: true,
+    isShow: false,
+    isAdmin: false
   },
  
   onLoad: function (options) {
     let user = Bmob.User.current()
-    let isAdmin = user.admin
-    let objectId = user.objectId
-
-    console.log('是否是管理员 '+isAdmin)
-    let query = Bmob.Query("Recycle_Order");
-    if(isAdmin){
-      //如果是管理员则查询所有订单，并且订单状态是open
-      query.equalTo('state', '==', 'open')
-      query.find().then(res => {
-        console.log(res)
-        let length = res.length
-        let hasData = length !== 0
-        // this.setData({
-        //   order: res,
-        //   hasData
-        // })
-      });
-    }else{
-      //不是管理员查询当前登录用户的所有订单
+    let isLogin = user != null
+    console.log('登录 '+isLogin)
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.setData({isLogin: isLogin})
+    if(isLogin){
+      let isAdmin = user.admin 
+      let objectId = user.objectId
+      let query = Bmob.Query("Recycle_Order");
       let pointer = Bmob.Pointer('_User')
-      let poiID = pointer.set(objectId)
-      query.equalTo('user', '==', poiID)
+      console.log('是否是管理员 '+isAdmin)
+      if(isAdmin){
+        //如果是管理员则查询当前接单的
+        let poiID = pointer.set(objectId)
+        query.equalTo('admin', '==', poiID)
+      }else{
+        //不是管理员查询当前登录用户的所有订单
+        let poiID = pointer.set(objectId)
+        query.equalTo('user', '==', poiID)
+      }
       query.find().then(res => {
         let length = res.length
         let hasData = length !== 0
-        // this.setData({
-        //   order: res,
-        //   hasData
-        // })
+        console.log('有数据 '+hasData)
+        this.setData({
+          order: res,
+          hasData,
+          isAdmin,
+          isShow: true
+        })
+        wx.hideLoading()
       }).catch(err =>{
         console.log(err)
       });
+    }else{
+      this.setData({
+        hasData: false,
+        isShow: true,
+        isLogin: false
+      })
+      wx.hideLoading()
+      console.log('还未登录')
     }
   },
+
+  onPullDownRefresh: function(options){
+    let user = Bmob.User.current()
+    let isLogin = user != null
+    this.setData({isLogin: isLogin})
+    if(isLogin){
+      let isAdmin = user.admin 
+      let objectId = user.objectId
+      let query = Bmob.Query("Recycle_Order");
+      let pointer = Bmob.Pointer('_User')
+      if(isAdmin){
+        //如果是管理员则查询当前接单的
+        let poiID = pointer.set(objectId)
+        query.equalTo('admin', '==', poiID)
+      }else{
+        //不是管理员查询当前登录用户的所有订单
+        let poiID = pointer.set(objectId)
+        query.equalTo('user', '==', poiID)
+      }
+      query.find().then(res => {
+        wx.stopPullDownRefresh()
+        let length = res.length
+        let hasData = length !== 0
+        this.setData({
+          order: res,
+          hasData,
+          isAdmin,
+          isShow: true
+        })
+        wx.hideLoading()
+      }).catch(err =>{
+        console.log(err)
+      });
+    }else{
+      this.setData({
+        hasData: false,
+        isShow: true,
+        isLogin: false
+      })
+      wx.hideLoading()
+      console.log('还未登录')
+    }
+  },
+  
   //打开详情界面
   goDetail: function(e){
     let index = e.currentTarget.dataset.index
@@ -53,6 +111,22 @@ Page({
       success: function(e){
         e.eventChannel.emit('order',{order})
       }
+    })
+  },
+
+  goLogin: function(e){
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+  goOrder: function(e){
+    wx.navigateTo({
+      url: '../recovery/recovery',
+    })
+  },
+  goOrderShop: function(e){
+    wx.navigateTo({
+      url: '../myorder/myorder',
     })
   }
 })

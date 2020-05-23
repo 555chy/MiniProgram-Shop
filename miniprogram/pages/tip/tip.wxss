@@ -2,4 +2,26 @@
 image{
   width: 240rpx;
   height: 240rpx;
+  padding-bottom: 20rpx;
+}
+
+.top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40rpx;
+}
+
+button {
+  width: 90% !important;
+  margin: 50rpx auto;
+  color: white;
+  background-color: rgba(90, 174, 227, 1);
+  font-weight: normal !important;
+  font-size: 35rpx;
+}
+
+text{
+  font-size: 40rpx;
 }

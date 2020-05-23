@@ -36,7 +36,7 @@ map{
 .do {
   width: 100%;
   color: white;
-  background: orange;
+  background: rgba(90, 174, 227, 1);
   padding: 20rpx;
   display: flex;
   justify-content: center;

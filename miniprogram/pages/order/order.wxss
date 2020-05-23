@@ -78,6 +78,7 @@
   width: 70%;
   padding: 20rpx;
   border-radius: 50rpx;
-  background: linear-gradient(to left, rgba(254, 142, 0, 1), rgba(255, 189, 0, 1)); 
+  background: linear-gradient(to left, rgba(40, 137, 199, 1), rgba(90, 175, 227, 1)); 
   text-align: center;
+  color: white;
 }

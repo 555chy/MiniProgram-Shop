@@ -1,14 +1,25 @@
-<map latitude="{{latitude}}" longitude="{{longitude}}" show-location="true" markers="{{markers}}" polyline="{{polyline}}" bindtap="hidePopup"></map>
+<map latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}"></map>
 
-<view class="box">
-	<text class="row title" bindtap="showPopup">订单详情</text>
+
+<view class="box" animation="{{animationData}}" >
+	<text class="row title" bindtap="showPopup" >
+			<text class="iconfont icon-xia">订单详情</text>
+	</text>
 	<view class="content" wx:if="{{showPopup}}">
 		<view class="row">
 			<text class="name">订单编号</text>
 			<text class="id">{{order.objectId}}</text>
 		</view>
 		<view class="row">
-			<text class="name">创建日期</text>
+			<text class="name">收货人</text>
+			<text class="id">{{order.name}}</text>
+		</view>
+		<view class="row">
+			<text class="name">电话</text>
+			<text class="id">{{order.phone}}</text>
+		</view>
+		<view class="row">
+			<text class="name">下单时间</text>
 			<text class="date">{{order.createdAt}}</text>
 		</view>
 		<view class="row">
@@ -23,6 +34,10 @@
 			<text class="name">废品图片</text>
 			<image class="img" src="{{order.imgUrl}}"></image>
 		</view>
-		<text class="do">接单</text>
+		<block wx:if="{{isAdmin}}">
+			<text wx:if="{{order.state==='open'}}" class="do" bindtap="receiveOrder">接单</text>
+			<text wx:elif="{{order.state==='received'}}" class="do" bindtap="fixOrder">完成订单</text>
+		</block>
+	
 	</view>
 </view>

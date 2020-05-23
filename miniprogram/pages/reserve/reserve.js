@@ -472,11 +472,9 @@ Page({
       })
       return
     }
-
     wx.showLoading({
       title: '提交中'
     })
-
     const query = Bmob.Query('Recycle_Order');
     const pointer = Bmob.Pointer('_User')
 

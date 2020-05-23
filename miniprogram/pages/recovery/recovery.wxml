@@ -21,7 +21,7 @@
 				</view>
 			</view>
 		</block>
-		<text class="tip">*以上价格为参考，具体以上门报价为主</text>
+		<!-- <text class="tip">*以上价格为参考，具体以上门报价为主</text> -->
 	</view>
 </scroll-view>
 <block wx:if="{{isShow}}">

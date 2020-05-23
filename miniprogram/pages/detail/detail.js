@@ -1,18 +1,27 @@
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
+const app = getApp()
+const Bmob = app.globalData.Bmob
 
 Page({
   data: {
-    showPopup: true,
+    showPopup: false,
+    isAdmin: false,
     latitude: 26.084461,
     longitude: 119.254060,
     markers: [],
-    polyline: []
+    polyline: [],
+    order: {},
+    orderState: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let user = Bmob.User.current()
+    let isAdmin = user.admin
+    this.setData({isAdmin})
+
     var that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('order', function (data) {
@@ -70,7 +79,7 @@ Page({
         that.setData({
           polyline: [{
             points: pl,
-            color: '#FFB364',
+            color: '#5AAEE3',
             width: 4
           }]
         })
@@ -83,15 +92,53 @@ Page({
 
   },
   showPopup: function () {
-    if(this.data.showPopup) return;
+    let isShow = this.data.showPopup
     this.setData({
-      showPopup: true
+      showPopup: !isShow
     })
   },
-  hidePopup: function () {
-    if (!this.data.showPopup) return;
-      this.setData({
-        showPopup: false
-      })
+
+  //点击接单
+  receiveOrder: function(e){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否要接单?',
+      success (res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '接单中',
+          })
+          let user = Bmob.User.current()
+          let order = that.data.order
+          let orderId = order.objectId
+          let objectId = user.objectId
+          const query = Bmob.Query('Recycle_Order');
+          const pointer = Bmob.Pointer('_User')
+          const obj= pointer.set(objectId)
+          query.set("admin", obj)
+          query.set('id',orderId)
+          query.set('state','received')
+          query.save().then(res =>{
+            wx.hideLoading()
+            that.order.state = 'received'
+            that.setData({
+              order
+            })
+          }).catch(err =>{
+            console.log(err)
+            wx.hideLoading()
+            wx.showToast({
+              title: '接单失败',
+            })
+          })
+        }
+      }
+    })
+  },
+  //完成订单
+  fixOrder: function(e){
+    
   }
+ 
 })

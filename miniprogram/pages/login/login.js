@@ -41,7 +41,7 @@ Page({
       console.log(res)
       setTimeout(function () {
         wx.hideLoading()
-        wx.switchTab({
+        wx.reLaunch({
           url: '../mine/mine',
         })
       }, 2000)

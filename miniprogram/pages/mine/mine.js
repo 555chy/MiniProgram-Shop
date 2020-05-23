@@ -8,40 +8,44 @@ Page({
    */
   data: {
     isLogin: false,
-    username:"",
-    headUrl:"../../icon/head.png",
+    username: "",
+    headUrl: "../../icon/head.png",
     money: 0,
   },
 
-
-  goLogin: function(e){
+  goLogin: function (e) {
     wx.navigateTo({
       url: '../login/login',
     })
-  
+
   },
   //退出登录
-  logout: function(e){
-    Bmob.User.logout()
-    wx.showLoading({
-      title: '加载中',
+  logout: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '确认退出登录?',
+      success(res) {
+        if (res.confirm) {
+          Bmob.User.logout()
+          wx.showLoading({
+            title: '加载中',
+          })
+          setTimeout(function () {
+            wx.hideLoading()
+            wx.reLaunch({
+              url: '../login/login',
+            })
+          }, 2000)
+        }
+      }
     })
-
-    let that = this
-    setTimeout(function () {
-      wx.hideLoading()
-      that.setData({
-        isLogin: false
-      })
-    }, 2000)
-  
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let current = Bmob.User.current()
-    if(current != null){
+    if (current != null) {
       this.setData({
         isLogin: true,
         username: current.username
@@ -49,26 +53,15 @@ Page({
     }
 
   },
-
-  
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    let current = Bmob.User.current()
-    console.log(current)
-    if(current != null){
-      this.setData({
-        isLogin: true,
-        username: current.username
-      })
-    }
+  goOrderShop: function (e) {
+    wx.navigateTo({
+      url: '../myorder/myorder',
+    })
   },
-  test: function(e){
-    console.log(1231)
+  goAddress: function(e){
+    wx.navigateTo({
+      url: '../address/address',
+    })
   }
 
-
-  
 })

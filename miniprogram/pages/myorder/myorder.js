@@ -3,7 +3,7 @@ const Bmob = app.globalData.Bmob
 
 Page({
   data: {
-
+    order: []
   },
 
   /**
@@ -11,15 +11,12 @@ Page({
    */
   onLoad: function (options) {
     let user = Bmob.User.current()
-    let isAdmin = user.admin
-    let objectId = user.objectId
-
-    let relative = isAdmin ? 'admin' : 'user'
-
+    // let isAdmin = user.admin
+    // let objectId = user.objectId
+  
     let query = Bmob.Query("Recycle_Order");
-    let pointer = Bmob.Pointer('_User')
-    let poiID = pointer.set(objectId)
-    query.equalTo(relative, '==', poiID)
+
+    query.equalTo('state', '==', 'open')
     query.find().then(res => {
       console.log(res)
       this.setData({
@@ -27,6 +24,9 @@ Page({
       })
     });
   },
+  goDetail: function(e){
+    
+  }
 
   
 })

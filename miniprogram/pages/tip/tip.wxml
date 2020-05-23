@@ -1,3 +1,6 @@
 <!--pages/tip/tip.wxml-->
-<text>下单成功</text>
-<image src="https://img-blog.csdnimg.cn/20200522212735536.png"></image>
+<view class="top">
+  <image src="https://img-blog.csdnimg.cn/20200522212735536.png"></image>
+  <view>订单提交成功</view> 
+</view>
+<button bindtap="goHome">返回首页</button>

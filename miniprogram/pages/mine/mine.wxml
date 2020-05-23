@@ -20,12 +20,12 @@
 	<text class="price-btn">查看订单</text>
 </view>
 <block>
-	<view class="func-item">
+	<view class="func-item" bindtap="goOrderShop">
 		<text class="iconfont icon-dingdan}"></text>
 		<text class="func-text">我的订单</text>
 		<text class="iconfont icon-right}"></text>
 	</view>
-	<view class="func-item">
+	<view class="func-item" bindtap="goAddress">
 		<text class="iconfont icon-location}"></text>
 		<text class="func-text">我的地址</text>
 		<text class="iconfont icon-right}"></text>
