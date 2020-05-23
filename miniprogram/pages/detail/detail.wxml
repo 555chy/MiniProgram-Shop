@@ -1,3 +1,28 @@
-<map latitude="{{latitude}}" longitude="{{longitude}}" show-location="true" markers="{{markers}}" polyline="{{polyline}}"></map>
+<map latitude="{{latitude}}" longitude="{{longitude}}" show-location="true" markers="{{markers}}" polyline="{{polyline}}" bindtap="hidePopup"></map>
 
-
+<view class="box">
+	<text class="row title" bindtap="showPopup">订单详情</text>
+	<view class="content" wx:if="{{showPopup}}">
+		<view class="row">
+			<text class="name">订单编号</text>
+			<text class="id">{{order.objectId}}</text>
+		</view>
+		<view class="row">
+			<text class="name">创建日期</text>
+			<text class="date">{{order.createdAt}}</text>
+		</view>
+		<view class="row">
+			<text class="name">废品信息</text>
+			<text class="info">{{order.wasteInfo}}</text>
+		</view>
+		<view class="row">
+			<text class="name">备注</text>
+			<text class="remark">{{order.remark}}</text>
+		</view>
+		<view class="row">
+			<text class="name">废品图片</text>
+			<image class="img" src="{{order.imgUrl}}"></image>
+		</view>
+		<text class="do">接单</text>
+	</view>
+</view>

@@ -1,4 +1,9 @@
-<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index">
+<view class="box-empty" wx:if="{{order.length == 0}}">
+	<image class="img" src="../../icon/car.png"></image>
+	<text class="tip">您还没有上门回收的订单哦~</text>
+	<text class="btn">来单上门回收吧</text>
+</view>
+<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:if="{{order.length > 0}}">
 	<view class="order-item" bindtap="goDetail" data-index="{{index}}">
     <!-- <text class="garbage {{item.open ? 'green' : 'red'}}">{{item.open ? "待回收" : "已回收"}}</text> -->
 		<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>

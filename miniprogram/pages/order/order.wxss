@@ -57,3 +57,27 @@
   font-size: x-small;
   color: gray;
 }
+.box-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+}
+.img {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 40rpx;
+}
+.tip {
+  color: gray;
+  font-size: small;
+}
+.btn {
+  margin: 100rpx 0;
+  width: 70%;
+  padding: 20rpx;
+  border-radius: 50rpx;
+  background: linear-gradient(to left, rgba(254, 142, 0, 1), rgba(255, 189, 0, 1)); 
+  text-align: center;
+}
