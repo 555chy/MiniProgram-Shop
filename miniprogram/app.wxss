@@ -3,5 +3,5 @@
 
 .divide-line{
   background-color: gray;
-  height: 1rpx;
+  height: 0.5px;
 }

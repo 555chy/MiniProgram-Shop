@@ -7,11 +7,10 @@
 	<text class="name">手机号码</text>
 	<input class="value" placeholder="11位手机号" type="number" bindinput="getPhone"></input>
 </view>
-<view class="box">
+<view class="box" bindtap="toMap">
 	<text class="name">地区信息</text>
-	<!-- <input class="value" placeholder="{{address}}" disabled="true"></input> -->
 	<text class="value" bindtap="toMap">{{address}}</text>
-	<text class="iconfont icon-location" bindtap="toMap"></text>
+	<text class="iconfont icon-location"></text>
 </view>
 <view class="box">
 	<text class="name">详细地址</text>

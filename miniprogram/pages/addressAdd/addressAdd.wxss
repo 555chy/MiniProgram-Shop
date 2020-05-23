@@ -12,10 +12,12 @@
 .name {
   width: 150rpx;
   font-weight: bold;
+  font-size: 27rpx;
 }
 .value {
   flex-grow: 1;
   font-size: x-small;
+  font-size: 27rpx;
 }
 .iconfont {
   padding-left: 20rpx;
@@ -24,7 +26,7 @@ button {
   width: 90% !important;
   margin: 50rpx auto;
   color: white;
-  background-color: orange;
+  background-color: rgba(90, 174, 227, 1);
   font-weight: normal !important;
-  font-size: small;
+  font-size: 35rpx;
 }

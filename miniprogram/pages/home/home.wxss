@@ -70,7 +70,7 @@ image {
 
 .todoor-recycle {
   width: 90%;
-  background-color: #FDDDAE;
+  background:linear-gradient(-48deg,rgba(40,137,199,1),rgba(90,174,227,1));
   border-radius: 20rpx;
   margin-left: auto;
   margin-right: auto;
@@ -86,7 +86,7 @@ image {
   justify-content: center;
   align-items: center;
   padding: 30rpx;
-  color: #FF9900;
+  color: white;
 }
 
 .todoor-text {
@@ -99,7 +99,7 @@ image {
   width: 40rpx;
   height: 8rpx;
   border-radius: 5rpx;
-  background-color: #FF9900;
+  background-color: white;
 }
 
 .todoor-car {
@@ -117,7 +117,7 @@ image {
   padding: 10rpx;
   text-align: center;
   border-radius: 50rpx;
-  background-image: linear-gradient(#FFBD71, #FF6E89);
+  background-image: linear-gradient(rgba(91,174,227,1), rgba(90,174,227,1));
 }
 
 .money {

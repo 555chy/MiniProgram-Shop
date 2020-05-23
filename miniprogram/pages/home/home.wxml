@@ -3,7 +3,7 @@
 	<view class="location">
 		<text class="iconfont icon-location"></text>
 		<text class="location-text">{{address}}</text>
-		<text class="iconfont icon-xiala"></text>
+		<!-- <text class="iconfont icon-xiala"></text> -->
 	</view>
 	<view class="msg">
 		<text class="iconfont icon-message"></text>
@@ -21,9 +21,9 @@
 	</swiper>
 
 	<view class="option">
-		<view class="option-item">
+		<view class="option-item" bindtap="goThrough">
 			<image src="../../icon/category.png"></image>
-			<view>上门回收</view>
+			<view>厂直通车</view>
 		</view>
 		<view class="option-item">
 			<image src="../../icon/circle.png"></image>
@@ -48,6 +48,7 @@
 		<image class="todoor-car" src="../../icon/car.png"></image>
 		<navigator class="todoor-btn" url="../recovery/recovery" open-type="navigate">立即预约</navigator>
 	</view>
+	
 
 	<view class="money">
 		<text class="money-mime">我的资金</text>
