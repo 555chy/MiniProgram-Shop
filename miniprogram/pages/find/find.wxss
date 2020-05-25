@@ -8,7 +8,7 @@
 }
 
 .title {
-  font-size: large;
+  font-size: 35rpx;
 }
 
 .more {
@@ -26,6 +26,7 @@
 
 .activity {
   flex: 1;
+  
 }
 
 .activity-content {
@@ -41,8 +42,26 @@
   box-shadow: 3rpx 3rpx 10rpx gray;
 }
 
+.box{
+  display: flex;
+}
+
+.bg{
+  width: 120rpx;
+  height: 105rpx;
+  margin-left: 15rpx;
+}
+
+.activity-btn {
+  font-size: x-small;
+  padding: 8rpx 30rpx 20rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid white;
+  margin-bottom: 30rpx;
+}
+
 .activity-name {
-  font-size: large;
+  font-size: 35rpx;
 }
 
 .activity-description {
@@ -50,13 +69,7 @@
   margin: 30rpx 0;
 }
 
-.activity-btn {
-  font-size: x-small;
-  padding: 8rpx 30rpx;
-  border-radius: 30rpx;
-  border: 1rpx solid white;
-  margin-bottom: 30rpx;
-}
+
 
 .tab-title {
   margin: 40rpx;

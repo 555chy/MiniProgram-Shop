@@ -13,6 +13,18 @@ Page({
     phoneNumber:"",
     email:""
   },
+  onLoad: function(options){
+    var that = this
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('userInfo', function(data) {
+      let res = JSON.parse(data)
+      that.setData({
+        headimg: res.avatarUrl,
+        username: res.nickName,
+      })
+
+    })
+  },
   //获取用户微信信息
   getUserInfo: function(e){
     console.log(e)

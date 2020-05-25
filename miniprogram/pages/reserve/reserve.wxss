@@ -160,7 +160,7 @@ image{
   margin-bottom: 40rpx;
 }
 .article {
-  color: orange;
+  color: rgba(40, 137, 199, 1);
 }
 .goods-list {
   /* height: auto; */

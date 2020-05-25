@@ -9,7 +9,11 @@
 				<view class="activity-content" style="background-color:{{item.color}}">
 					<text class="activity-name">{{item.name}}</text>
 					<text class="activity-description">{{item.description}}</text>
-					<text class="activity-btn" data-index="{{index}}" bindtap="goto">{{item.btn}}</text>
+					<view class="box">
+						<text class="activity-btn" data-index="{{index}}" bindtap="goto">{{item.btn}}</text>
+						<image class="bg" src="{{item.image}}"></image>
+					</view>
+
 				</view>
 			</view>
 		</block>

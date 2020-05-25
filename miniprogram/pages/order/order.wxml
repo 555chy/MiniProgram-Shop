@@ -1,7 +1,7 @@
 <view wx:if="{{isLogin}}">
 	<view class="box-empty" wx:if="{{!hasData}}">
 		<block>
-			<image class="img" src="../../icon/car.png"></image>
+			<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
 			<block wx:if="{{isAdmin}}">
 				<text class="tip">您还没有接单~</text>
 				<text class="btn" bindtap="goOrderShop">去订单广场</text>
@@ -30,7 +30,7 @@
 </view>
 <view class="box-empty" wx:else>
 	<block>
-		<image class="img" src="../../icon/car.png"></image>
+		<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
 		<text class="tip">您还没有登录哦~</text>
 		<text class="btn" bindtap="goLogin">点击登录</text>
 	</block>

@@ -25,10 +25,24 @@ Page({
   /**
    * 进入注册界面
    */
-  goRegister: function(e){
-    wx.navigateTo({
-      url: '../register/register',
-    })
+  getUserInfo: function(e){
+    let rawData = e.detail.rawData
+    if(rawData != null){
+      console.log(rawData)
+      wx.navigateTo({
+        url: '../register/register',
+        success: function(res){
+          res.eventChannel.emit('userInfo', rawData)
+        }
+        
+      })
+    }else{
+      wx.showToast({
+        title: '请允许授权后进行注册',
+        icon: 'none'
+      })
+    }
+   
   },
   /**
    * 登录
