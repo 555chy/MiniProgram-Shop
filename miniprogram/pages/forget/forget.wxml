@@ -1,0 +1,4 @@
+<!--pages/forget/forget.wxml-->
+<input placeholder="请输入注册邮箱" bindinput="getEmail"></input>
+<view class="line"></view>
+<button bindtap="verify">发送验证</button>

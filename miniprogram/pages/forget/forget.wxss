@@ -1,0 +1,23 @@
+button {
+  width: 90% !important;
+  margin: 50rpx auto;
+  color: white;
+  background-color: rgba(90, 174, 227, 1);
+  font-weight: normal !important;
+  font-size: 35rpx;
+}
+
+input{
+  width: 100%;
+  margin-top: 30rpx;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+}
+
+.line{
+  border-bottom: 1px solid gray;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  margin-top: 20rpx;
+
+}

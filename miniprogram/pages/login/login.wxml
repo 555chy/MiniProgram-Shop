@@ -9,10 +9,10 @@
     <text class="iconfont icon-mima-1"></text>
     <input class="password" bindinput="getPassword" placeholder="请输入密码" password="text"/>
   </view>
-  <text class="forget">忘记密码</text>
+  <text class="forget" bindtap="forgetPwd">忘记密码</text>
   <button class="login" bindtap="login">登录</button>
   <view class="ress">
-      <view class="register-box">还没有账号,</view>
+      <text class="register-box">还没有账号, </text>
       <button class="register" bindgetuserinfo="getUserInfo" open-type="getUserInfo">现在注册</button>
   </view>
  

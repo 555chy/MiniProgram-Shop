@@ -53,24 +53,23 @@
 }
 
 .ress{
+  margin-top: 40rpx;
+  text-align: center;
   display: flex;
-  flex-direction: row;
- 
+  flex-wrap: nowrap;
 }
 .register-box {
-  margin-top: 40rpx;
   font-size: small;
 }
 .register {
-  margin-top: 40rpx;
   color: rgba(91, 174, 227, 1);
   font-size: small;
-
   background-color: transparent;
   font-weight: normal;
   text-align: start;
   padding: 0 !important;
   margin: 0 !important;
+  width: auto !important;
 }
 
 

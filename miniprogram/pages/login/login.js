@@ -77,6 +77,11 @@ Page({
       })
       
     })
+  },
+  forgetPwd: function(e){
+    wx.navigateTo({
+      url: '../forget/forget',
+    })
   }
 
  

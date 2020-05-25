@@ -1,0 +1,15 @@
+<!--pages/through/through.wxml-->
+<view class="title">直通车人员 (针对工厂、工地)</view>
+<view class="line"></view>
+
+<view wx:for="{{user}}" wx:key="index">
+  <view class="box" bindtap="call" data-index="{{index}}">
+    <text class="iconfont icon-dianhua"></text>
+    <text class="number">{{item.phone}}</text>
+    <text class="name">{{item.name}}</text>
+  </view>
+  <view class="line"></view>
+</view>
+
+
+
