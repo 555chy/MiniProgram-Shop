@@ -1,10 +1,9 @@
-<map latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" bindtap="hideModal" ></map>
+<map latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" bindtap="hideModal"></map>
 
-<view class="box" animation="{{animationData}}" >
-	<text class="row title" bindtap="togglePopup">
-			<text wx:if="{{showModalStatus}}"class="iconfont icon-xia"></text>
-			<text wx:else class="iconfont icon-shang"></text>
-			<text>订单详情</text>
+<view class="box" animation="{{animationData}}">
+	<text class="row title" bindtap="togglePopup" >
+			<text class="iconfont icon-xia"></text>
+	<text>订单详情</text>
 	</text>
 	<view class="content">
 		<view class="row">
@@ -37,8 +36,13 @@
 		</view>
 		<block wx:if="{{isAdmin}}">
 			<text wx:if="{{order.state==='open'}}" class="do" bindtap="receiveOrder">接单</text>
-			<text wx:elif="{{order.state==='received'}}" class="do" bindtap="fixOrder">完成订单</text>
+			<text wx:elif="{{order.state==='received'}}" class="do" bindtap="showWindows">完成订单</text>
 		</block>
-	
 	</view>
+</view>
+
+<view>
+	<modal title="对话框" hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+		{{data.showWindows.Content}}
+	</modal>
 </view>
