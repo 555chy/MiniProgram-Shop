@@ -11,12 +11,14 @@ Page({
         description: "掌握更多环保资讯",
         btn: "去看看",
         color: "#4CD87B",
+        image: "https://img-blog.csdnimg.cn/20200524144827311.png"
       },
       {
         name: "上门回收",
         description: "手机家电大件废品上门收",
         btn: "去下单",
         color: "#FFAA71",
+        image: "https://img-blog.csdnimg.cn/20200524144829902.png"
       },
     ],
     currentTab: 0,

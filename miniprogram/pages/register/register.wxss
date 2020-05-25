@@ -53,7 +53,7 @@
   padding: 15rpx;
   color: white;
   border-radius: 60rpx; 
-  background: linear-gradient(rgba(253, 169, 50, 1), rgba(254, 128, 9, 1));
+  background: linear-gradient(rgba(91, 174, 227, 1), rgba(91, 174, 227, 1));
   display: block;
 }
 
@@ -68,5 +68,5 @@
 .login {
   margin-top: 40rpx;
   font-size: small;
-  color: orange
+  color: rgba(91, 174, 227, 1)
 }

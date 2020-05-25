@@ -13,7 +13,7 @@ Page({
     name: "收件人姓名",
     phone: "手机号码",
     address: "收货地址",
-    imageUrl: "../../icon/category.png",
+    imageUrl: "https://img-blog.csdnimg.cn/20200524144828716.png",
     totalPrice: 0,
     wasteInfo: "",
     yuyueTime: "选择预约上门的时间",

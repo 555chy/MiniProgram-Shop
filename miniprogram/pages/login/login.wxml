@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
-<image class="icon" src="https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1491030499,2054192443&fm=85&app=79&f=JPEG?w=121&h=75&s=8706D507F06188A39EA8857703004063"/>
+<image class="icon" src="https://img-blog.csdnimg.cn/20200524144829969.png"/>
 <view class="box">
   <view class="input-box">
     <text class="iconfont icon-zhuceyonghu"></text>
@@ -12,8 +12,8 @@
   <text class="forget">忘记密码</text>
   <button class="login" bindtap="login">登录</button>
   <view class="ress">
-      <view class="register-box" >还没有账号,</view>
-      <view class="register" bindtap="goRegister">现在注册</view>
+      <view class="register-box">还没有账号,</view>
+      <button class="register" bindgetuserinfo="getUserInfo" open-type="getUserInfo">现在注册</button>
   </view>
  
 </view>

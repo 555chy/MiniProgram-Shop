@@ -1,29 +1,13 @@
 <!--pages/recovery/recovery.wxml-->
-<scroll-view scroll-y="true" class="goods-list">
-	<view class="goods">
-		<block wx:for="{{goods}}" wx:key="objectId">
-			<view class="goods-item">
-				<view class="goods-box">
-					<image class="goods-cover-box" mode="scaleToFill" src="{{item.url}}">
-						<!-- <image class="goods-img" ></image> -->
-						<text class="goods-name">{{item.name}}</text>
-					</image>
-					<view class="goods-price-box">
-						<text class="goods-price" wx:if="{{item.type == 0}}">{{item.price}} 元/斤</text>
-						<text class="goods-price" wx:else>{{item.price}} 元/个</text>
-						<view class="goods-num-box">
-							<view class="sub" data-index="{{index}}" bindtap="sub">-</view>
-							<text class="goods-num">{{item.num}}</text>
-							<view class="add" data-index="{{index}}" bindtap="add">+</view>
-						</view>
-					</view>
-					<text class="goods-total">预计 {{item.total}} 元</text>
-				</view>
-			</view>
-		</block>
-		<!-- <text class="tip">*以上价格为参考，具体以上门报价为主</text> -->
+<view class="background">
+	
+	<image class="logo" src="https://img-blog.csdnimg.cn/20200524144829969.png"></image>
+	<image class="threec" src="https://img-blog.csdnimg.cn/20200525102411572.png"></image>
+	<image class="home" src="https://img-blog.csdnimg.cn/20200525102411606.png"></image>
+	<image class="dazong" src="https://img-blog.csdnimg.cn/20200525102411561.png"></image>
+	<view class="bottom">
+		<text>*成交价格以实际为准</text>
+		<text class="commit" bindtap="commit">立即预约</text>
 	</view>
-</scroll-view>
-<block wx:if="{{isShow}}">
-	<button class="commit" bindtap="commit">立即提交</button>
-</block>
+
+</view>

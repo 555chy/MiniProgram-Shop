@@ -48,7 +48,7 @@
   padding: 15rpx;
   color: white;
   border-radius: 60rpx; 
-  background: linear-gradient(rgba(253, 169, 50, 1), rgba(254, 128, 9, 1));
+  background: linear-gradient(rgba(91, 174, 227, 1), rgba(91, 174, 220, 1));
   display: block;
 }
 
@@ -63,6 +63,19 @@
 }
 .register {
   margin-top: 40rpx;
-  color: orange;
+  color: rgba(91, 174, 227, 1);
   font-size: small;
+
+  background-color: transparent;
+  font-weight: normal;
+  text-align: start;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+
+image{
+  width: 450rpx;
+  height: 360rpx;
 }
