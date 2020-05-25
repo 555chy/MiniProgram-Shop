@@ -41,7 +41,7 @@ Page({
     }
   },
   //选择头像
-  chooseImage: function(e){
+  chooseImage: function(e) {
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
@@ -57,7 +57,7 @@ Page({
   /**
    * 点击注册
    */
-  register: function(e){
+  register: function(e) {
     let username = this.data.username
     let password = this.data.password
     let confirmPassword = this.data.confirmPassword
@@ -83,25 +83,25 @@ Page({
       wx.showToast({
         title: '注册成功',
       })
-    }).catch(err =>{
+    }).catch(err => {
       wx.showToast({
         title: err.error,
         duration: 3000
       })
     })
   },
-  goLogin: function(e){
+  goLogin: function(e) {
     wx.navigateBack()
   },
  
   //input变化监听
-  getUsername: function(e){
+  getUsername: function(e) {
     this.setData({
       username: e.detail.value
     })
   },
 
-  getPassword: function(e){
+  getPassword: function(e) {
     this.setData({
       password: e.detail.value
     })
