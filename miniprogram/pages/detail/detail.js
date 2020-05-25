@@ -4,14 +4,15 @@ const Bmob = app.globalData.Bmob
 
 Page({
   data: {
-    showModalStatus: false,
+    modalHidden:true,
+    showModalStatus: true,
     isAdmin: false,
     latitude: 26.084461,
     longitude: 119.254060,
     markers: [],
     polyline: [],
     order: {},
-    orderState: ''
+    orderState: '',
   },
 
   /**
@@ -28,7 +29,9 @@ Page({
 
     let user = Bmob.User.current()
     let isAdmin = user.admin
-    this.setData({isAdmin})
+    this.setData({
+      isAdmin
+    })
 
     var that = this
     const eventChannel = this.getOpenerEventChannel()
@@ -98,65 +101,65 @@ Page({
       })
     })
   },
-//显示对话框
-showModal: function () {
-  const duration = 200;
-  // 显示遮罩层
-  var animation = wx.createAnimation({
-    duration: duration,
-    timingFunction: "linear",
-    delay: 0
-  })
-  this.animation = animation
-  animation.translateY(0).step()
-  this.setData({
-    animationData: animation.export(),
-    showModalStatus: true
-  })
-  setTimeout(function () {
+  //显示对话框
+  showModal: function () {
+    const duration = 200;
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: duration,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
     animation.translateY(0).step()
     this.setData({
-      animationData: animation.export()
+      animationData: animation.export(),
+      showModalStatus: true
     })
-  }.bind(this), duration)
-},
-//隐藏对话框
-hideModal: function () {
-  const duration = 200;
-  // 隐藏遮罩层
-  var animation = wx.createAnimation({
-    duration: duration,
-    timingFunction: "linear",
-    delay: 0
-  })
-  this.animation = animation
-  animation.translateY(this.data.contentHeight).step()
-  this.setData({
-    animationData: animation.export(),
-  })
-  setTimeout(function () {
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), duration)
+  },
+  //隐藏对话框
+  hideModal: function () {
+    const duration = 200;
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: duration,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
     animation.translateY(this.data.contentHeight).step()
     this.setData({
       animationData: animation.export(),
-      showModalStatus: false
     })
-  }.bind(this), duration)
-},
-togglePopup: function () {
-  if (this.data.showModalStatus) {
-    this.hideModal();
-  } else {
-    this.showModal();
-  }
-},
+    setTimeout(function () {
+      animation.translateY(this.data.contentHeight).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      });
+    }.bind(this), duration)
+  },
+  togglePopup: function () {
+    if (this.data.showModalStatus) {
+      this.hideModal();
+    } else {
+      this.showModal();
+    }
+  },
 
   //点击接单
-  receiveOrder: function(e){
+  receiveOrder: function (e) {
     var that = this
     wx.showModal({
       title: '提示',
       content: '是否要接单?',
-      success (res) {
+      success(res) {
         if (res.confirm) {
           wx.showLoading({
             title: '接单中',
@@ -167,17 +170,17 @@ togglePopup: function () {
           let objectId = user.objectId
           const query = Bmob.Query('Recycle_Order');
           const pointer = Bmob.Pointer('_User')
-          const obj= pointer.set(objectId)
+          const obj = pointer.set(objectId)
           query.set("admin", obj)
-          query.set('id',orderId)
-          query.set('state','received')
-          query.save().then(res =>{
+          query.set('id', orderId)
+          query.set('state', 'received')
+          query.save().then(res => {
             wx.hideLoading()
             that.order.state = 'received'
             that.setData({
               order
             })
-          }).catch(err =>{
+          }).catch(err => {
             console.log(err)
             wx.hideLoading()
             wx.showToast({
@@ -189,8 +192,36 @@ togglePopup: function () {
     })
   },
   //完成订单
-  fixOrder: function(e){
+  showWindows: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '这是一个模态弹窗',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+   //事件处理函数
+   bindViewTap: function() {
+    this.setData({
+      modalHidden:!this.data.modalHidden
+    })
     
-  }
- 
+  },
+  //确定按钮点击事件
+  modalBindaconfirm:function(){
+    this.setData({
+      modalHidden:!this.data.modalHidden,
+    })
+  },
+  //取消按钮点击事件
+  modalBindcancel:function(){
+    this.setData({
+      modalHidden:!this.data.modalHidden,
+    })
+  },
 })
