@@ -4,7 +4,7 @@ const Bmob = app.globalData.Bmob
 
 Page({
   data: {
-    showPopup: false,
+    showModalStatus: false,
     isAdmin: false,
     latitude: 26.084461,
     longitude: 119.254060,
@@ -18,6 +18,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var query = wx.createSelectorQuery();
+    query.select('.content').boundingClientRect()
+    query.exec((res) => {
+      this.setData({
+        contentHeight: res[0].height
+      });
+    })
+
     let user = Bmob.User.current()
     let isAdmin = user.admin
     this.setData({isAdmin})
@@ -89,14 +97,58 @@ Page({
         console.log(err)
       })
     })
-
   },
-  showPopup: function () {
-    let isShow = this.data.showPopup
+//显示对话框
+showModal: function () {
+  const duration = 200;
+  // 显示遮罩层
+  var animation = wx.createAnimation({
+    duration: duration,
+    timingFunction: "linear",
+    delay: 0
+  })
+  this.animation = animation
+  animation.translateY(0).step()
+  this.setData({
+    animationData: animation.export(),
+    showModalStatus: true
+  })
+  setTimeout(function () {
+    animation.translateY(0).step()
     this.setData({
-      showPopup: !isShow
+      animationData: animation.export()
     })
-  },
+  }.bind(this), duration)
+},
+//隐藏对话框
+hideModal: function () {
+  const duration = 200;
+  // 隐藏遮罩层
+  var animation = wx.createAnimation({
+    duration: duration,
+    timingFunction: "linear",
+    delay: 0
+  })
+  this.animation = animation
+  animation.translateY(this.data.contentHeight).step()
+  this.setData({
+    animationData: animation.export(),
+  })
+  setTimeout(function () {
+    animation.translateY(this.data.contentHeight).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: false
+    })
+  }.bind(this), duration)
+},
+togglePopup: function () {
+  if (this.data.showModalStatus) {
+    this.hideModal();
+  } else {
+    this.showModal();
+  }
+},
 
   //点击接单
   receiveOrder: function(e){
