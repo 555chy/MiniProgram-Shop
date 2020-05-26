@@ -44,7 +44,9 @@
 </view>
 
 <view>
-	<modal title="对话框" hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+	<modal title="提示"  confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
 		{{data.showWindows.Content}}
+		<text>输入成交价格</text><input></input>
 	</modal>
+	<text hidden="{{modalHidden}}"></text>
 </view>

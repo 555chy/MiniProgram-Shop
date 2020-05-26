@@ -1,3 +1,26 @@
-<text>连续签到天数{{sign.length}}</text>
-<button bindtap="sign">sign</button>
-<button bindtap="test">test</button>
+<view class="row box-top">
+	<view class="column sign-total">
+		<text class="sign-total-title">已连续签到</text>
+		<view class="row">
+			<text class="sign-total-num">0</text>
+			<text class="sign-total-num">{{sign.length}}</text>
+			<text class="sign-total-day">天</text>
+		</view>
+		<text class="sign-total-tip">累计签到0天</text>
+	</view>
+	<view class="column score">
+		<text>积分</text>
+		<text>积分明细</text>
+	</view>
+</view>
+<view class="column box-center">
+	<text class="sign-title">签到规则</text>
+	<view class="row sign-panel">
+		<view wx:for="{{day}}" wx:key="index" class="column">
+			<image class="sign-img" src="../../icon/car.png"></image>
+			<text>{{item}}天</text>
+		</view>
+	</view>
+	<text class="tip">连续签到7天可获得1张优惠券</text>
+	<button class="sign" bindtap="sign">立即签到</button>
+</view>
