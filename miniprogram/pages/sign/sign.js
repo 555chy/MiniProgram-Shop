@@ -2,59 +2,94 @@ const app = getApp()
 const Bmob = app.globalData.Bmob
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    days: 0,
-    timestamp: 0,
-    integral: 10,
-    objectId: ""
+  data:{
+    sign: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    let current = Bmob.User.current()
-    console.log(current)
-    this.setData({
-      days: current.days,
-      timestamp: current.timestamp,
-      objectId: current.objectId
-    })
-
-  },
-  /**
-   * 签到
-   */
-  signin: function(e){
-    let currentTime = Math.round(new Date() / 1000)
-    console.log(currentTime)
-    let objectId = this.data.objectId
-    let timestamp = this.data.timestamp
-    let days = this.data.days
-    let diff = currentTime - timestamp
-    console.log(diff)
-
-    if(diff <= 86400){
-      const query = Bmob.Query('_User');
-      query.set('id', objectId ) 
-      query.set('days', days + 1)
-      query.set('timestamp', currentTime)
-      query.save().then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
+  onLoad: function(options){
+    var that = this
+    const query = Bmob.Query('_User');
+    query.get('qA80111G').then(res => {
+      console.log(res)
+      that.setData({
+        sign: res.sign
       })
-    }
-  },
-  test: function(e){
-    wx.chooseAddress({
-      success (res) {
-        console.log(res)
-      }
+    }).catch(err => {
+      console.log(err)
     })
+  },
+
+  sign: function(e){
+    let user = Bmob.user.current()
+    let objectId = user.objectId
+
+    let sign = this.data.sign
+    let length = sign.length
+    let lastTime = sign[length - 1]
+    let currentTime = this.getCurrentTime()
+    let lastStamp = this.dateToTimestamp(lastTime)
+    let currentStamp = this.dateToTimestamp(currentTime)
+    console.log(lastTime)
+    console.log(currentTime)
+
+    if(lastTime == currentTime){
+      wx.showToast({
+        title: '今日已签到',
+        icon: 'none'
+      })
+    }else{
+      const query = Bmob.Query('_User');
+      query.set('id', objectId)
+      if(currentStamp - lastStamp == 86400){
+        //连续签到7天后重新开始签到
+        if(sign.length == 7){
+          sign.splice(0,sign.length)
+        }
+        sign.push(currentTime)
+      }else{
+        //断签删除数组，重新签到
+        sign.splice(0,sign.length)
+        sign.push(currentTime)
+      }
+      console.log(sign)
+      query.set('sign', sign)
+      query.save().then(res => {
+        wx.showToast({
+          title: '签到成功',
+        })
+        this.setData({
+          sign
+        })
+        }).catch(err => {
+          wx.showToast({
+            title: err.errMsg,
+            icon: 'none'
+          })
+        })
+    }
+
+  },
+
+  test: function(e){
+    let s = this.dateToTimestamp('2020-5-27')
+    console.log(s)
+    
+  },
+
+  getCurrentTime: function(){
+    var time = parseInt(new Date().getTime());
+    let date = new Date(time)
+    var year=date.getFullYear();
+    var mon = date.getMonth()+1;
+    var day = date.getDate();
+    return year+'-' + mon + "-" + day
+  },
+  dateToTimestamp: function(date){
+    var date = new Date(date)
+    return Date.parse(date) / 1000
   }
+  
 })
+  
+
+

@@ -2,7 +2,9 @@
 
 <view class="box" animation="{{animationData}}">
 	<text class="row title" bindtap="togglePopup" >
-			<text class="iconfont icon-xia"></text>
+			<text wx:if="{{showModalStatus}}"class="iconfont icon-xia"></text>
+			<text wx:else class="iconfont icon-shang"></text>
+		
 	<text>订单详情</text>
 	</text>
 	<view class="content">
