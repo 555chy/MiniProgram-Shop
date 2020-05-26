@@ -1,11 +1,11 @@
 /* pages/mine/mine.wxss */
 .info {
   height: 300rpx;
-  background-color: #FEC92C;
+  background-color: #41AAE1;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: stretch;
+  /* align-items: center; */
 }
 
 .info-profile {
@@ -13,11 +13,12 @@
   width: 170rpx;
   height: 170rpx;
   border-radius: 85rpx;
-  border: 2rpx solid orange;
-  box-shadow: 20rpx 20rpx 50rpx rgb(247, 155, 18);
+  background-color: #ADD8FF;
+  border: 2rpx solid lightblue;
 }
 
 .info-person {
+  margin-top: 65rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,6 +26,7 @@
 }
 
 .info-nickname {
+  font-size: 38rpx;
   font-weight: bold;
   padding-bottom: 20rpx;
 }
@@ -46,23 +48,28 @@
   position: absolute;
   right: 0rpx;
   top: 0rpx;
-  padding: 30rpx;
   font-size: small;
+  padding: 40rpx 30rpx;
 }
 
 .price {
   width: 80%;
-  margin: -70rpx auto 30rpx auto;
+  height: 150rpx;
+  margin: -50rpx auto 10rpx auto;
   border-radius: 20rpx;
-  background-image: linear-gradient(to bottom right, #F2E194, #E3C962);
+  background-image: linear-gradient(to bottom right, #94C5F2, #62A4E3);
   background-color: rgb(245, 227, 126);
-  padding: 30rpx;
+  padding: 50rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
 }
-
+.vline {
+  background-color: lightgray;
+  width: 1px;
+  height: 200rpx;
+}
 .price-info {
   display: flex;
   flex-direction: column;
@@ -72,11 +79,13 @@
 .price-amount {
   margin-top: 30rpx;
   font-weight: bold;
-  font-size: large;
+  font-size: 50rpx;
+
 }
 
 .price-btn {
-  padding: 40rpx 20rpx 40rpx 40rpx;
+  padding-left: 60rpx;
+  padding-right: 10rpx;
   border-left: 2rpx solid rgba(85, 85, 85, 0.5);
   display: flex;
   justify-content: center;
@@ -96,4 +105,8 @@
 .func-text {
   flex-grow: 1;
   padding: 0 20rpx !important;
+}
+
+.price-text{
+  font-size: 40rpx;
 }

@@ -8,8 +8,9 @@ Page({
    */
   data: {
     isLogin: false,
-    username: "",
-    headUrl: "../../icon/head.png",
+    isAdmin: false,
+    username: '',
+    headUrl: 'https://img-blog.csdnimg.cn/20200526193223489.png',
     money: 0,
   },
 
@@ -48,10 +49,11 @@ Page({
     if (current != null) {
       this.setData({
         isLogin: true,
-        username: current.username
+        isAdmin: current.admin,
+        username: current.username,
+        headUrl: current.headUrl
       })
     }
-
   },
   goOrderShop: function (e) {
     wx.navigateTo({

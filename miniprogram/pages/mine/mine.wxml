@@ -1,26 +1,30 @@
 <!--pages/mine/mine.wxml-->
 <view class="info">
-	<image class="info-profile" src="{{headUrl}}" mode="aspectFill"></image>
-	<view class="info-person">
+	<image class="info-profile" src="{{headUrl}}"></image>
+	<view>
 		<button wx:if="{{!isLogin}}" bindtap="goLogin" size="mini">登录/注册</button>
-		<block wx:else>
+		<view wx:else class="info-person">
 			<text class="info-nickname">{{username}}</text>
-			<button class="text-button" size="mini" bindtap="logout">退出登录</button>
-		</block>
+			<text class="text-button" size="mini" bindtap="logout">退出登录</text>
+		</view>
 	</view>
 </view>
 <navigator open-type="navigate" url="../sign/sign">
-	<text class="coupon">跳转我的优惠券</text>
+	<view class="coupon">
+		<text >每日签到</text>
+		<text class="iconfont icon-right"></text>
+	</view>
 </navigator>
 <view class="price">
 	<view class="price-info">
-		<text class="price-text">交易金额</text>
-		<text class="price-amount">1000.00</text>
+		<text class="price-text">余额</text>
+		<text class="price-amount">{{money}}</text>
 	</view>
-	<text class="price-btn">查看订单</text>
+	<view class="vline"></view>
+	<text class="price-btn">提现</text>
 </view>
 <block>
-	<view class="func-item" bindtap="goOrderShop">
+	<view wx:if="{{isAdmin}}" class="func-item" bindtap="goOrderShop" >
 		<text class="iconfont icon-dingdan}"></text>
 		<text class="func-text">我的订单</text>
 		<text class="iconfont icon-right}"></text>

@@ -40,19 +40,19 @@ Page({
       })
     }
   },
-  //选择头像
-  chooseImage: function(e) {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album'],
-      complete: (res) => {
-        this.setData({
-          headimg: res.tempFilePaths
-        })
-      },
-    })
-  },
+  // //选择头像
+  // chooseImage: function(e) {
+  //   wx.chooseImage({
+  //     count: 1,
+  //     sizeType: ['compressed'],
+  //     sourceType: ['album'],
+  //     complete: (res) => {
+  //       this.setData({
+  //         headimg: res.tempFilePaths
+  //       })
+  //     },
+  //   })
+  // },
  
   /**
    * 点击注册
@@ -63,6 +63,7 @@ Page({
     let confirmPassword = this.data.confirmPassword
     let email = this.data.email
     let phone = this.data.phoneNumber
+    let headimg = this.data.headimg
 
     if(password !== confirmPassword){
       wx.showToast({
@@ -76,13 +77,15 @@ Page({
       username,
       password,
       email,
-      phone
+      phone,
+      headUrl: headimg
     }
    
     Bmob.User.register(params).then(res =>{
       wx.showToast({
         title: '注册成功',
       })
+      wx.navigateBack()
     }).catch(err => {
       wx.showToast({
         title: err.error,

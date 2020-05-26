@@ -1,23 +1,14 @@
 <view>
 	<view class="title-box">
 		<text class="title">活动</text>
-		<text class="more"></text>
 	</view>
-	<view class="activity-box">
-		<block wx:for="{{activitys}}" wx:key="index">
-			<view class="activity" >
-				<view class="activity-content" style="background-color:{{item.color}}">
-					<text class="activity-name">{{item.name}}</text>
-					<text class="activity-description">{{item.description}}</text>
-					<view class="box">
-						<text class="activity-btn" data-index="{{index}}" bindtap="goto">{{item.btn}}</text>
-						<image class="bg" src="{{item.image}}"></image>
-					</view>
 
-				</view>
-			</view>
-		</block>
+	<view class="activity">
+		<image src="https://img-blog.csdnimg.cn/20200526200030453.png"></image>
+		<image src="https://img-blog.csdnimg.cn/20200526200030455.png" bindtap="goto"></image>
 	</view>
+
+	
 	<view class="tab-title">
 		<block wx:for="{{tabs}}" wx:key="index">
 			<view>

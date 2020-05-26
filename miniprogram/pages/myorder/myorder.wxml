@@ -1,12 +1,22 @@
-<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index">
-	<view class="order-item" bindtap="goDetail" data-index="{{index}}">
-		<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
-		<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
-		<text class="garbage green" wx:else>已回收</text>
-		<view class="info">
-			<text class="address">{{item.address}}</text>
-			<text class="time">{{item.updatedAt}}</text>
-			<text class="desc">{{item.wasteInfo}}</text>
+<view class="box-empty" wx:if="{{!hasData}}">
+	<block wx:if="{{isShow}}">
+		<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
+		<text class="tip">您还没有接单~</text>
+		<text class="btn" bindtap="goOrderShop">去订单广场</text>
+	</block>
+
+</view>
+<block wx:else>
+	<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:if="{{isShow}}">
+		<view class="order-item" bindtap="goDetail" data-index="{{index}}">
+			<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
+			<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
+			<text class="garbage green" wx:else>已回收</text>
+			<view class="info">
+				<text class="address">{{item.address}}</text>
+				<text class="time">{{item.updatedAt}}</text>
+				<text class="desc">{{item.wasteInfo}}</text>
+			</view>
 		</view>
 	</view>
-</view>
+</block>
