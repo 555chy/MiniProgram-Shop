@@ -1,0 +1,79 @@
+.box-top {
+  background-color: rgba(43, 151, 252, 1);
+  height: 400rpx;
+  justify-content: space-between !important;
+}
+.box-center {
+  background-color: white;
+  border-radius: 15rpx;
+  margin: -30rpx 50rpx;
+  padding: 20rpx;
+  box-shadow: 0 0 20rpx #8888;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sign-total-title {
+  color: white;
+  margin: 5rpx;
+}
+.sign-total {
+  align-items: flex-start;
+  padding: 50rpx;
+}
+.sign-total-num {
+  color: orange;
+  background-color: white;
+  margin: 10rpx;
+  font-size: 80rpx;
+  width: 80rpx;
+  text-align: center;
+}
+.sign-total-day {
+  font-size: 70rpx;
+  color: white;
+  margin-left: 10rpx;
+}
+.sign-total-tip {
+  margin-top: 30rpx;
+  font-size: small;
+}
+.score {
+  font-size: small;
+  align-items: flex-end;
+  padding: 50rpx;
+}
+.tip {
+  font-size: x-small;
+  padding: 30rpx;
+}
+.sign-panel {
+  align-self: stretch;
+  margin-top: 50rpx;
+}
+.sign-title {
+  align-self: flex-start;
+  font-size: small;
+}
+.sign-img {
+  width: 50rpx;
+  height: 50rpx;
+}
+.sign {
+  background: linear-gradient(to bottom, rgba(40, 137, 199, 1), rgba(90, 174, 227, 1));
+  color: white;
+  font-weight: normal;
+  border-radius: 80rpx;
+  font-size: small;
+  padding: 15rpx;
+  width: 300rpx !important;
+}

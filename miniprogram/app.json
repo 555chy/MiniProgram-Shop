@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/detail/detail",
+    "pages/sign/sign",
+    "pages/mine/mine",
+    "pages/home/home",
+    "pages/login/login",
+    "pages/forget/forget",
+    "pages/recovery/recovery",
+    "pages/order/order",
+    "pages/tip/tip",
+    "pages/through/through",
+    "pages/reserve/reserve",
+    "pages/address/address",
+    "pages/addressAdd/addressAdd",
+    "pages/register/register",
+    "pages/find/find",
+    "pages/shop/shop",
+    "pages/myorder/myorder",
+    "pages/index/index"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "集品回收",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "icon/home_normal.png",
+        "selectedIconPath": "icon/home_down.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "icon/find_normal.png",
+        "selectedIconPath": "icon/find_down.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "icon/order_normal.png",
+        "selectedIconPath": "icon/order_down.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "icon/mime_normal.png",
+        "selectedIconPath": "icon/mime_down.png"
+      }
+    ],
+    "color": "#999999",
+    "selectedColor": "#FFB974"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
