@@ -10,8 +10,7 @@ Page({
     username: "用户名",
     password:"",
     confirmPassword:"",
-    phoneNumber:"",
-    email:""
+    phoneNumber:""
   },
   onLoad: function(options){
     var that = this
@@ -40,20 +39,7 @@ Page({
       })
     }
   },
-  // //选择头像
-  // chooseImage: function(e) {
-  //   wx.chooseImage({
-  //     count: 1,
-  //     sizeType: ['compressed'],
-  //     sourceType: ['album'],
-  //     complete: (res) => {
-  //       this.setData({
-  //         headimg: res.tempFilePaths
-  //       })
-  //     },
-  //   })
-  // },
- 
+  
   /**
    * 点击注册
    */
@@ -61,7 +47,6 @@ Page({
     let username = this.data.username
     let password = this.data.password
     let confirmPassword = this.data.confirmPassword
-    let email = this.data.email
     let phone = this.data.phoneNumber
     let headimg = this.data.headimg
 
@@ -71,14 +56,14 @@ Page({
       })
       return
     }
-    // 邮箱正则,手机号正则
-
+  
     let params = {
       username,
       password,
-      email,
-      phone,
-      headUrl: headimg
+      mobilePhoneNumber: phone,
+      headUrl: headimg,
+      admin: false,
+      money: 0,
     }
    
     Bmob.User.register(params).then(res =>{
@@ -89,6 +74,7 @@ Page({
     }).catch(err => {
       wx.showToast({
         title: err.error,
+        icon: 'none',
         duration: 3000
       })
     })
@@ -121,11 +107,4 @@ Page({
       phoneNumber: e.detail.value
     })
   },
-
-  getEmail: function(e){
-    this.setData({
-      email: e.detail.value
-    })
-  }
-
 })

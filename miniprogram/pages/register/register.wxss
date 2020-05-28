@@ -11,7 +11,7 @@
   height: 200rpx;
   border-radius: 100rpx;
   margin-bottom: 40rpx;
-  background-color: lightsalmon;
+  background-color: rgba(91, 174, 227, 1);
 }
 .profile-text {
   color: gray;

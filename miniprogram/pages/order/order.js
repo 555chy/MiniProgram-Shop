@@ -59,6 +59,7 @@ Page({
   },
 
   onPullDownRefresh: function(options){
+    var that = this
     let user = Bmob.User.current()
     let isLogin = user != null
     this.setData({isLogin: isLogin})
@@ -77,16 +78,17 @@ Page({
         query.equalTo('user', '==', poiID)
       }
       query.find().then(res => {
-        wx.stopPullDownRefresh()
-        let length = res.length
-        let hasData = length !== 0
-        this.setData({
-          order: res,
-          hasData,
-          isAdmin,
-          isShow: true
-        })
-        wx.hideLoading()
+        setTimeout(()=>{
+          wx.stopPullDownRefresh()
+          let length = res.length
+          let hasData = length !== 0
+          that.setData({
+            order: res,
+            hasData,
+            isAdmin,
+            isShow: true
+          })
+        },2000)
       }).catch(err =>{
         console.log(err)
       });

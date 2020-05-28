@@ -253,7 +253,8 @@ Page({
     currentSize: 0,
     showModalStatus: false,
     price: 20,
-    goods: []
+    goods: [],
+    imagebase64: ''
   },
 
   /**
@@ -353,63 +354,30 @@ Page({
   getPhoto: function (e) {
     var that = this;
     wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['compressed'], // 指定只能为压缩图，首先进行一次默认压缩
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (photo) {
-        //-----返回选定照片的本地文件路径列表，获取照片信息-----------
-        wx.getImageInfo({
-          src: photo.tempFilePaths[0],
-          success: function (res) {
-            //---------利用canvas压缩图片--------------
-            var ratio = 2;
-            var canvasWidth = res.width //图片原始长宽
-            var canvasHeight = res.height
-            while (canvasWidth > 400 || canvasHeight > 400) { // 保证宽高在400以内
-              canvasWidth = Math.trunc(res.width / ratio)
-              canvasHeight = Math.trunc(res.height / ratio)
-              ratio++;
-            }
-            that.setData({
-              cWidth: canvasWidth,
-              cHeight: canvasHeight
+      sourceType: ['camera'],
+      success: res => {
+        let path = res.tempFilePaths[0]
+        wx.compressImage({
+          src: path,
+          quality: 50,
+          success: (res => {
+            wx.getFileSystemManager().readFile({
+              filePath: res.tempFilePath, //选择图片返回的相对路径
+              encoding: 'base64', //编码格式
+              success: res => { //成功的回调
+                let image = 'data:image/jpeg;base64,' + res.data
+                that.setData({
+                  imagebase64: image,
+                  imageUrl: image
+                })
+              }
             })
-            //----------绘制图形并取出图片路径--------------
-            var ctx = wx.createCanvasContext('canvas', that)
-            console.log(res.path)
-            that.setData({
-              imageUrl: res.path
-            });
-            ctx.drawImage(res.path, 0, 0, canvasWidth, canvasHeight)
-            ctx.draw(false, function () {
-              wx.canvasGetImageData({
-                canvasId: 'canvas',
-                x: 0,
-                y: 0,
-                width: that.data.imgWidth,
-                height: that.data.imgHeight,
-                success(res) {
-                  console.log("xxxx");
-                  let pngData = upng.encode([res.data.buffer], res.width, res.height)
-                  let base64 = wx.arrayBufferToBase64(pngData)
-                  // ...
-                  console.log(base64)
-                  that.setData({
-                    imageUrl: base64
-                  });
-                },
-                fail: function (res) {
-                  console.log(res.errMsg)
-                },
-              });
-            }, that)
-          },
-          fail: function (res) {
-            console.log(res.errMsg)
-          }
-        });
+          })
+        })
       }
     })
+    
+   
   },
   //选择预约日期
   selectTime: function (e) {
@@ -444,6 +412,7 @@ Page({
       location
     } = this.data
     let time = this.data.yuyueTime
+    let image = this.data.imagebase64
     let currentUser = Bmob.User.current()
     var isLogin = currentUser != null
     console.log('haslogin' + isLogin)
@@ -492,6 +461,7 @@ Page({
     query.set('wasteInfo', wasteInfo)
     query.set('location', loca)
     query.set('state', 'open')
+    query.set('image',image)
 
     query.save().then(res => {
       console.log(res)

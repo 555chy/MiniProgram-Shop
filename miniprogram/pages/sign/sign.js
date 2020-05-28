@@ -8,9 +8,11 @@ Page({
   },
 
   onLoad: function(options){
+    let user = Bmob.User.current()
+    let objectId = user.objectId
     var that = this
     const query = Bmob.Query('_User');
-    query.get('qA80111G').then(res => {
+    query.get(objectId).then(res => {
       console.log(res)
       that.setData({
         sign: res.sign
@@ -21,7 +23,7 @@ Page({
   },
 
   sign: function(e){
-    let user = Bmob.user.current()
+    let user = Bmob.User.current()
     let objectId = user.objectId
 
     let sign = this.data.sign

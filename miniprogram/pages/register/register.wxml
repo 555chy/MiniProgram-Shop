@@ -1,6 +1,5 @@
 <view class="profile-box">
 	<image class="profile" src="{{headimg}}" ></image>
-	<!-- <text class="profile-text">请选择头像</text> -->
 </view>
 
 <view class="box">
@@ -18,14 +17,9 @@
 	</view>
 	<view class="input-box" >
 		<text class="iconfont icon-zhuceyonghu"></text>
-		<input class="input" placeholder="电话" bindinput="getPhoneNumber"></input>
+		<input class="input" placeholder="电话" bindinput="getPhoneNumber" type="number"></input>
 	</view>
-	<view class="input-box" >
-		<text class="iconfont icon-zhuceyonghu"></text>
-		<input class="input" placeholder="邮箱" bindinput="getEmail"></input>
-	</view>
-	<!-- <button class="use-wechat" open-type="getUserInfo" bindgetuserinfo="getUserInfo">使用微信默认信息</button> -->
-
+	
 	<button class="register" bindtap="register">马上注册</button>
 
 	<view class="back">

@@ -41,16 +41,20 @@ Page({
   },
 
   onPullDownRefresh: function(options){
+    var that = this
     let query = Bmob.Query("Recycle_Order");
     query.equalTo('state', '==', 'open')
     query.find().then(res => {
       console.log(res)
-      let hasData = res.length != 0
-      this.setData({
-        order: res,
-        hasData
-      })
-      wx.stopPullDownRefresh()
+      setTimeout(function () {
+        let hasData = res.length != 0
+        that.setData({
+          order: res,
+          hasData
+        })
+        wx.stopPullDownRefresh()
+      }, 2000)
+      
     }).catch(err =>{
       wx.showToast({
         title: err.errMsg,
@@ -68,6 +72,9 @@ Page({
         e.eventChannel.emit('order',{order})
       }
     })
+  },
+  refreshOrder: function(e){
+    wx.startPullDownRefresh()
   }
 
 

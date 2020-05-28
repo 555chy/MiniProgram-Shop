@@ -15,7 +15,7 @@ input{
 }
 
 .line{
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #eeeeee;
   margin-left: 50rpx;
   margin-right: 50rpx;
   margin-top: 20rpx;

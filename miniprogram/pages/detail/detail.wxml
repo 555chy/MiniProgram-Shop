@@ -34,7 +34,7 @@
 		</view>
 		<view class="row">
 			<text class="name">废品图片</text>
-			<image class="img" src="{{order.imgUrl}}"></image>
+			<image class="img" src="{{order.image}}"></image>
 		</view>
 		<block wx:if="{{isAdmin}}">
 			<text wx:if="{{order.state==='open'}}" class="do" bindtap="receiveOrder">接单</text>
@@ -43,10 +43,10 @@
 	</view>
 </view>
 
-<view>
-	<modal title="提示"  confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+<view hidden="{{modalHidden}}"> 
+	<modal title="提示" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
 		{{data.showWindows.Content}}
-		<text>输入成交价格</text><input></input>
+		<input placeholder="确认后输入成交价格" bindinput="getPrice" type="digit"></input>
 	</modal>
-	<text hidden="{{modalHidden}}"></text>
+	<text ></text>
 </view>

@@ -1,8 +1,8 @@
 <view class="box-empty" wx:if="{{!hasData}}">
 	<block wx:if="{{isShow}}">
-		<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
-		<text class="tip">您还没有接单~</text>
-		<text class="btn" bindtap="goOrderShop">去订单广场</text>
+		<image class="img" src="https://img-blog.csdnimg.cn/20200524144829877.png"></image>
+		<text class="tip">暂时还没有任务,休息一会刷新试试~</text>
+		<text class="btn" bindtap="refreshOrder">刷新</text>
 	</block>
 
 </view>

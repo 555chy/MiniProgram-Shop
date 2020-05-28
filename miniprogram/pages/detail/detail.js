@@ -4,7 +4,7 @@ const Bmob = app.globalData.Bmob
 
 Page({
   data: {
-    modalHidden:true,
+    modalHidden: true,
     showModalStatus: true,
     isAdmin: false,
     latitude: 26.084461,
@@ -13,26 +13,29 @@ Page({
     polyline: [],
     order: {},
     orderState: '',
+    money: 0,
+    price: 0
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var query = wx.createSelectorQuery();
-    query.select('.content').boundingClientRect()
-    query.exec((res) => {
-      this.setData({
-        contentHeight: res[0].height
-      });
-    })
-
     let user = Bmob.User.current()
     let isAdmin = user.admin
     this.setData({
-      isAdmin
-    })
+      isAdmin,
 
+    }, () => {
+      var query = wx.createSelectorQuery();
+      query.select('.content').boundingClientRect()
+      query.exec((res) => {
+        this.setData({
+          contentHeight: res[0].height
+        });
+      })
+    })
     var that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('order', function (data) {
@@ -42,22 +45,25 @@ Page({
       let location = order.location
       let latitude = location[0]
       let longitude = location[1]
-      console.log(latitude + "|" + longitude)
       that.setData({
         order: order,
         latitude: latitude,
         longitude: longitude,
-        markers: [{
-          id: 0,
-          latitude: 26.084461,
-          longitude: 119.254060,
-          iconPath: '../../icon/start.png'
-        }, {
-          id: 1,
-          latitude: latitude,
-          longitude: longitude,
-          iconPath: '../../icon/end.png'
-        }]
+      }, () => {
+        let order = that.data.order
+        let user = order.user
+        if(user != null){
+          let userObjectId = user.objectId
+          const query = Bmob.Query('_User')
+          query.get(userObjectId).then(res => {
+            console.log(res)
+            that.setData({
+              money: res.money
+            })
+          }).catch(err => {
+  
+          })
+        }
       })
     })
     var qqmapsdk = new QQMapWX({
@@ -66,10 +72,6 @@ Page({
 
     qqmapsdk.direction({
       mode: 'walking',
-      from: {
-        latitude: 26.084461,
-        longitude: 119.254060
-      },
       to: {
         latitude: that.data.latitude,
         longitude: that.data.longitude
@@ -87,12 +89,26 @@ Page({
             longitude: coors[i + 1]
           })
         }
+        let start = pl[0]
+        let end = pl[pl.length - 1]
         that.setData({
           polyline: [{
             points: pl,
             color: '#5AAEE3',
             width: 4
+          }],
+          markers: [{
+            id: 0,
+            latitude: start.latitude,
+            longitude: start.longitude,
+            iconPath: '../../icon/start.png'
+          }, {
+            id: 1,
+            latitude: end.latitude,
+            longitude: end.longitude,
+            iconPath: '../../icon/end.png'
           }]
+          
         })
 
       }),
@@ -176,7 +192,10 @@ Page({
           query.set('state', 'received')
           query.save().then(res => {
             wx.hideLoading()
-            that.order.state = 'received'
+            wx.showToast({
+              title: '接单成功',
+            })
+            that.data.order.state = 'received'
             that.setData({
               order
             })
@@ -185,6 +204,7 @@ Page({
             wx.hideLoading()
             wx.showToast({
               title: '接单失败',
+              icon: 'none'
             })
           })
         }
@@ -193,35 +213,77 @@ Page({
   },
   //完成订单
   showWindows: function (e) {
-    wx.showModal({
-      title: '提示',
-      content: '这是一个模态弹窗',
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
-  },
-   //事件处理函数
-   bindViewTap: function() {
     this.setData({
-      modalHidden:!this.data.modalHidden
+      modalHidden: false
     })
-    
   },
   //确定按钮点击事件
-  modalBindaconfirm:function(){
+  modalBindaconfirm: function () {
+    let order = this.data.order
+    let balance = this.data.money
+    let orderId = order.objectId
+    let price = parseInt(this.data.price)
+    let user = order.user
+    let hasUser = user != null
+
+    if (price == '') {
+      wx.showToast({
+        title: '请输入成交价格',
+        icon: 'none'
+      })
+      return
+    }
+
+    const query = Bmob.Query('Recycle_Order');
+    query.set('id', orderId)
+    query.set('price', price)
+    query.set('state', 'fixed')
+    query.save().then(res => {
+
+      if (hasUser) {
+        let userObjectId = user.objectId
+        let money = balance + price
+        const query2 = Bmob.Query('_User')
+        query2.set('id', userObjectId)
+        query2.set('money', money)
+        query2.save().then(res => {
+          wx.reLaunch({
+            url: '../tip/tip',
+          })
+        }).catch(err => {
+          console.log(err)
+          wx.showToast({
+            title: '用户数据更新失败，请联系管理员',
+            icon: 'none',
+            duration: 3000
+          })
+        })
+      }else{
+        wx.reLaunch({
+          url: '../tip/tip',
+        })
+      }
+    }).catch(err => {
+      wx.showToast({
+        title: err.errMsg,
+        icon: 'none'
+      })
+    })
+
     this.setData({
-      modalHidden:!this.data.modalHidden,
+      modalHidden: !this.data.modalHidden,
     })
   },
   //取消按钮点击事件
-  modalBindcancel:function(){
+  modalBindcancel: function () {
     this.setData({
-      modalHidden:!this.data.modalHidden,
+      modalHidden: !this.data.modalHidden,
+    })
+  },
+  getPrice: function (e) {
+    let price = e.detail.value
+    this.setData({
+      price
     })
   },
 })

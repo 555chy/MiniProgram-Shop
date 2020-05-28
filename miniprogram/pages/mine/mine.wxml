@@ -2,7 +2,7 @@
 <view class="info">
 	<image class="info-profile" src="{{headUrl}}"></image>
 	<view>
-		<button wx:if="{{!isLogin}}" bindtap="goLogin" size="mini">登录/注册</button>
+		<button class="btnlogin" wx:if="{{!isLogin}}" bindtap="goLogin" size="mini">登录/注册</button>
 		<view wx:else class="info-person">
 			<text class="info-nickname">{{username}}</text>
 			<text class="text-button" size="mini" bindtap="logout">退出登录</text>
@@ -10,12 +10,12 @@
 	</view>
 </view>
 <navigator open-type="navigate" url="../sign/sign">
-	<view class="coupon">
+	<view class="coupon" wx:if="{{isLogin && !isAdmin}}">
 		<text >每日签到</text>
 		<text class="iconfont icon-right"></text>
 	</view>
 </navigator>
-<view class="price">
+<view class="price" wx:if="{{!isAdmin}}">
 	<view class="price-info">
 		<text class="price-text">余额</text>
 		<text class="price-amount">{{money}}</text>

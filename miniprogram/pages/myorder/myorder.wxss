@@ -65,16 +65,17 @@
   height: 90vh;
 }
 .img {
-  width: 300rpx;
-  height: 300rpx;
-  margin: 40rpx;
+  width: 250rpx;
+  height: 270rpx;
+  margin-bottom: 130rpx;
+ 
 }
 .tip {
   color: gray;
   font-size: 30rpx;
 }
 .btn {
-  margin: 100rpx 0;
+  margin: 50rpx 0;
   width: 70%;
   padding: 20rpx;
   border-radius: 50rpx;

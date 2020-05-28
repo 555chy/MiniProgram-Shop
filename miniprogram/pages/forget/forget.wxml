@@ -1,4 +1,6 @@
 <!--pages/forget/forget.wxml-->
-<input placeholder="请输入注册邮箱" bindinput="getEmail"></input>
+<input placeholder="请输入重置密码" bindinput="getPassword"></input>
+<view class="line"></view>
+<input placeholder="请输入手机号" bindinput="getPhone" type="number"></input>
 <view class="line"></view>
 <button bindtap="verify">发送验证</button>
