@@ -26,7 +26,7 @@
 <block>
 	<view wx:if="{{isAdmin}}" class="func-item" bindtap="goOrderShop" >
 		<text class="iconfont icon-dingdan}"></text>
-		<text class="func-text">我的订单</text>
+		<text class="func-text">订单广场</text>
 		<text class="iconfont icon-right}"></text>
 	</view>
 	<view class="func-item" bindtap="goAddress">
@@ -41,7 +41,7 @@
 	</view>
 	<view class="func-item">
 		<text class="iconfont icon-wenhao"></text>
-		<button class="text-button func-text" open-type="feedback">帮助中心</button>
+		<button class="text-button func-text" open-type="contact">在线客服</button>
 		<text class="iconfont icon-right}"></text>
 	</view>
 </block>

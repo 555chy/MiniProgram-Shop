@@ -14,7 +14,8 @@ Page({
     order: {},
     orderState: '',
     money: 0,
-    price: 0
+    price: 0,
+    isRecharge: false
     
   },
 
@@ -241,6 +242,12 @@ Page({
     query.save().then(res => {
 
       if (hasUser) {
+        if(!this.data.isRecharge){
+          wx.reLaunch({
+            url: '../tip/tip',
+          })
+          return
+        }
         let userObjectId = user.objectId
         let money = balance + price
         const query2 = Bmob.Query('_User')
@@ -286,4 +293,12 @@ Page({
       price
     })
   },
+  recharge: function(e){
+    let value = e.detail.value
+    let length = value.length
+    let isRecharge = length == 1
+    this.setData({
+      isRecharge
+    })
+  }
 })

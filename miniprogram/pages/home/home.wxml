@@ -5,10 +5,10 @@
 		<text class="location-text">{{address}}</text>
 		<!-- <text class="iconfont icon-xiala"></text> -->
 	</view>
-	<view class="msg">
+	<!-- <view class="msg">
 		<text class="iconfont icon-message"></text>
 		<text class="msg-text">消息</text>
-	</view>
+	</view> -->
 </view>
 
 	<!-- 990 * 360  后续从服务器拿链接-->
@@ -51,19 +51,19 @@
 	
 
 	<view class="money">
-		<text class="money-mime">我的资金</text>
+		<text class="money-mime">我的环保金</text>
 		<view class="money-box">
 			<view class="money-item money-current">
-				<view class="money-price">0.00</view>
-				<view class="money-text">当前资金</view>
+				<view class="money-price">{{currentmoney}}</view>
+				<view class="money-text">当前环保金</view>
 			</view>
 			<view class="money-item">
-				<view class="money-price">0</view>
+				<view class="money-price">{{count}}</view>
 				<view class="money-text">呼叫次数</view>
 			</view>
-			<view class="money-item">
+			<!-- <view class="money-item">
 				<view class="money-price">0.00</view>
 				<view class="money-text">累计资金</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
