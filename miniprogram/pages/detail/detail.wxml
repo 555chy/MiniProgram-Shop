@@ -3,8 +3,8 @@
 <view class="box" animation="{{animationData}}">
 	<text class="row title" bindtap="togglePopup" >
 			<text wx:if="{{showModalStatus}}"class="iconfont icon-xia"></text>
-			<text wx:else class="iconfont icon-shang"></text>
-		
+	<text wx:else class="iconfont icon-shang"></text>
+
 	<text>订单详情</text>
 	</text>
 	<view class="content">
@@ -43,10 +43,13 @@
 	</view>
 </view>
 
-<view hidden="{{modalHidden}}"> 
+<view hidden="{{modalHidden}}">
 	<modal title="提示" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
 		{{data.showWindows.Content}}
 		<input placeholder="确认后输入成交价格" bindinput="getPrice" type="digit"></input>
+		<checkbox-group bindchange="recharge">
+			<checkbox value="yes">充值环保金</checkbox>
+		</checkbox-group>
 	</modal>
 	<text ></text>
 </view>

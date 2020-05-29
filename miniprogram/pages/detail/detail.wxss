@@ -49,3 +49,7 @@ map{
   width: 150rpx;
   flex-shrink: 0;
 }
+
+checkbox{
+  margin-top: 30rpx;
+}
