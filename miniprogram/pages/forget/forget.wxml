@@ -3,4 +3,9 @@
 <view class="line"></view>
 <input placeholder="请输入手机号" bindinput="getPhone" type="number"></input>
 <view class="line"></view>
-<button bindtap="verify">发送验证</button>
+<view class="row">
+	<input placeholder="请输入验证码"></input>
+	<button class="getCode {{disabled ? 'gray' : 'blue'}}" disabled="{{disabled}}" data-id="2" bindtap="getCode">{{time}}</button>
+</view>
+<view class="line"></view>
+<button class="blue" bindtap="verify">提交</button>
