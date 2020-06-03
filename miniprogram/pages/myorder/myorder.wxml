@@ -14,7 +14,7 @@
 			<text class="garbage green" wx:else>已回收</text>
 			<view class="info">
 				<text class="address">{{item.address}}</text>
-				<text class="time">{{item.updatedAt}}</text>
+				<text class="time" style="{{item.color ? '': 'color: red'}}">{{item.time}}</text>
 				<text class="desc">{{item.wasteInfo}}</text>
 			</view>
 		</view>

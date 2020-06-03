@@ -24,6 +24,7 @@ input {
   margin-left: 50rpx;
   margin-right: 50rpx;
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .row {

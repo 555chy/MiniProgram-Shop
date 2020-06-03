@@ -1,5 +1,5 @@
 .box-top {
-  background-color: rgba(43, 151, 252, 1);
+  background-color: #2789C7;
   height: 400rpx;
   justify-content: space-between !important;
 }
@@ -31,7 +31,7 @@
   padding: 50rpx;
 }
 .sign-total-num {
-  color: orange;
+  color: rgba(40, 137, 199, 1);
   background-color: white;
   margin: 10rpx;
   font-size: 80rpx;
@@ -46,11 +46,18 @@
 .sign-total-tip {
   margin-top: 30rpx;
   font-size: small;
+  color: white;
 }
 .score {
-  font-size: small;
   align-items: flex-end;
   padding: 50rpx;
+  font-size: 30rpx;
+  color: white;
+}
+.score-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
 }
 .tip {
   font-size: x-small;

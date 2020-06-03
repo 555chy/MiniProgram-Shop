@@ -39,7 +39,7 @@ text {
 
 swiper {
   width: 90%;
-  height: calc(90vw * 185 / 690);
+  height: calc(90vw * 259 / 690);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20rpx;

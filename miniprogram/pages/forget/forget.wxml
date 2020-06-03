@@ -1,11 +1,11 @@
 <!--pages/forget/forget.wxml-->
-<input placeholder="请输入重置密码" bindinput="getPassword"></input>
+<input placeholder="请输入新密码" bindinput="getPassword"></input>
 <view class="line"></view>
 <input placeholder="请输入手机号" bindinput="getPhone" type="number"></input>
 <view class="line"></view>
 <view class="row">
-	<input placeholder="请输入验证码"></input>
-	<button class="getCode {{disabled ? 'gray' : 'blue'}}" disabled="{{disabled}}" data-id="2" bindtap="getCode">{{time}}</button>
+	<input placeholder="请输入验证码" bindinput="getVerifyCode"></input>
+	<button class="getCode {{disabled ? 'gray' : 'blue'}}" disabled="{{disabled}}" data-id="2" bindtap="getSmsCode">{{time}}</button>
 </view>
 <view class="line"></view>
 <button class="blue" bindtap="verify">提交</button>

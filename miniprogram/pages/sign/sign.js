@@ -4,6 +4,9 @@ const Bmob = app.globalData.Bmob
 Page({
   data:{
     sign: [],
+    days: 0,
+    integral: 0,
+    lianxu: 0,
     day: [1,2,3,4,5,6,7]
   },
 
@@ -15,7 +18,10 @@ Page({
     query.get(objectId).then(res => {
       console.log(res)
       that.setData({
-        sign: res.sign
+        sign: res.sign,
+        lianxu: res.sign.length,
+        integral: res.integral,
+        days: res.days
       })
     }).catch(err => {
       console.log(err)
@@ -25,7 +31,10 @@ Page({
   sign: function(e){
     let user = Bmob.User.current()
     let objectId = user.objectId
-
+    let days = this.data.days
+    let integral = this.data.integral
+    let lianxu = this.data.lianxu
+    let temp = lianxu + 1
     let sign = this.data.sign
     let length = sign.length
     let lastTime = sign[length - 1]
@@ -56,12 +65,17 @@ Page({
       }
       console.log(sign)
       query.set('sign', sign)
+      query.set('integral',temp + integral)
+      query.set('days',days + 1)
       query.save().then(res => {
         wx.showToast({
           title: '签到成功',
         })
         this.setData({
-          sign
+          sign,
+          lianxu: sign.length,
+          days: days + 1,
+          integral: temp + integral
         })
         }).catch(err => {
           wx.showToast({

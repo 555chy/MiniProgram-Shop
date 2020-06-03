@@ -21,8 +21,8 @@
 			<text class="id">{{order.phone}}</text>
 		</view>
 		<view class="row">
-			<text class="name">下单时间</text>
-			<text class="date">{{order.createdAt}}</text>
+			<text class="name">预约时间</text>
+			<text class="date">{{order.time}}</text>
 		</view>
 		<view class="row">
 			<text class="name">废品信息</text>
@@ -34,7 +34,7 @@
 		</view>
 		<view class="row">
 			<text class="name">废品图片</text>
-			<image class="img" src="{{order.image}}"></image>
+			<image class="img" src="{{imgUrl}}" mode="aspectFit"></image>
 		</view>
 		<block wx:if="{{isAdmin}}">
 			<text wx:if="{{order.state==='open'}}" class="do" bindtap="receiveOrder">接单</text>

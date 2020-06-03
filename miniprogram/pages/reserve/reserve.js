@@ -359,7 +359,7 @@ Page({
         let path = res.tempFilePaths[0]
         wx.compressImage({
           src: path,
-          quality: 50,
+          quality: 20,
           success: (res => {
             wx.getFileSystemManager().readFile({
               filePath: res.tempFilePath, //选择图片返回的相对路径
@@ -384,9 +384,11 @@ Page({
     let time = e.detail.value
     let i1 = time[0]
     let i2 = time[1]
-
+    
+    let day = this.getCurrentTime(i1)
     let date = this.data.timeList
-    let str = date[0][i1] + " " + date[1][i2]
+    let str = day + " " + date[1][i2]
+    console.log(str)
     this.setData({
       yuyueTime: str
     })
@@ -613,7 +615,13 @@ Page({
       totalPrice: total,
       wasteInfo: waste
     })
-
-
+  },
+  getCurrentTime: function(mDay){
+    var time = parseInt(new Date().getTime());
+    let date = new Date(time)
+    var year=date.getFullYear();
+    var mon = date.getMonth()+1;
+    var day = date.getDate() + mDay;
+    return year+'-' + mon + "-" + day
   }
 })

@@ -7,16 +7,16 @@ Page({
     modalHidden: true,
     showModalStatus: true,
     isAdmin: false,
-    latitude: 26.084461,
-    longitude: 119.254060,
+    latitude: 0,
+    longitude: 0,
     markers: [],
     polyline: [],
     order: {},
     orderState: '',
     money: 0,
     price: 0,
-    isRecharge: false
-    
+    isRecharge: false,
+    imgUrl: "../../icon/car.png"
   },
 
   /**
@@ -40,13 +40,15 @@ Page({
     var that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('order', function (data) {
-      console.log(data)
+      
       let order = data.order
-      order.imgUrl = "../../icon/car.png";
       let location = order.location
+      console.log(location)
       let latitude = location[0]
       let longitude = location[1]
+      let imageUrl = order.image == '' ? '../../icon/car.png' : order.image
       that.setData({
+        imgUrl: imageUrl,
         order: order,
         latitude: latitude,
         longitude: longitude,
@@ -65,58 +67,60 @@ Page({
   
           })
         }
-      })
-    })
-    var qqmapsdk = new QQMapWX({
-      key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
-    })
 
-    qqmapsdk.direction({
-      mode: 'walking',
-      to: {
-        latitude: that.data.latitude,
-        longitude: that.data.longitude
-      },
-      success: (res => {
-        var coors = res.result.routes[0].polyline
-        var pl = []
-        for (var i = 2; i < coors.length; i++) {
-          coors[i] = coors[i - 2] + coors[i] / 1000000
-        }
-
-        for (var i = 0; i < coors.length; i += 2) {
-          pl.push({
-            latitude: coors[i],
-            longitude: coors[i + 1]
-          })
-        }
-        let start = pl[0]
-        let end = pl[pl.length - 1]
-        that.setData({
-          polyline: [{
-            points: pl,
-            color: '#5AAEE3',
-            width: 4
-          }],
-          markers: [{
-            id: 0,
-            latitude: start.latitude,
-            longitude: start.longitude,
-            iconPath: '../../icon/start.png'
-          }, {
-            id: 1,
-            latitude: end.latitude,
-            longitude: end.longitude,
-            iconPath: '../../icon/end.png'
-          }]
-          
+        var qqmapsdk = new QQMapWX({
+          key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
         })
-
-      }),
-      fail: (err => {
-        console.log(err)
+    
+        qqmapsdk.direction({
+          mode: 'walking',
+          to: {
+            latitude: that.data.latitude,
+            longitude: that.data.longitude
+          },
+          success: (res => {
+            var coors = res.result.routes[0].polyline
+            var pl = []
+            for (var i = 2; i < coors.length; i++) {
+              coors[i] = coors[i - 2] + coors[i] / 1000000
+            }
+    
+            for (var i = 0; i < coors.length; i += 2) {
+              pl.push({
+                latitude: coors[i],
+                longitude: coors[i + 1]
+              })
+            }
+            let start = pl[0]
+            let end = pl[pl.length - 1]
+            that.setData({
+              polyline: [{
+                points: pl,
+                color: '#5AAEE3',
+                width: 4
+              }],
+              markers: [{
+                id: 0,
+                latitude: start.latitude,
+                longitude: start.longitude,
+                iconPath: '../../icon/start.png'
+              }, {
+                id: 1,
+                latitude: end.latitude,
+                longitude: end.longitude,
+                iconPath: '../../icon/end.png'
+              }]
+              
+            })
+    
+          }),
+          fail: (err => {
+            console.log(err)
+          })
+        })
       })
     })
+  
   },
   //显示对话框
   showModal: function () {

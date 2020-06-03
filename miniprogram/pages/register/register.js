@@ -64,13 +64,18 @@ Page({
       headUrl: headimg,
       admin: false,
       money: 0,
+      days: 0,
+      integral: 0
     }
    
     Bmob.User.register(params).then(res =>{
       wx.showToast({
         title: '注册成功',
       })
-      wx.navigateBack()
+      setTimeout(function () {
+        wx.navigateBack()
+      }, 2000)
+     
     }).catch(err => {
       wx.showToast({
         title: err.error,

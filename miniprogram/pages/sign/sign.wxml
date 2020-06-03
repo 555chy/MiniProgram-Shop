@@ -3,14 +3,15 @@
 		<text class="sign-total-title">已连续签到</text>
 		<view class="row">
 			<text class="sign-total-num">0</text>
-			<text class="sign-total-num">{{sign.length}}</text>
+			<text class="sign-total-num">{{lianxu}}</text>
 			<text class="sign-total-day">天</text>
 		</view>
-		<text class="sign-total-tip">累计签到0天</text>
+		<text class="sign-total-tip">累计签到 {{days}} 天</text>
 	</view>
-	<view class="column score">
+	<view class="row score">
+		<text class="score-num">{{integral}}</text>
 		<text>积分</text>
-		<text>积分明细</text>
+		<!-- <text>积分明细</text> -->
 	</view>
 </view>
 <view class="column box-center">
@@ -21,6 +22,7 @@
 			<text>{{item}}天</text>
 		</view>
 	</view>
-	<text class="tip">连续签到7天可获得1张优惠券</text>
+	<!-- 连续签到7天可获得1张优惠券 -->
+	<text class="tip">   </text>
 	<button class="sign" bindtap="sign">立即签到</button>
 </view>

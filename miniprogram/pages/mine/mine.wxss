@@ -4,11 +4,10 @@
   /* background-color: #41AAE1; */
   background-image: url('https://img-blog.csdnimg.cn/20200527113438614.png');
   background-size: 100% 100%;
-  
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .btnlogin{
@@ -25,7 +24,6 @@
 }
 
 .info-person {
-  margin-top: 65rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;

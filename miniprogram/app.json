@@ -1,16 +1,17 @@
 {
   "pages": [
+    "pages/mine/mine",
+    "pages/order/order",
     "pages/home/home",
+    "pages/myorder/myorder",
     "pages/forget/forget",
     "pages/register/register",
     "pages/index/index",
-    "pages/myorder/myorder",
-    "pages/order/order",
+    
     "pages/detail/detail",
     "pages/sign/sign",
-    "pages/mine/mine",
-    "pages/login/login",
    
+    "pages/login/login",
     "pages/recovery/recovery",
     "pages/tip/tip",
     "pages/through/through",

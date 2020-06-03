@@ -23,17 +23,18 @@ Page({
       let objectId = user.objectId
       let query = Bmob.Query("Recycle_Order");
       let pointer = Bmob.Pointer('_User')
+      let poiID = pointer.set(objectId)
+      console.log("obj " + objectId)
       console.log('是否是管理员 '+isAdmin)
       if(isAdmin){
         //如果是管理员则查询当前接单的
-        let poiID = pointer.set(objectId)
         query.equalTo('admin', '==', poiID)
       }else{
         //不是管理员查询当前登录用户的所有订单
-        let poiID = pointer.set(objectId)
         query.equalTo('user', '==', poiID)
       }
       query.find().then(res => {
+        console.log(res)
         let length = res.length
         let hasData = length !== 0
         console.log('有数据 '+hasData)

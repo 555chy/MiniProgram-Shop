@@ -15,7 +15,7 @@
 		<text class="iconfont icon-right"></text>
 	</view>
 </navigator>
-<view class="price" wx:if="{{!isAdmin}}">
+<view class="price" wx:if="{{false}}">
 	<view class="price-info">
 		<text class="price-text">余额</text>
 		<text class="price-amount">{{money}}</text>

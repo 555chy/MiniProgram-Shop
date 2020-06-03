@@ -15,7 +15,10 @@ Page({
     count:0,
     swiperList: [{
       id: 0,
-      url: "https://img-blog.csdnimg.cn/20200506135707911.png"
+      url: "https://img-blog.csdnimg.cn/20200601182856478.png"
+    },{
+      id: 1,
+      url: "https://img-blog.csdnimg.cn/20200601182857184.png"
     }]
   },
 
@@ -49,10 +52,14 @@ Page({
     })
 
     let user = Bmob.User.current()
-    let objectId = user.objectId
-    this.setData({
-      objectId
-    })
+
+    if(user != null){
+      let objectId = user.objectId
+      this.setData({
+        objectId
+      })
+    }
+  
   },
 
   goThrough: function (e) {

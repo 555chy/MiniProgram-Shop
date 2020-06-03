@@ -12,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let user = Bmob.User.current()
+    // let user = Bmob.User.current()
     // let isAdmin = user.admin
     // let objectId = user.objectId
     
@@ -26,6 +26,13 @@ Page({
       console.log(res)
       wx.hideLoading()
       let hasData = res.length != 0
+
+      for(var i = 0; i < res.length; i++){
+        let time = res[i].time
+        let current = this.getCurrentTime()
+        res[i].color = time.search(current) != -1
+      }
+
       this.setData({
         order: res,
         hasData,
@@ -33,8 +40,9 @@ Page({
       })
     }).catch(err =>{
       wx.hideLoading()
+      console.log(err)
       wx.showToast({
-        title: err.errMsg,
+        title: err.error,
         icon: 'none'
       })
     });
@@ -48,6 +56,13 @@ Page({
       console.log(res)
       setTimeout(function () {
         let hasData = res.length != 0
+
+        for(var i = 0; i < res.length; i++){
+          let time = res[i].time
+          let current = that.getCurrentTime()
+          res[i].color = time.search(current) != -1
+        }
+
         that.setData({
           order: res,
           hasData
@@ -75,7 +90,17 @@ Page({
   },
   refreshOrder: function(e){
     wx.startPullDownRefresh()
+  },
+
+  getCurrentTime: function(){
+    var time = parseInt(new Date().getTime());
+    let date = new Date(time)
+    var year=date.getFullYear();
+    var mon = date.getMonth()+1;
+    var day = date.getDate();
+    return year+'-' + mon + "-" + day
   }
+  
 
 
 
