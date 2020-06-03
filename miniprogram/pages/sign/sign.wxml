@@ -18,7 +18,7 @@
 	<text class="sign-title">签到规则</text>
 	<view class="row sign-panel">
 		<view wx:for="{{day}}" wx:key="index" class="column">
-			<image class="sign-img" src="../../icon/car.png"></image>
+			<image class="sign-img" src="../../icon/gift.png"></image>
 			<text>{{item}}天</text>
 		</view>
 	</view>

@@ -1,15 +1,16 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/sign/sign",
     "pages/mine/mine",
     "pages/order/order",
-    "pages/home/home",
     "pages/myorder/myorder",
     "pages/forget/forget",
     "pages/register/register",
     "pages/index/index",
     
     "pages/detail/detail",
-    "pages/sign/sign",
+   
    
     "pages/login/login",
     "pages/recovery/recovery",
@@ -62,7 +63,7 @@
       }
     ],
     "color": "#999999",
-    "selectedColor": "#FFB974"
+    "selectedColor": "#51A7DE"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
