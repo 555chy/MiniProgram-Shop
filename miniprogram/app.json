@@ -1,11 +1,7 @@
 {
   "pages": [
-<<<<<<< HEAD
-    "pages/recognize/recognize",
+    "pages/recovery/recovery",
     "pages/rubbish/rubbish",
-
-=======
->>>>>>> fa243d2913366a5e462826cf047af6d1f5371019
     "pages/home/home",
     "pages/recognize/recognize",
     "pages/order/order",
@@ -18,7 +14,6 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/login/login",
-    "pages/recovery/recovery",
     "pages/tip/tip",
     "pages/through/through",
     "pages/address/address",
