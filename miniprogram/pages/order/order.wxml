@@ -1,4 +1,4 @@
-<view wx:if="{{isLogin}}">
+<view wx:if="{{isShow}}">
 	<view class="box-empty" wx:if="{{!hasData}}">
 		<block>
 			<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
@@ -28,10 +28,11 @@
 		</view>
 	</view>
 </view>
-<view class="box-empty" wx:else>
+<!-- <view class="box-empty" wx:else>
 	<block>
 		<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
 		<text class="tip">您还没有登录哦~</text>
-		<text class="btn" bindtap="goLogin">点击登录</text>
+		<text class="tip">试试查询订单吧</text>
+		<text class="btn" bindtap="goLogin">点击查询</text>
 	</block>
-</view>
+</view> -->

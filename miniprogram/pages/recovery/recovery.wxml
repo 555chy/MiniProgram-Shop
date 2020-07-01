@@ -1,7 +1,7 @@
 <!--pages/recovery/recovery.wxml-->
 <view class="background">
 	
-	<image class="logo" src="https://img-blog.csdnimg.cn/20200524144829969.png"></image>
+	<image class="logo" src="https://img-blog.csdnimg.cn/20200603203702857.jpg"></image>
 	<image class="threec" src="https://img-blog.csdnimg.cn/20200525102411572.png"></image>
 	<image class="home" src="https://img-blog.csdnimg.cn/20200525102411606.png"></image>
 	<image class="dazong" src="https://img-blog.csdnimg.cn/20200525102411561.png"></image>

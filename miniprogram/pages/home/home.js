@@ -68,6 +68,26 @@ Page({
     })
   },
 
+  goRecognize: function(e){
+    wx.navigateTo({
+      url: '../recognize/recognize',
+    })
+  },
+
+  daySign: function(e){
+    let user = Bmob.User.current()
+    if(user != null){
+      wx.navigateTo({
+        url: '../sign/sign',
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      })
+    }
+  },
+
   onShow: function (options) {
     var that = this
     let objectId = this.data.objectId

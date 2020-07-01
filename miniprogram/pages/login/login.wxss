@@ -1,6 +1,6 @@
 .icon {
-  width: 500rpx;
-  height: 350rpx;
+  width: 400rpx;
+  height: 400rpx;
   display: flex;
   margin: 80rpx auto;
 }
@@ -75,6 +75,6 @@
 
 
 image{
-  width: 450rpx;
-  height: 360rpx;
+  width: 381rpx;
+  height: 320rpx;
 }

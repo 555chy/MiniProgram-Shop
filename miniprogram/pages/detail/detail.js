@@ -24,10 +24,9 @@ Page({
    */
   onLoad: function (options) {
     let user = Bmob.User.current()
-    let isAdmin = user.admin
+    let isAdmin = user == null ? false: user.admin
     this.setData({
       isAdmin,
-
     }, () => {
       var query = wx.createSelectorQuery();
       query.select('.content').boundingClientRect()
@@ -40,13 +39,12 @@ Page({
     var that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('order', function (data) {
-      
       let order = data.order
       let location = order.location
       console.log(location)
       let latitude = location[0]
       let longitude = location[1]
-      let imageUrl = order.image == '' ? '../../icon/car.png' : order.image
+      let imageUrl = order.preview.url == '' ? '../../icon/car.png' : order.preview.url
       that.setData({
         imgUrl: imageUrl,
         order: order,
@@ -246,12 +244,12 @@ Page({
     query.save().then(res => {
 
       if (hasUser) {
-        if(!this.data.isRecharge){
-          wx.reLaunch({
-            url: '../tip/tip',
-          })
-          return
-        }
+        // if(!this.data.isRecharge){
+        //   wx.reLaunch({
+        //     url: '../tip/tip',
+        //   })
+        //   return
+        // }
         let userObjectId = user.objectId
         let money = balance + price
         const query2 = Bmob.Query('_User')
@@ -303,6 +301,29 @@ Page({
     let isRecharge = length == 1
     this.setData({
       isRecharge
+    })
+  },
+  callPhone: function(){
+    let isAdmin = this.data.isAdmin
+    var that = this
+    if(isAdmin){
+      wx.showModal({
+        title: '提示',
+        content: '是否拨打电话',
+        success (res) {
+          if (res.confirm) {
+            wx.makePhoneCall({
+              phoneNumber: that.data.order.phone,
+            })
+          }
+        }
+      })
+    
+    }
+  },
+  preview: function(e){
+    wx.previewImage({
+      urls: [this.data.order.preview.url],
     })
   }
 })

@@ -22,20 +22,20 @@
 
 	<view class="option">
 		<view class="option-item" bindtap="goThrough">
-			<image src="../../icon/category.png"></image>
+			<image src="../../icon/zhitongche.png"></image>
 			<view>厂直通车</view>
 		</view>
-		<view class="option-item">
-			<image src="../../icon/circle.png"></image>
-			<view>呼叫流程</view>
+		<view class="option-item" bindtap="goRecognize">
+			<image src="../../icon/recognize.png"></image>
+			<view>垃圾识别</view>
+		</view>
+		<view class="option-item" bindtap="daySign">
+			<image src="../../icon/daysign.png"></image>
+			<view>每日签到</view>
 		</view>
 		<view class="option-item">
-			<image src="../../icon/search.png"></image>
-			<view>合作伙伴</view>
-		</view>
-		<view class="option-item">
-			<image src="../../icon/more.png"></image>
-			<view>敬请期待</view>
+			<image src="../../icon/join.png"></image>
+			<view>加入我们</view>
 		</view>
 	</view>
 
@@ -51,11 +51,11 @@
 	
 
 	<view class="money">
-		<text class="money-mime">我的环保金</text>
+		<text class="money-mime">我的环保积分</text>
 		<view class="money-box">
 			<view class="money-item money-current">
 				<view class="money-price">{{currentmoney}}</view>
-				<view class="money-text">当前环保金</view>
+				<view class="money-text">当前环保积分</view>
 			</view>
 			<view class="money-item">
 				<view class="money-price">{{count}}</view>

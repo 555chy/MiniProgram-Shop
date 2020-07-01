@@ -1,27 +1,25 @@
 {
   "pages": [
+    "pages/recognize/recognize",
     "pages/home/home",
+    "pages/order/order",
+    "pages/reserve/reserve",
     "pages/sign/sign",
     "pages/mine/mine",
-    "pages/order/order",
     "pages/myorder/myorder",
     "pages/forget/forget",
     "pages/register/register",
     "pages/index/index",
-    
     "pages/detail/detail",
-   
-   
     "pages/login/login",
     "pages/recovery/recovery",
     "pages/tip/tip",
     "pages/through/through",
-    "pages/reserve/reserve",
     "pages/address/address",
     "pages/addressAdd/addressAdd",
     "pages/find/find",
-    "pages/shop/shop"
-    
+    "pages/shop/shop",
+    "pages/rubbish/rubbish"
   ],
   "permission": {
     "scope.userLocation": {
@@ -42,12 +40,6 @@
         "text": "首页",
         "iconPath": "icon/home_normal.png",
         "selectedIconPath": "icon/home_down.png"
-      },
-      {
-        "pagePath": "pages/find/find",
-        "text": "发现",
-        "iconPath": "icon/find_normal.png",
-        "selectedIconPath": "icon/find_down.png"
       },
       {
         "pagePath": "pages/order/order",

@@ -1,0 +1,34 @@
+.top{
+  width: 100%;
+  height: 380rpx;
+}
+
+.bottom{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30rpx;
+  
+}
+
+.box{
+  width: 310rpx;
+  height: 350rpx;
+  padding: 10rpx;
+}
+
+.input{
+  width: 100%;
+  background-color: white;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+
+}
+
+.head{
+  position: fixed;
+  top: 0;
+  left: 0;
+}

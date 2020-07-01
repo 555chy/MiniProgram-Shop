@@ -1,0 +1,13 @@
+<view>
+  <block wx:if="{{order == 0}}">
+    <view>
+    </view>
+
+  </block>
+  <view class="top" wx:else>
+    <view class="box" wx:for="{{rubbishs}}" wx:key="index">
+      <image src="{{item.url}}" ></image>
+    </view>
+  </view>
+
+</view>

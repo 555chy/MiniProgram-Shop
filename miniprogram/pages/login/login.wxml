@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
-<image class="icon" src="https://img-blog.csdnimg.cn/20200524144829969.png"/>
+<image class="icon" src="https://img-blog.csdnimg.cn/20200603203702857.jpg"/>
 <view class="box">
   <view class="input-box">
     <text class="iconfont icon-zhuceyonghu"></text>

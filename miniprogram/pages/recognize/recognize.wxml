@@ -1,0 +1,16 @@
+<!--pages/recognize/recognize.wxml-->
+<image class="top" src="https://img-blog.csdnimg.cn/20200616185918864.png"></image>
+
+<view class="bottom">
+  <view wx:for="{{images}}" wx:key="index">
+    <image class="box" src="{{item}}" data-index="{{index}}" bindtap="goRubbish"></image>
+  </view>
+</view>
+
+<view class="head">
+  <input class="input" placeholder="玉米棒属于什么垃圾"></input>
+  <button bindtap="search">search</button>
+</view>
+
+
+

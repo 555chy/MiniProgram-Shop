@@ -16,7 +16,7 @@
 			<text class="name">收货人</text>
 			<text class="id">{{order.name}}</text>
 		</view>
-		<view class="row">
+		<view class="row" bindtap="callPhone">
 			<text class="name">电话</text>
 			<text class="id">{{order.phone}}</text>
 		</view>
@@ -34,7 +34,7 @@
 		</view>
 		<view class="row">
 			<text class="name">废品图片</text>
-			<image class="img" src="{{imgUrl}}" mode="aspectFit"></image>
+			<image class="img" src="{{imgUrl}}" mode="aspectFit" bindtap="preview"></image>
 		</view>
 		<block wx:if="{{isAdmin}}">
 			<text wx:if="{{order.state==='open'}}" class="do" bindtap="receiveOrder">接单</text>
@@ -47,9 +47,9 @@
 	<modal title="提示" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
 		{{data.showWindows.Content}}
 		<input placeholder="确认后输入成交价格" bindinput="getPrice" type="digit"></input>
-		<checkbox-group bindchange="recharge">
+		<!-- <checkbox-group bindchange="recharge">
 			<checkbox value="yes">充值环保金</checkbox>
-		</checkbox-group>
+		</checkbox-group> -->
 	</modal>
 	<text ></text>
 </view>
