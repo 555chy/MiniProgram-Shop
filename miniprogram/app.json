@@ -1,9 +1,13 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/recognize/recognize",
     "pages/rubbish/rubbish",
 
+=======
+>>>>>>> fa243d2913366a5e462826cf047af6d1f5371019
     "pages/home/home",
+    "pages/recognize/recognize",
     "pages/order/order",
     "pages/reserve/reserve",
     "pages/sign/sign",

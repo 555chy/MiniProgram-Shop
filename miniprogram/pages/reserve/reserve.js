@@ -32,8 +32,7 @@ Page({
     showModalStatus: false,
     price: 20,
     goods: [],
-    imagebase64: '',
-    file: {}
+    file: {},
   },
 
   /**
@@ -155,7 +154,6 @@ Page({
         file.save().then(res => {
           console.log(res)
           that.setData({
-            file,
             imageUrl: path,
             file: res[0]
           })
@@ -220,7 +218,7 @@ Page({
       location
     } = this.data
     let time = this.data.yuyueTime
-    let image = this.data.imagebase64
+    let image = this.data.imageUrl
     let file = this.data.file
    
     let currentUser = Bmob.User.current()
@@ -271,9 +269,12 @@ Page({
     query.set('wasteInfo', wasteInfo)
     query.set('location', loca)
     query.set('state', 'open')
-    query.set('image',image)
-    query.set('preview',file)
 
+
+    if(image != 'https://img-blog.csdnimg.cn/20200524144828716.png'){
+      query.set('preview',file)
+    }
+  
     query.save().then(res => {
       console.log(res)
       setTimeout(function () {
