@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/recognize/recognize",
     "pages/home/home",
+    "pages/recognize/recognize",
     "pages/order/order",
     "pages/reserve/reserve",
     "pages/sign/sign",
