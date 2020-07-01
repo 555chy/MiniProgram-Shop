@@ -29,6 +29,18 @@ Page({
     });
     
   },
+  // 使文本框进入可编辑状态
+  showInput: function () {
+    this.setData({
+      inputShowed: true   //设置文本框可以输入内容
+    });
+  },
+  // 取消搜索
+  hideInput: function () {
+    this.setData({
+      inputShowed: false
+    });
+  },
   search: function(e){
   
     let key = "901b2bbdba31b32e6b2a05fca3bc71d0"
