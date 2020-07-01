@@ -13,8 +13,8 @@
 			<!-- 可编辑时的搜索框 -->
 			<view class="weui-search-bar__box">
 				<icon class="weui-icon-search_in-box" type="search" size="17"></icon>
-				<input type="text" class="weui-search-bar__input" placeholder="搜索" />
-		    <view class="weui-search-bar__cancel-btn" >搜索</view>
+				<input type="text" class="weui-search-bar__input" placeholder="请输入识别内容" bindinput="getInput" />
+		    <view bindtap="search" class="weui-search-bar__cancel-btn" >搜索</view>
 			</view>
 			<!-- 最初始时的搜索框 -->
 			<label class="weui-search-bar__label" hidden="true" bindtap="showInput">
@@ -25,6 +25,13 @@
 	
 	</view>
 </view>
+
+<view hidden="{{modalHidden}}">
+	<modal title="识别结果" confirm-text="确定" bindconfirm="modalBindaconfirm" no-cancel="true">
+			<text>{{result}}</text>
+	</modal>
+</view>
+
 
 
 

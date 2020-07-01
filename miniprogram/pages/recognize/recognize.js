@@ -1,5 +1,6 @@
 const app = getApp()
 const Bmob = app.globalData.Bmob
+const type = new Map([[0,'可回收垃圾'],[1,'有害垃圾'],[2,'厨余(湿)垃圾'],[3,'其他(干)垃圾']])
 
 Page({
   data: {
@@ -10,8 +11,10 @@ Page({
       "https://img-blog.csdnimg.cn/20200616185918803.png"
    ],
    rubbish: [],
-   word: ''
-
+   word: '',
+   modalHidden: true,
+   result:''
+   
   },
 
   /**
@@ -42,11 +45,11 @@ Page({
     });
   },
   search: function(e){
-  
+    var that = this
     let key = "901b2bbdba31b32e6b2a05fca3bc71d0"
     let word = this.data.word
-    let num = 3
-  
+    let num = 1
+    let mode = 1
     if(word == ''){
       wx.showToast({
         title: '请输入搜索内容',
@@ -55,20 +58,68 @@ Page({
       return
     }
 
-    let data = {key,word,num}
+    let data = {key,word,num,mode}
 
     wx.request({
       url: 'https://api.tianapi.com/txapi/lajifenlei/index',
       method: 'GET',
       data,
       success(res){
-        console.log(res)
+        let code = res.data.code
+        if(code == 200){
+          console.log(res)
+          let info = res.data.newslist[0]
+          let result = info.name + ': 属于' + type.get(info.type) + '\n\n' + info.explain + '\n' + info.contain + '\n\ntip: ' + info.tip
+        
+          that.setData({
+            modalHidden: false,
+            result
+          })
+        }else{
+          let msg = ''
+          switch(code){
+            case 100:
+              msg = '内部服务器错误'
+              break
+            case 110:
+              msg = '接口暂时维护中'
+              break
+            case 130:
+              msg = 'API调用频率超限'  
+              break
+            case 150:
+              msg = '接口可用次数不足'
+              break
+            case 290:
+              msg = '超过资源字节限制'
+              break
+            default:
+                msg = '识别出错,请稍后再试'
+                break
+          }
+          wx.showToast({
+            title: msg,
+            icon: 'none'
+          })
+          
+        }
       },
       fail(err){
-        console.log(err)
+        wx.showToast({
+          title: '识别出错,请稍后再试',
+          icon: 'none'
+        })
+       
       }
     })
 
+  },
+  getInput: function(e){
+    let value = e.detail.value
+    this.setData({
+      word: value
+    })
+   
   },
 
   goRubbish: function(e){
@@ -83,8 +134,10 @@ Page({
         })
       }
     })
-    
+  },
 
+  modalBindaconfirm: function () {
+     this.setData({modalHidden: true})
   }
 
   
