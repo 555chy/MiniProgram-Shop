@@ -1,0 +1,14 @@
+image{
+  width: 100rpx;
+  height: 160rpx;
+}
+
+.box{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container{
+  
+}

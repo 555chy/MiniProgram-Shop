@@ -33,7 +33,7 @@
 			<image src="../../icon/daysign.png"></image>
 			<view>每日签到</view>
 		</view>
-		<view class="option-item">
+		<view class="option-item" bindtap="goCityService">
 			<image src="../../icon/join.png"></image>
 			<view>同城服务</view>
 		</view>

@@ -73,6 +73,11 @@ Page({
       url: '../recognize/recognize',
     })
   },
+  goCityService: function(e){
+    wx.navigateTo({
+      url: '../city/city',
+    })
+  },
 
   daySign: function(e){
     let user = Bmob.User.current()
