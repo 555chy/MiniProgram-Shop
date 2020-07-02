@@ -61,7 +61,7 @@ image{
  .nav_left .nav_left_items.active {
   /*背景色变成白色*/
   background: #fff;
-  color: red;
+  color: #4AB8F6;
  }
  
  /*右侧栏主盒子*/

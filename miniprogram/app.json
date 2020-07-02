@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/recovery/recovery",
     "pages/rubbish/rubbish",
-    "pages/home/home",
     "pages/recognize/recognize",
     "pages/order/order",
     "pages/reserve/reserve",
