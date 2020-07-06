@@ -41,10 +41,12 @@ Page({
     eventChannel.on('order', function (data) {
       let order = data.order
       let location = order.location
-      console.log(location)
+      console.log(data)
       let latitude = location[0]
       let longitude = location[1]
-      let imageUrl = order.preview.url == '' ? '../../icon/car.png' : order.preview.url
+      
+      let imageUrl = order.preview == null ? '../../icon/car.png' : order.preview.url
+      // let imageUrl =  '../../icon/car.png' 
       that.setData({
         imgUrl: imageUrl,
         order: order,

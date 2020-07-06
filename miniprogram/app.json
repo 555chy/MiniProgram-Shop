@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/city/city",
     "pages/recovery/recovery",
     "pages/rubbish/rubbish",
     "pages/recognize/recognize",

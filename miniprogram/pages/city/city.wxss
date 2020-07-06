@@ -1,14 +1,19 @@
 image{
   width: 100rpx;
-  height: 160rpx;
+  height: 140rpx;
 }
 
 .box{
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 33.3%;
+  padding: 20rpx 0 ;
 }
 
 .container{
-  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

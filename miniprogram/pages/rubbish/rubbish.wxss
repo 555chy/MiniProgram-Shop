@@ -26,7 +26,7 @@ image{
  
  .container {
   display: flex;
-  direction: row;
+  flex-direction: row;
  }
  
  /*左侧栏主盒子*/
