@@ -104,6 +104,12 @@ Page({
   dateToTimestamp: function(date){
     var date = new Date(date)
     return Date.parse(date) / 1000
+  },
+
+  goRandom: function(){
+    wx.navigateTo({
+      url: '../random/random',
+    })
   }
   
 })

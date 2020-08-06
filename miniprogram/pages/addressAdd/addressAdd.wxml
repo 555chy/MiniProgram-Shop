@@ -1,11 +1,11 @@
 <!--pages/addressAdd/addressAdd.wxml-->
 <view class="box">
 	<text class="name">收货人</text>
-	<input class="value" placeholder="姓名" bindinput="getName"></input>
+	<input class="value" placeholder="姓名" bindinput="getName" value="{{editAddress.name}}"></input>
 </view>
 <view class="box">
 	<text class="name">手机号码</text>
-	<input class="value" placeholder="11位手机号" type="number" bindinput="getPhone"></input>
+	<input class="value" placeholder="11位手机号" type="number" bindinput="getPhone" value="{{editAddress.phone}}"></input>
 </view>
 <view class="box" bindtap="toMap">
 	<text class="name">地区信息</text>
@@ -14,7 +14,7 @@
 </view>
 <view class="box">
 	<text class="name">详细地址</text>
-	<input class="value" placeholder="街道门牌信息" bindinput="getAddress"></input>
+	<input class="value" placeholder="街道门牌信息" bindinput="getAddress" value="{{editAddress.detail}}"></input>
 </view>
 <button bindtap="save">保存</button>
 

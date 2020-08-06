@@ -16,8 +16,11 @@ Page({
   },
   //立即提交
   commit: function(e){
-    wx.navigateTo({
-      url: '../reserve/reserve',
+    // wx.navigateTo({
+    //   url: '../reserve/reserve',
+    // })
+    wx.switchTab({
+      url: '../home/home',
     })
   }
 })

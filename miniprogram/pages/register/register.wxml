@@ -9,11 +9,11 @@
 	</view>
 	<view class="input-box">
 		<text class="iconfont icon-mima-1"></text>
-		<input class="input" placeholder="密码" bindinput="getPassword"></input>
+		<input class="input" placeholder="密码" bindinput="getPassword" password="true"></input>
 	</view>
 	<view class="input-box">
 		<text class="iconfont icon-mima-1"></text>
-		<input class="input" placeholder="确认密码" bindinput="getConfirm"></input>
+		<input class="input" placeholder="确认密码" bindinput="getConfirm" password="true"></input>
 	</view>
 	<view class="input-box" >
 		<text class="iconfont icon-zhuceyonghu"></text>

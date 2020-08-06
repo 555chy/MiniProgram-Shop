@@ -236,7 +236,7 @@ Page({
   },
   goOrder: function (e) {
     wx.navigateTo({
-      url: '../recovery/recovery',
+      url: '../reserve/reserve',
     })
   },
   goOrderShop: function (e) {

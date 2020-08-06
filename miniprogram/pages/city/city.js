@@ -9,15 +9,29 @@ Page({
 
   onLoad: function (options) {
     var that = this
-    const query = Bmob.Query("City_Service");
+    const query = Bmob.Query("Data");
     query.find().then(res => {
-        console.log(res[0])
         that.setData({
-          service: res[0].value
+          service: res[2].value
 
         })
     });
   },
+
+  goService: function(e){
+    let index = e.currentTarget.dataset.index
+    let service = this.data.service[index]
+    wx.navigateTo({
+      url: '../servicelist/servicelist',
+      success: function (e) {
+        e.eventChannel.emit('service', {
+          service
+        })
+      }
+    })
+
+
+  }
 
   
 })

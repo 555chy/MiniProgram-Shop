@@ -1,12 +1,13 @@
 /* pages/recovery/recovery.wxss */
 .background{
   width: 100%;
+  min-height: 90vh;
   background-color: rgba(243, 243, 243, 1);
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 110rpx;
+  margin-bottom: 10vh;
 }
 
 .logo{
@@ -36,12 +37,12 @@
 }
 
 .bottom{
+  background-color: red;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   display: flex;
-  margin-top: 25rpx;
   background-color: white;
   align-items: center;
   padding: 30rpx;

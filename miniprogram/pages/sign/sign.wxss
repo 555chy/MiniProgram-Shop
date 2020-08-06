@@ -84,3 +84,12 @@
   padding: 15rpx;
   width: 300rpx !important;
 }
+
+.choujiang{
+  
+  height: 244rpx;
+  margin-top: 100rpx;
+  margin-left: 80rpx;
+  
+  
+}

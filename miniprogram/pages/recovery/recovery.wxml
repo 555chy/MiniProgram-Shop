@@ -1,12 +1,12 @@
 <!--pages/recovery/recovery.wxml-->
 <view class="background">
-	
 	<image class="logo" src="https://img-blog.csdnimg.cn/20200702184002705.png"></image>
 	<image class="threec" src="https://img-blog.csdnimg.cn/20200525102411572.png"></image>
 	<image class="home" src="https://img-blog.csdnimg.cn/20200525102411606.png"></image>
 	<image class="dazong" src="https://img-blog.csdnimg.cn/20200525102411561.png"></image>
 </view>
-	<view class="bottom">
+
+  <view class="bottom">
 		<text>*成交价格以实际为准</text>
-		<text class="commit" bindtap="commit">立即预约</text>
+		<text class="commit" bindtap="commit">回到首页</text>
 	</view>

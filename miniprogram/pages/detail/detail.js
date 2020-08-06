@@ -248,7 +248,7 @@ Page({
       if (hasUser) {
         // if(!this.data.isRecharge){
         //   wx.reLaunch({
-        //     url: '../tip/tip',
+        //     url: '../recovery/recovery',
         //   })
         //   return
         // }
@@ -259,7 +259,7 @@ Page({
         query2.set('money', money)
         query2.save().then(res => {
           wx.reLaunch({
-            url: '../tip/tip',
+            url: '../recovery/recovery',
           })
         }).catch(err => {
           console.log(err)
@@ -271,7 +271,7 @@ Page({
         })
       }else{
         wx.reLaunch({
-          url: '../tip/tip',
+          url: '../recovery/recovery',
         })
       }
     }).catch(err => {

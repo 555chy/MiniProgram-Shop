@@ -159,3 +159,17 @@ image {
   font-size: small;
   color: gray;
 }
+
+.mywaste{
+  margin-top: 20rpx;
+}
+
+.wasteinfo{
+  font-size: small;
+  color: gray;
+  margin-top: 30rpx;
+}
+
+.wastetext{
+  margin-top: 10rpx;
+}

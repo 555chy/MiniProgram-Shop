@@ -1,4 +1,1 @@
-<button bindtap="get">get</button>
-<button bindtap="getVerify">获取验证码</button>
-
-<button bindtap="login">登录</button>
+<view>login</view>

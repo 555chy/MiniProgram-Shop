@@ -280,7 +280,7 @@ Page({
       setTimeout(function () {
         wx.hideLoading()
         wx.redirectTo({
-          url: '../tip/tip',
+          url: '../recovery/recovery',
         })
       }, 2000)
 

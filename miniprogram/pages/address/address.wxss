@@ -25,6 +25,14 @@
   font-size: x-small;
   color: rgba(90, 174, 227, 1);
   flex-shrink: 0;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+}
+.delete {
+  font-size: x-small;
+  color: red;
+  flex-shrink: 0;
+  margin-right: 20rpx;
   font-size: 28rpx;
 }
 button {

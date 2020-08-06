@@ -44,6 +44,9 @@ Page({
    * 点击注册
    */
   register: function(e) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let username = this.data.username
     let password = this.data.password
     let confirmPassword = this.data.confirmPassword
@@ -67,18 +70,35 @@ Page({
       days: 0,
       integral: 0
     }
-   
+    var that = this
     Bmob.User.register(params).then(res =>{
-      wx.showToast({
-        title: '注册成功',
-      })
       setTimeout(function () {
-        wx.navigateBack()
+        wx.hideLoading()
+        wx.showToast({
+          title: '注册成功',
+        })
+        setTimeout(()=>{
+          Bmob.User.login(that.data.username, that.data.password).then(res =>{
+            wx.reLaunch({
+              url: '../mine/mine',
+            })
+          }).catch(err =>{
+            console.log(err)
+          })
+        },1500)
+       
       }, 2000)
-     
     }).catch(err => {
+      wx.hideLoading()
+      let code = err.code
+      var title = ""
+      if(code == 202){
+        title = "用户名已经注册,请更换后再注册"
+      }else{
+        title = err.error
+      }
       wx.showToast({
-        title: err.error,
+        title: title,
         icon: 'none',
         duration: 3000
       })

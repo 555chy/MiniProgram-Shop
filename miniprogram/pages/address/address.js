@@ -45,6 +45,20 @@ Page({
 
   choose: function(e){
     let index = e.currentTarget.dataset.index;
+    let address = this.data.address[index]
+    wx.navigateTo({
+      url: '../addressAdd/addressAdd',
+      success: function (e) {
+        e.eventChannel.emit('editaddress', {
+          address,
+          index
+        })
+      }
+    })
+  },
+
+  setting: function (e) {
+    let index = e.currentTarget.dataset.index;
     this.setData({
       defaultIndex: index
     });
@@ -52,7 +66,53 @@ Page({
       data: index,
       key: 'defaultIndex',
     })
+  },
+  
+  delete: function(e){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除吗？',
+      success (res) {
+        if (res.confirm) {
+          let index = e.currentTarget.dataset.index;
+          let address = that.data.address
+          address.splice(index,1)
+          if(index == that.data.defaultIndex){
+            that.setData({
+              address,
+              defaultIndex: 0
+            })
+            wx.setStorage({
+              data: 0,
+              key: 'defaultIndex',
+            })
+          }else{
+            that.setData({
+              address,
+            })
+          }
+            wx.setStorage({
+              data: address,
+              key: 'address',
+              success: function(e){
+                wx.showToast({
+                  title: '删除成功',
+                })
+              }
+          })
+        } 
+      }
+    })
+  
+  
+   
+
+  
+
   }
+
+
   
 
   

@@ -26,3 +26,8 @@
 	<text class="tip">   </text>
 	<button class="sign" bindtap="sign">立即签到</button>
 </view>
+
+<view>
+	<!-- <image bindtap="goRandom" class="choujiang" src="https://img-blog.csdnimg.cn/20200730173310334.png"></image> -->
+
+</view>

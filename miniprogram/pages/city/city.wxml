@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="box" wx:for="{{service}}" wx:key="index">
+  <view class="box" wx:for="{{service}}" wx:key="index" bindtap="goService" data-index="{{index}}">
     <image src="{{item.url}}"></image>
     <view>{{item.name}}</view>
   </view>

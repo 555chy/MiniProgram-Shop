@@ -1,11 +1,14 @@
 <block class="box" wx:for="{{address}}" wx:key="index" wx:for-index="index">
-	<view class="address" bindtap="choose" data-index="{{index}}">
-		<view class="info">
+	<view class="address" >
+		<view class="info" bindtap="setting" data-index="{{index}}">
 		<text class="name">{{item.name}}, {{item.phone}}</text>
 		<view>{{item.address}}</view>
 		<view>{{item.detail}}</view>
 		</view>
-		<text class="default" wx:if="{{index == defaultIndex}}">默认</text>
+		<text class="default" wx:if="{{index == defaultIndex}}">√</text>
+		<text class="default" bindtap="choose" data-index="{{index}}">编辑</text>
+		<text class="delete" bindtap="delete" data-index="{{index}}">删除</text>
+
 	</view>
 </block>
 

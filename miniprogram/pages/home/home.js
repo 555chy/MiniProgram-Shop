@@ -13,19 +13,25 @@ Page({
     currentmoney: 0.00,
     objectId: '',
     count:0,
-    swiperList: [{
-      id: 0,
-      url: "https://img-blog.csdnimg.cn/20200601182856478.png"
-    },{
-      id: 1,
-      url: "https://img-blog.csdnimg.cn/20200601182857184.png"
-    }]
+    swiperList: [],
+    wasteInfo: "加载中请稍后..."
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    const query = Bmob.Query("Data");
+    query.order("id")
+    query.find().then(res => {
+        that.setData({
+          swiperList: res[0].value,
+          wasteInfo: res[1].value.toString()
+        })
+    });
+
+
     wx.getLocation({
       fail: (res) => {},
       success: (result) => {

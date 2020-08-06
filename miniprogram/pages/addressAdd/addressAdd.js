@@ -9,6 +9,9 @@ Page({
     detail: '',
     location: {},
     cacheLocation: [],
+    editAddress: [],
+    isEdit: false,
+    index: 0
   },
 
   toMap: function () {
@@ -50,8 +53,18 @@ Page({
       address,
       detail,
       location,
-      cacheLocation
+      cacheLocation,
+      isEdit,
+      index
     } = this.data
+
+    if(phone.length != 11){
+      wx.showToast({
+        title: '请输入11位手机号',
+        icon:'none'
+      })
+      return
+    }
 
     if (name != '' && phone != '' && address != '地区信息' && detail != '') {
       let obj = {
@@ -62,8 +75,12 @@ Page({
         location
       }
 
-      cacheLocation.push(obj)
-    
+      if(isEdit){
+        cacheLocation[index] = obj
+      }else{
+        cacheLocation.push(obj)
+      }
+
       wx.setStorage({
         data: cacheLocation,
         key: 'address',
@@ -100,11 +117,25 @@ Page({
         })
       },
     })
+
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('editaddress', function(data) {
+      console.log(data)
+      that.setData({
+        editAddress: data.address,
+        address: data.address.address,
+        name: data.address.name,
+        phone: data.address.phone,
+        detail: data.address.detail,
+        location: data.address.location,
+        isEdit: true,
+        index: data.index
+      })
+    })
    
   },
 
   get: function(e){
-    
     wx.getStorage({
       key: 'address',
       success: function(res){

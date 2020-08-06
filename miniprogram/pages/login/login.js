@@ -51,32 +51,67 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    Bmob.User.login(this.data.username,this.data.password).then(res =>{
-      console.log(res)
-      setTimeout(function () {
-        wx.hideLoading()
-        wx.reLaunch({
-          url: '../mine/mine',
-        })
-      }, 2000)
-    
 
-    }).catch(err =>{
-      console.log(err)
-      wx.hideLoading()
-      let code = err.code
-      var message = ""
-      if(code === 101){
-        message = "用户名或密码错误"
-      }else{
-        message = err.error
-      }
-      wx.showToast({
-        title: message,
-        icon: 'none'
-      })
+    let username = this.data.username
+    let reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    if (reg.test(username)) {
+      const query = Bmob.Query("_User");
+      query.equalTo("mobilePhoneNumber", "==", username);
+      query.find().then(res => {
+          let name = res[0].username
+          Bmob.User.login(name,this.data.password).then(res =>{
+            setTimeout(function () {
+              wx.hideLoading()
+              wx.reLaunch({
+                url: '../mine/mine',
+              })
+            }, 2000)
+          }).catch(err =>{
+            wx.hideLoading()
+            let code = err.code
+            var message = ""
+            if(code === 101){
+              message = "用户名或密码错误"
+            }else{
+              message = err.error
+            }
+            wx.showToast({
+              title: message,
+              icon: 'none'
+            })
+            
+          })
+         
+      });
       
-    })
+    }else{
+      Bmob.User.login(username,this.data.password).then(res =>{
+        console.log(res)
+        setTimeout(function () {
+          wx.hideLoading()
+          wx.reLaunch({
+            url: '../mine/mine',
+          })
+        }, 2000)
+    
+      }).catch(err =>{
+        console.log(err)
+        wx.hideLoading()
+        let code = err.code
+        var message = ""
+        if(code === 101){
+          message = "用户名或密码错误"
+        }else{
+          message = err.error
+        }
+        wx.showToast({
+          title: message,
+          icon: 'none'
+        })
+        
+      })
+    }
+
   },
   forgetPwd: function(e){
     wx.navigateTo({
