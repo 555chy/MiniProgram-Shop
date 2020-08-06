@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="box" wx:for="{{gift}}" wx:key="index">
+    <view>{{item}}</view>
+  </view>
+
+  
+</view>

@@ -20,7 +20,7 @@ Page({
       that.setData({
         sign: res.sign,
         lianxu: res.sign.length,
-        integral: res.integral,
+        integral: res.money,
         days: res.days
       })
     }).catch(err => {
@@ -65,7 +65,7 @@ Page({
       }
       console.log(sign)
       query.set('sign', sign)
-      query.set('integral',temp + integral)
+      query.set('money',temp + integral)
       query.set('days',days + 1)
       query.save().then(res => {
         wx.showToast({

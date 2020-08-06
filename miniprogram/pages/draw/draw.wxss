@@ -1,0 +1,25 @@
+
+.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 24%;
+  height: 24%;
+  padding: 20rpx 0 ;
+  overflow: hidden;
+  border-color: black;
+  border: 0.5px solid transparent;
+  size: 15rpx;
+}
+
+
+
+.container{
+  width: 600rpx;
+  height: 600rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}

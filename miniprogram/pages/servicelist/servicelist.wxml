@@ -1,0 +1,15 @@
+<!--pages/service/service.wxml-->
+<view wx:for="{{content}}" wx:for-item="item" wx:key="index" bindtap="callPhone" data-index="{{index}}">
+  <view class="item">
+    <view class="row item-content">
+      <view class="column left">
+        <view class="position">{{item.area}}</view>
+        <view class="row mobile-box">
+          <image class="mobile-icon" src="../../icon/mobile.png"></image>
+          <view class="mobile">{{item.phone}}</view>
+        </view>
+      </view>
+      <image class="call-icon" src="../../icon/call.png"></image>
+    </view>
+  </view>
+</view>
