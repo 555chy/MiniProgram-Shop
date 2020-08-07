@@ -1,7 +1,27 @@
-<view class="container">
-  <view class="box" wx:for="{{gift}}" wx:key="index">
-    <view>{{item}}</view>
-  </view>
-
-  
+<view class="table">
+	<view class="tr">
+		<view class="td" id="lucky_0" style="background-color:{{colors[0]}}">{{gifts[0]}}</view>
+		<view class="td" id="lucky_1" style="background-color:{{colors[1]}}">{{gifts[1]}}</view>
+	  <view class="td" id="lucky_2" style="background-color:{{colors[2]}}">{{gifts[2]}}</view>
+		<view class="td" id="lucky_3" style="background-color:{{colors[3]}}">{{gifts[3]}}</view>
+	</view>
+	<view class="tr">
+		<view class="td" id="lucky_11" style="background-color:{{colors[11]}}">{{gifts[11]}}</view>
+    <view class="td empty"></view>
+    <view class="td empty"></view>
+		<view class="td" id="lucky_4" style="background-color:{{colors[4]}}">{{gifts[4]}}</view>
+	</view>
+	<view class="tr">
+		<view class="td" id="lucky_10" style="background-color:{{colors[10]}}">{{gifts[10]}}</view>
+    <view class="td empty"></view>
+    <view class="td empty"></view>
+		<view class="td" id="lucky_5" style="background-color:{{colors[5]}}">{{gifts[5]}}</view>
+	</view>
+	<view class="tr">
+		<view class="td" id="lucky_9" style="background-color:{{colors[9]}}">{{gifts[9]}}</view>
+		<view class="td" id="lucky_8" style="background-color:{{colors[8]}}">{{gifts[8]}}</view>
+		<view class="td" id="lucky_7" style="background-color:{{colors[7]}}">{{gifts[7]}}</view>
+		<view class="td" id="lucky_6" style="background-color:{{colors[6]}}">{{gifts[6]}}</view>
+	</view>
+  <image class="luckybtn" src="../../icon/lottery.png" colspan="2" rowspan="2" id="lucky" bindtap="luckyRun"></image>
 </view>
