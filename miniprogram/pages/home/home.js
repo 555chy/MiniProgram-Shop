@@ -2,7 +2,7 @@
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 const app = getApp()
 const Bmob = app.globalData.Bmob
-
+const innerAudioContext = wx.createInnerAudioContext();
 
 Page({
   /**
@@ -14,7 +14,8 @@ Page({
     objectId: '',
     count:0,
     swiperList: [],
-    wasteInfo: "加载中请稍后..."
+    wasteInfo: "加载中请稍后...",
+    time: 0
   },
 
   /**
@@ -31,7 +32,6 @@ Page({
         })
     });
 
-
     wx.getLocation({
       fail: (res) => {},
       success: (result) => {
@@ -46,7 +46,7 @@ Page({
             longitude: result.longitude
           },
           success: function (res) {
-            console.log(res)
+          
             that.setData({
               address: res.result.address
             })
@@ -58,12 +58,40 @@ Page({
     })
 
     let user = Bmob.User.current()
-
     if(user != null){
       let objectId = user.objectId
       this.setData({
         objectId
       })
+    }
+
+    if(user.admin){
+      let BmobSocketIo = new Bmob.Socket("4d7bba7512733061b4ca6c9f9b0a50d9")
+      BmobSocketIo.onInitListen = function () {
+        console.log("监听注册成功")
+        BmobSocketIo.updateTable("Recycle_Order"); 
+      };
+  
+      //监听服务器返回的更新表的数据
+      BmobSocketIo.onUpdateTable = function (tablename, data) {
+        if (tablename == "Recycle_Order") {
+          if(data.state == "open"){
+            console.log("listen",data)
+              let currentTime = Math.round(new Date().getTime() / 1000)
+              let time = that.data.time
+              if(currentTime - time > 10){
+                that.setData({
+                  time: currentTime
+                })
+                // play voice
+                innerAudioContext.autoplay = true;//音频自动播放设置
+                innerAudioContext.src = 'http://www.jipin.cloud/2020/08/08/60f8da794043b66c8042a307763e939b.mp3';//链接到音频的地址
+                innerAudioContext.play()
+              }
+          }
+        }
+      };  
+
     }
   
   },
@@ -104,21 +132,24 @@ Page({
     let objectId = this.data.objectId
     const query = Bmob.Query('_User');
     query.get(objectId).then(res => {
-      console.log(res)
+     
       that.setData({
         currentmoney: res.money
       })
     }).catch(err => {
-      console.log(err)
+    
     })
 
     const query2 = Bmob.Query('Recycle_Order');
     query2.equalTo('user','==',objectId)
     query2.count().then(res => {
-      console.log(res)
+    
       that.setData({count: res})
     });
 
+  },
+  onUnload: function(option){
+    innerAudioContext.destroy()
   }
 
 

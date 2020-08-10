@@ -20,7 +20,7 @@ Page({
       that.setData({
         sign: res.sign,
         lianxu: res.sign.length,
-        integral: res.money,
+        integral: res.integral,
         days: res.days
       })
     }).catch(err => {
@@ -33,8 +33,8 @@ Page({
     let objectId = user.objectId
     let days = this.data.days
     let integral = this.data.integral
-    let lianxu = this.data.lianxu
-    let temp = lianxu + 1
+    let jifen = this.data.lianxu == 6 ? 16 : 4
+    // let temp = lianxu + 1
     let sign = this.data.sign
     let length = sign.length
     let lastTime = sign[length - 1]
@@ -65,7 +65,7 @@ Page({
       }
       console.log(sign)
       query.set('sign', sign)
-      query.set('money',temp + integral)
+      query.set('integral',jifen + integral)
       query.set('days',days + 1)
       query.save().then(res => {
         wx.showToast({
@@ -75,7 +75,7 @@ Page({
           sign,
           lianxu: sign.length,
           days: days + 1,
-          integral: temp + integral
+          integral: jifen + integral
         })
         }).catch(err => {
           wx.showToast({
@@ -107,9 +107,33 @@ Page({
   },
 
   goRandom: function(){
-    wx.navigateTo({
-      url: '../random/random',
+    wx.getStorage({
+      key: 'address',
+      success: function(res){
+        console.log(res)
+        if(res.data.length > 0){
+          wx.navigateTo({
+            url: '../draw/draw',
+          })
+        }else{
+          wx.showToast({
+            title: '请先添加上门地址后再参加抽奖',
+            icon:'none',
+            duration:3000
+          })
+        }
+      },
+      fail: (err)=>{
+        wx.showToast({
+          title: '请先添加上门地址后再参加抽奖',
+          icon:'none',
+          duration:3000
+        })
+      }
     })
+
+
+   
   }
   
 })

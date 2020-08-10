@@ -10,7 +10,8 @@ Page({
     username: "用户名",
     password:"",
     confirmPassword:"",
-    phoneNumber:""
+    phoneNumber:"",
+    disable: true
   },
   onLoad: function(options){
     var that = this
@@ -68,7 +69,7 @@ Page({
       admin: false,
       money: 0,
       days: 0,
-      integral: 0
+      integral: 20
     }
     var that = this
     Bmob.User.register(params).then(res =>{
@@ -80,7 +81,7 @@ Page({
         setTimeout(()=>{
           Bmob.User.login(that.data.username, that.data.password).then(res =>{
             wx.reLaunch({
-              url: '../mine/mine',
+              url: '../home/home',
             })
           }).catch(err =>{
             console.log(err)
@@ -112,24 +113,76 @@ Page({
   getUsername: function(e) {
     this.setData({
       username: e.detail.value
+    },()=>{
+      let username = this.data.username
+      let password = this.data.password
+      let confirm = this.data.confirmPassword
+      let phone = this.data.phoneNumber
+      var disable = true
+      if(username.length >= 2 && password.length > 5 && confirm.length >5 && phone.length > 10){
+        disable = false
+      }
+      this.setData({
+        disable
+      })
+
     })
   },
 
   getPassword: function(e) {
     this.setData({
       password: e.detail.value
+    },()=>{
+      let username = this.data.username
+      let password = this.data.password
+      let confirm = this.data.confirmPassword
+      let phone = this.data.phoneNumber
+      var disable = true
+      if(username.length >= 2 && password.length > 5 && confirm.length >5 && phone.length > 10){
+        disable = false
+      }
+      this.setData({
+        disable
+      })
+
     })
   },
 
   getConfirm: function(e){
     this.setData({
       confirmPassword: e.detail.value
+    },()=>{
+      let username = this.data.username
+      let password = this.data.password
+      let confirm = this.data.confirmPassword
+      let phone = this.data.phoneNumber
+      var disable = true
+      if(username.length >= 2 && password.length > 5 && confirm.length >5 && phone.length > 10){
+        disable = false
+      }
+      this.setData({
+        disable
+      })
+
     })
   },
 
   getPhoneNumber: function(e){
     this.setData({
       phoneNumber: e.detail.value
+    },()=>{
+      let username = this.data.username
+      let password = this.data.password
+      let confirm = this.data.confirmPassword
+      let phone = this.data.phoneNumber
+      var disable = true
+      if(username.length >= 2 && password.length > 5 && confirm.length >5 && phone.length > 10){
+        disable = false
+      }
+      this.setData({
+        disable
+      })
+
     })
   },
 })

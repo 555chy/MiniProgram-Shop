@@ -7,19 +7,42 @@ Page({
    */
   data: {
     username: "",
-    password: ""
+    password: "",
+    disable: true
   },
 
   getUsername: function(e){
     this.setData({
       username: e.detail.value
+    },()=>{
+      let username = this.data.username
+      let password = this.data.password
+      var disable = true
+      console.log(username.length,password.length)
+      if(username.length > 1 && password.length > 5){
+        disable = false
+      }
+      this.setData({
+        disable
+      })
     })
   },
 
   getPassword: function(e){
     this.setData({
       password: e.detail.value
+    },()=>{
+      let username = this.data.username
+      let password = this.data.password
+      var disable = true
+      if(username.length > 1 && password.length > 5){
+        disable = false
+      }
+      this.setData({
+        disable
+      })
     })
+   
   },
 
   /**
@@ -63,7 +86,7 @@ Page({
             setTimeout(function () {
               wx.hideLoading()
               wx.reLaunch({
-                url: '../mine/mine',
+                url: '../home/home',
               })
             }, 2000)
           }).catch(err =>{
@@ -90,7 +113,7 @@ Page({
         setTimeout(function () {
           wx.hideLoading()
           wx.reLaunch({
-            url: '../mine/mine',
+            url: '../home/home',
           })
         }, 2000)
     

@@ -4,7 +4,6 @@ const Bmob = app.globalData.Bmob
 
 Page({
   data: {
-    modalHidden: true,
     showModalStatus: true,
     isAdmin: false,
     latitude: 0,
@@ -12,12 +11,7 @@ Page({
     markers: [],
     polyline: [],
     order: {},
-    orderState: '',
-    money: 0,
-    price: 0,
-    integral: 0,
-    isRecharge: false,
-    imgUrl: "../../icon/car.png"
+    imgUrl: "../../icon/car.png",
   },
 
   /**
@@ -42,33 +36,18 @@ Page({
     eventChannel.on('order', function (data) {
       let order = data.order
       let location = order.location
-      console.log(data)
+      console.log("qqqq",data)
       let latitude = location[0]
       let longitude = location[1]
-      
       let imageUrl = order.preview == null ? '../../icon/car.png' : order.preview.url
-      // let imageUrl =  '../../icon/car.png' 
+
       that.setData({
         imgUrl: imageUrl,
         order: order,
         latitude: latitude,
         longitude: longitude,
       }, () => {
-        let order = that.data.order
-        let user = order.user
-        if(user != null){
-          let userObjectId = user.objectId
-          const query = Bmob.Query('_User')
-          query.get(userObjectId).then(res => {
-            that.setData({
-              money: res.money,
-              integral: res.integral
-            })
-          }).catch(err => {
-  
-          })
-        }
-
+       
         var qqmapsdk = new QQMapWX({
           key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
         })
@@ -85,7 +64,6 @@ Page({
             for (var i = 2; i < coors.length; i++) {
               coors[i] = coors[i - 2] + coors[i] / 1000000
             }
-    
             for (var i = 0; i < coors.length; i += 2) {
               pl.push({
                 latitude: coors[i],
@@ -123,7 +101,7 @@ Page({
     })
   
   },
-  //显示对话框
+  
   showModal: function () {
     const duration = 200;
     // 显示遮罩层
@@ -175,139 +153,6 @@ Page({
     }
   },
 
-  //点击接单
-  receiveOrder: function (e) {
-    var that = this
-    wx.showModal({
-      title: '提示',
-      content: '是否要接单?',
-      success(res) {
-        if (res.confirm) {
-          wx.showLoading({
-            title: '接单中',
-          })
-          let user = Bmob.User.current()
-          let order = that.data.order
-          let orderId = order.objectId
-          let objectId = user.objectId
-          const query = Bmob.Query('Recycle_Order');
-          const pointer = Bmob.Pointer('_User')
-          const obj = pointer.set(objectId)
-          query.set("admin", obj)
-          query.set('id', orderId)
-          query.set('state', 'received')
-          query.save().then(res => {
-            wx.hideLoading()
-            wx.showToast({
-              title: '接单成功',
-            })
-            that.data.order.state = 'received'
-            that.setData({
-              order
-            })
-          }).catch(err => {
-            console.log(err)
-            wx.hideLoading()
-            wx.showToast({
-              title: '接单失败',
-              icon: 'none'
-            })
-          })
-        }
-      }
-    })
-  },
-  //完成订单
-  showWindows: function (e) {
-    this.setData({
-      modalHidden: false
-    })
-  },
-  //确定按钮点击事件
-  modalBindaconfirm: function () {
-    let order = this.data.order
-    let balance = this.data.money
-    let integral = this.data.integral
-    let orderId = order.objectId
-    let price = parseInt(this.data.price)
-    let user = order.user
-    let hasUser = user != null
-
-    if (price == '') {
-      wx.showToast({
-        title: '请输入成交价格',
-        icon: 'none'
-      })
-      return
-    }
-
-    const query = Bmob.Query('Recycle_Order');
-    query.set('id', orderId)
-    query.set('price', price)
-    query.set('state', 'fixed')
-    query.save().then(res => {
-
-      if (hasUser) {
-        // if(!this.data.isRecharge){
-        //   wx.reLaunch({
-        //     url: '../recovery/recovery',
-        //   })
-        //   return
-        // }
-        let userObjectId = user.objectId
-        let money = balance + price
-        const query2 = Bmob.Query('_User')
-        query2.set('id', userObjectId)
-        query2.set('money', money)
-        query2.set('integral', integral + 16)
-        query2.save().then(res => {
-          wx.reLaunch({
-            url: '../recovery/recovery',
-          })
-        }).catch(err => {
-          console.log(err)
-          wx.showToast({
-            title: '用户数据更新失败，请联系管理员',
-            icon: 'none',
-            duration: 3000
-          })
-        })
-      }else{
-        wx.reLaunch({
-          url: '../recovery/recovery',
-        })
-      }
-    }).catch(err => {
-      wx.showToast({
-        title: err.errMsg,
-        icon: 'none'
-      })
-    })
-
-    this.setData({
-      modalHidden: !this.data.modalHidden,
-    })
-  },
-  //取消按钮点击事件
-  modalBindcancel: function () {
-    this.setData({
-      modalHidden: !this.data.modalHidden,
-    })
-  },
-  getPrice: function (e) {
-    let price = e.detail.value
-    this.setData({
-      price
-    })
-  },
-  recharge: function(e){
-    let value = e.detail.value
-    let length = value.length
-    let isRecharge = length == 1
-    this.setData({
-      isRecharge
-    })
-  },
   callPhone: function(){
     let isAdmin = this.data.isAdmin
     var that = this
@@ -329,6 +174,34 @@ Page({
   preview: function(e){
     wx.previewImage({
       urls: [this.data.order.preview.url],
+    })
+  },
+
+  finishOrder: function(e){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定送货完成吗',
+      success (res) {
+        if (res.confirm) {
+          let objectId = that.data.order.objectId
+          const query = Bmob.Query('Recycle_Goods');
+          query.set('id', objectId) //需要修改的objectId
+          query.set('received', true)
+          query.save().then(res => {
+            wx.reLaunch({
+              url: '../recovery/recovery',
+            })
+          }).catch(err => {
+            wx.showToast({
+              title: '用户数据更新失败，请联系管理员',
+              icon: 'none',
+              duration: 3000
+            })
+          })
+        
+        } 
+      }
     })
   }
 })

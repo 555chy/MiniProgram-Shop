@@ -1,0 +1,22 @@
+<view class="box-empty" wx:if="{{!hasData}}">
+	<block wx:if="{{isShow}}">
+		<image class="img" src="https://img-blog.csdnimg.cn/20200524144829877.png"></image>
+		<text class="tip">{{isAdmin ? "所有奖品都已发完,刷新试试" : "暂无奖品,刷新试试"}}</text>
+		<text class="btn" bindtap="refreshOrder">刷新</text>
+	</block>
+
+</view>
+<block wx:else>
+	<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:if="{{isShow}}">
+		<view class="order-item" bindtap="goDetail" data-index="{{index}}">
+			<text class="garbage red" wx:if="{{item.received === false}}">待发货</text>
+			<text class="garbage green" wx:if="{{item.received === true}}">已收货</text>
+		
+			<view class="info">
+				<text class="address">{{item.good}}</text>
+				<text class="time">{{item.address + item.detail}}</text>
+				<text class="desc">{{item.phone}}</text>
+			</view>
+		</view>
+	</view>
+</block>

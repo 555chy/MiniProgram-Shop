@@ -1,5 +1,9 @@
+.title {
+  text-align: center;
+  margin-top: 30rpx;
+}
+
 .table {
-    border:1px solid #dadada;
     border-right: 0;
     border-bottom: 0;
     position: relative;
@@ -8,17 +12,20 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    margin-top: 50rpx;
+    box-sizing: border-box;
 }
 .tr {
     width: 100%;
+    height: 22vw;
     display: flex;
     flex-direction: row;
+    flex-basis: 1;
     flex-grow: 1;
     overflow: hidden;
 }
 .td {
-    border-bottom: 1px solid #dadada;
-    border-right: 1px solid #dadada;
+    border: 10rpx solid white;
     text-align: center;
     width:100%;
     display: flex;
@@ -28,7 +35,9 @@
     flex-shrink: 1;
     overflow: hidden;
     font-size: small;
+    border-radius:12px;
     z-index: 10;
+   
 }
 .empty {
   border: none !important;
@@ -36,11 +45,62 @@
 }
 .luckybtn {
   position: absolute;
-  width: 44vw;
-  height: 42vw;
+  width: 40vw;
+  height: 40vw;
   overflow: hidden;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
   opacity: 1;
+  z-index: 20;
 }
+
+.luckybtn-disable{
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  overflow: hidden;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  opacity: 1;
+  z-index: 20;
+  pointer-events: none;
+}
+
+
+.history {
+  margin: 60rpx auto;
+  background-color: rgba(110,67,215,1);
+  border-radius: 20rpx;
+  width: 90vw;
+  height: 50vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.history-title {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  width: 200rpx;
+  text-align: center;
+  font-size: 30rpx;
+  transform: translate(-50%, -50%);
+  background-color: rgba(68,45,128,1);
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  color: white;
+}
+.history-content {
+  width: 80%;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  margin: 50rpx 0;
+}
+
+.history-item{
+  padding: 10rpx;
+}
+

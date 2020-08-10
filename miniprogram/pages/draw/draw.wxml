@@ -1,6 +1,8 @@
+<view class="title">我的剩余积分 {{integral}}（20积分/次）</view>
+
 <view class="table">
 	<view class="tr">
-		<view class="td" id="lucky_0" style="background-color:{{colors[0]}}">{{gifts[0]}}</view>
+		<view class="td" id="lucky_0" style="background-color:{{colors[0]}}" >{{gifts[0]}}</view>
 		<view class="td" id="lucky_1" style="background-color:{{colors[1]}}">{{gifts[1]}}</view>
 	  <view class="td" id="lucky_2" style="background-color:{{colors[2]}}">{{gifts[2]}}</view>
 		<view class="td" id="lucky_3" style="background-color:{{colors[3]}}">{{gifts[3]}}</view>
@@ -23,5 +25,14 @@
 		<view class="td" id="lucky_7" style="background-color:{{colors[7]}}">{{gifts[7]}}</view>
 		<view class="td" id="lucky_6" style="background-color:{{colors[6]}}">{{gifts[6]}}</view>
 	</view>
-  <image class="luckybtn" src="../../icon/lottery.png" colspan="2" rowspan="2" id="lucky" bindtap="luckyRun"></image>
+
+	<image class="{{state}}" src="../../icon/lottery.png" id="lucky" bindtap="luckyRun"></image>
+
+</view>
+
+<view class="history">
+	<text class="history-title">我的奖品</text>
+	<view class="history-content">
+			<view class="history-item" wx:for="{{mygifts}}" wx:key="index">{{item}}</view>
+	</view>
 </view>

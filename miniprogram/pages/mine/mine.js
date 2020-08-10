@@ -64,6 +64,10 @@ Page({
     wx.navigateTo({
       url: '../address/address',
     })
-  }
-
+  },
+  goMyGift: function(e){
+   wx.navigateTo({
+     url: '../myGift/myGift',
+   })
+  },
 })

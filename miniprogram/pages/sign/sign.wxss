@@ -86,10 +86,10 @@
 }
 
 .choujiang{
-  
-  height: 244rpx;
+  width: 90%;
+  height: calc(90vw * 270 / 673);
+  margin: 0 auto;
+  display: block;
   margin-top: 100rpx;
-  margin-left: 80rpx;
-  
   
 }

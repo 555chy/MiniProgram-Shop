@@ -31,7 +31,6 @@ text {
   align-items: center;
 }
 
-.msg-icon {}
 
 .msg-text {
   font-size: x-small;
@@ -173,3 +172,39 @@ image {
 .wastetext{
   margin-top: 10rpx;
 }
+
+/*首页跑马灯效果*/
+@keyframes around {
+  from {
+   margin-left: 100%;
+  }
+  to {
+   /* var接受传入的变量 */
+   margin-left: var(--marqueeWidth--);
+  }
+ }
+ 
+.marquee_container{
+  color: gray;
+  height: 50rpx;
+  line-height: 44rpx;
+  position: relative;
+  width: 100%;
+  margin-top: 10rpx;
+  margin-top:0rpx;
+}
+.marquee_container:hover{
+  
+  animation-play-state: paused;
+}
+.marquee_text{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: around;
+  animation-duration: 5s;  /*过渡时间*/
+  animation-iteration-count: infinite;
+  animation-timing-function:linear;
+}
+/*首页跑马灯效果*/

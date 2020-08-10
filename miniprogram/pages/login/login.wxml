@@ -3,14 +3,14 @@
 <view class="box">
   <view class="input-box">
     <text class="iconfont icon-zhuceyonghu"></text>
-    <input class="username" bindinput="getUsername" placeholder="请输入用户名"/>
+    <input class="username" bindinput="getUsername" placeholder="请输入用户名/手机号"/>
   </view>
   <view class="input-box">
     <text class="iconfont icon-mima-1"></text>
     <input class="password" bindinput="getPassword" placeholder="请输入密码" password="text"/>
   </view>
   <text class="forget" bindtap="forgetPwd">忘记密码</text>
-  <button class="login" bindtap="login">登录</button>
+  <button class="login" bindtap="login" disabled="{{disable}}">登录</button>
   <view class="ress">
       <text class="register-box">还没有账号, </text>
       <button class="register" bindgetuserinfo="getUserInfo" open-type="getUserInfo">现在注册</button>

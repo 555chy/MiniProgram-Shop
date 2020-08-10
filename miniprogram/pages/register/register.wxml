@@ -20,7 +20,7 @@
 		<input class="input" placeholder="电话" bindinput="getPhoneNumber" type="number"></input>
 	</view>
 	
-	<button class="register" bindtap="register">马上注册</button>
+	<button class="register" bindtap="register" disabled="{{disable}}">马上注册</button>
 
 	<view class="back">
 			<view class="login-box">已有账号,</view>

@@ -1,11 +1,15 @@
 {
   "pages": [
-    "pages/draw/draw",
     "pages/home/home",
+    "pages/mine/mine",
+    "pages/myGift/myGift",
+    "pages/goodDetail/goodDetail",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/draw/draw",
     "pages/recovery/recovery",
     "pages/sign/sign",
     "pages/index/index",
-    "pages/login/login",
     "pages/shop/shop",
     "pages/servicelist/servicelist",
     "pages/city/city",
@@ -13,17 +17,14 @@
     "pages/recognize/recognize",
     "pages/order/order",
     "pages/reserve/reserve",
-    "pages/mine/mine",
     "pages/myorder/myorder",
     "pages/forget/forget",
-    "pages/register/register",
     "pages/detail/detail",
     "pages/tip/tip",
     "pages/through/through",
     "pages/address/address",
     "pages/addressAdd/addressAdd",
     "pages/find/find"
-   
   ],
   "permission": {
     "scope.userLocation": {
