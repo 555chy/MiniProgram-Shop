@@ -14,7 +14,6 @@ Page({
    word: '',
    modalHidden: true,
    result:''
-   
   },
 
   /**
@@ -22,12 +21,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    const query = Bmob.Query("Rubbish_Recognize");
-    query.order('order')
+    const query = Bmob.Query("Data");
+    query.equalTo('id','==', 4)
+    // const query = Bmob.Query("Rubbish_Recognize");
+    // query.order('order')
     query.find().then(res => {
-        console.log(res)
+        console.log(res[0])
         that.setData({
-          rubbish: res
+          rubbish: res[0]
         })
     });
     
@@ -124,8 +125,7 @@ Page({
 
   goRubbish: function(e){
     let index = e.currentTarget.dataset.index
-    let rubbish = this.data.rubbish[index]
-
+    let rubbish = this.data.rubbish.value[index]
     wx.navigateTo({
       url: '../rubbish/rubbish',
       success: function (e) {

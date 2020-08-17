@@ -1,2 +1,3 @@
 <view>login</view>
-<button bindtap="click">click</button>
+<button open-type="share">click</button>
+

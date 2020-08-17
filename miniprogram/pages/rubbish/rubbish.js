@@ -14,13 +14,13 @@ Page({
       console.log(data.rubbish)
       this.setData({
         order: data.rubbish.order,
-        title: data.rubbish.rubbishs,
-        rubbishs: data.rubbish.rubbishs,
+        title: data.rubbish.value,
+        rubbishs: data.rubbish.value,
         curNav: 0,
-        content: data.rubbish.rubbishs[0].array
+        content: data.rubbish.value[0].array
       });
-      console.log(this.data.curNav)
-      console.log(this.data)
+    
+      console.log(data.rubbish.value[0])
     })
   },
 

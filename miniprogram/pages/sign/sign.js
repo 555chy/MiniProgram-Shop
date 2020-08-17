@@ -17,9 +17,14 @@ Page({
     const query = Bmob.Query('_User');
     query.get(objectId).then(res => {
       console.log(res)
+      var lianxu = 0
+      if(res.sign != null){
+        lianxu = res.sign.length
+      }
+
       that.setData({
-        sign: res.sign,
-        lianxu: res.sign.length,
+        sign: res.sign == null ? [] : res.sign,
+        lianxu: lianxu,
         integral: res.integral,
         days: res.days
       })
@@ -36,11 +41,12 @@ Page({
     let jifen = this.data.lianxu == 6 ? 16 : 4
     // let temp = lianxu + 1
     let sign = this.data.sign
-    let length = sign.length
-    let lastTime = sign[length - 1]
+    let length = sign == null ? 0 : sign.length
+    let lastTime = sign == null ? "" : sign[length - 1]
     let currentTime = this.getCurrentTime()
     let lastStamp = this.dateToTimestamp(lastTime)
     let currentStamp = this.dateToTimestamp(currentTime)
+    console.log(sign)
     console.log(lastTime)
     console.log(currentTime)
 
@@ -54,13 +60,13 @@ Page({
       query.set('id', objectId)
       if(currentStamp - lastStamp == 86400){
         //连续签到7天后重新开始签到
-        if(sign.length == 7){
-          sign.splice(0,sign.length)
+        if(length == 7){
+          sign.splice(0,length)
         }
         sign.push(currentTime)
       }else{
         //断签删除数组，重新签到
-        sign.splice(0,sign.length)
+        sign.splice(0,length)
         sign.push(currentTime)
       }
       console.log(sign)
@@ -110,24 +116,37 @@ Page({
     wx.getStorage({
       key: 'address',
       success: function(res){
-        console.log(res)
         if(res.data.length > 0){
           wx.navigateTo({
             url: '../draw/draw',
           })
         }else{
-          wx.showToast({
-            title: '请先添加上门地址后再参加抽奖',
-            icon:'none',
-            duration:3000
+          wx.showModal({
+            title:'提示',
+            content: '填写地址，工作人员好给您送奖品哦！',
+            confirmText: '填写地址',
+            success: (res)=>{
+              if(res.confirm){
+                wx.navigateTo({
+                  url: '../addressAdd/addressAdd',
+                })
+              }
+            }
           })
         }
       },
       fail: (err)=>{
-        wx.showToast({
-          title: '请先添加上门地址后再参加抽奖',
-          icon:'none',
-          duration:3000
+        wx.showModal({
+          title:'提示',
+          content: '填写地址，工作人员好给您送奖品哦！',
+          confirmText: '填写地址',
+          success: (res)=>{
+            if(res.confirm){
+              wx.navigateTo({
+                url: '../addressAdd/addressAdd',
+              })
+            }
+          }
         })
       }
     })

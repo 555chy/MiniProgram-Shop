@@ -10,7 +10,7 @@ Page({
     imgWidth: 0,
     imgHeight: 0,
     hasPhoto: false,
-    name: "收件人姓名",
+    name: "环保者",
     phone: "手机号码",
     address: "收货地址",
     imageUrl: "https://img-blog.csdnimg.cn/20200524144828716.png",
@@ -33,6 +33,7 @@ Page({
     price: 20,
     goods: [],
     file: {},
+    wasteData: ''
   },
 
   /**
@@ -42,13 +43,19 @@ Page({
     let that = this
     const query = Bmob.Query("Waste");
     query.find().then(res => {
-        console.log(res)
-        that.setData({
-          tabs: res
+      that.setData({
+        tabs: res
+      },()=>{
+        const query = Bmob.Query('Data')
+        query.order('id')
+        query.find().then(res => {
+          that.setData({
+            wasteData: res[1].value.toString()
+          })
         })
+      })
     });
 
- 
     wx.getStorage({
       key: 'defaultIndex',
       success: function (e) {
@@ -57,14 +64,16 @@ Page({
           key: 'address',
           success: function (res) {
             let info = res.data[index]
-            console.log(info)
-            that.setData({
-              name: info.name,
-              phone: info.phone,
-              address: info.address,
-              detail: info.detail,
-              location: info.location
-            })
+            if (info != null) {
+              that.setData({
+                name: info.name,
+                phone: info.phone,
+                address: info.address,
+                detail: info.detail,
+                location: info.location
+              })
+            }
+
           }
         })
       },
@@ -97,13 +106,21 @@ Page({
           key: 'address',
           success: function (res) {
             let info = res.data[index]
-            console.log(info)
-            that.setData({
-              name: info.name,
-              phone: info.phone,
-              address: info.address,
-              location: info.location
-            })
+            if (info != null) {
+              that.setData({
+                name: info.name,
+                phone: info.phone,
+                address: info.address,
+                location: info.location
+              })
+            }else{
+              that.setData({
+                name: "环保者",
+                phone: "手机号码",
+                address: "收货地址",
+                location:{}
+              })
+            }
           }
         })
       },
@@ -131,9 +148,28 @@ Page({
    * 进入收货地址管理
    */
   addressManager: function (e) {
-    wx.navigateTo({
-      url: '../address/address',
+    wx.getStorage({
+      key: 'address',
+      success: function(res){
+        if(res.data == null || res.data.length == 0){
+          wx.navigateTo({
+            url: '../addressAdd/addressAdd',
+          })
+        }else{
+          wx.navigateTo({
+            url: '../address/address',
+          })
+        }
+       
+      },
+      fail: (err)=>{
+        console.log(err)
+        wx.navigateTo({
+          url: '../addressAdd/addressAdd',
+        })
+      }
     })
+
   },
   /**
    * 选择图片
@@ -158,37 +194,17 @@ Page({
             file: res[0]
           })
         })
-
-       
-        // wx.compressImage({
-        //   src: path,
-        //   quality: 20,
-        //   success: (res => {
-           
-            // wx.getFileSystemManager().readFile({
-            //   filePath: res.tempFilePath, //选择图片返回的相对路径
-            //   encoding: 'base64', //编码格式
-            //   success: res => { //成功的回调
-            //     let image = 'data:image/jpeg;base64,' + res.data
-            //     that.setData({
-            //       imagebase64: image,
-            //       imageUrl: image
-            //     })
-            //   }
-            // })
-        //   })
-        // })
       }
     })
-    
-   
+
+
   },
   //选择预约日期
   selectTime: function (e) {
     let time = e.detail.value
     let i1 = time[0]
     let i2 = time[1]
-    
+
     let day = this.getCurrentTime(i1)
     let date = this.data.timeList
     let str = day + " " + date[1][i2]
@@ -220,7 +236,7 @@ Page({
     let time = this.data.yuyueTime
     let image = this.data.imageUrl
     let file = this.data.file
-   
+
     let currentUser = Bmob.User.current()
     var isLogin = currentUser != null
     console.log('haslogin' + isLogin)
@@ -271,10 +287,10 @@ Page({
     query.set('state', 'open')
 
 
-    if(image != 'https://img-blog.csdnimg.cn/20200524144828716.png'){
-      query.set('preview',file)
+    if (image != 'https://img-blog.csdnimg.cn/20200524144828716.png') {
+      query.set('preview', file)
     }
-  
+
     query.save().then(res => {
       console.log(res)
       setTimeout(function () {
@@ -426,12 +442,17 @@ Page({
       wasteInfo: waste
     })
   },
-  getCurrentTime: function(mDay){
+  getCurrentTime: function (mDay) {
     var time = parseInt(new Date().getTime());
     let date = new Date(time)
-    var year=date.getFullYear();
-    var mon = date.getMonth()+1;
+    var year = date.getFullYear();
+    var mon = date.getMonth() + 1;
     var day = date.getDate() + mDay;
-    return year+'-' + mon + "-" + day
+    return year + '-' + mon + "-" + day
+  },
+  goDeclare: function(e){
+    wx.navigateTo({
+      url: '../declare/declare',
+    })
   }
 })

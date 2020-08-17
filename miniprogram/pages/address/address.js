@@ -17,10 +17,11 @@ Page({
     wx.getStorage({
       key: 'address',
       success: function(res){
+        console.log(res)
         that.setData({
           address: res.data
         })
-      },
+      }
     })
     wx.getStorage({
       key: 'defaultIndex',

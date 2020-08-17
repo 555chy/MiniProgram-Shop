@@ -11,18 +11,14 @@ Page({
   data: {
     gifts: [],
     probabilities: [],
+    virtuals: [],
     types:[],
-    imgs: [
-      "../../icon/lottery_item.png","../../icon/lottery_item.png","../../icon/lottery_item.png",
-      "../../icon/lottery_item.png","../../icon/lottery_item.png","../../icon/lottery_item.png",
-      "../../icon/lottery_item.png","../../icon/lottery_item.png","../../icon/lottery_item.png",
-      "../../icon/lottery_item.png","../../icon/lottery_item.png","../../icon/lottery_item.png"
-    ],
     colors: colors,
     state: "luckybtn",
     mygifts: [],
     integral: 0,
     objectId: "",
+    isAdmin: false,
     address: {}
   },
 
@@ -38,7 +34,8 @@ Page({
     query2.get(objectId).then(res => {
       that.setData({
         integral: res.integral,
-        objectId
+        objectId,
+        isAdmin: res.admin
       })
     })
 
@@ -49,10 +46,13 @@ Page({
         var probabilities = []
         var gifts = []
         var types = []
+        var virtuals = []
         for(var i = 0; i < arr.length; i++){
+          let virtual = arr[i].virtual
           let probability = arr[i].probability
           let gift = arr[i].gift
           let type = arr[i].type
+          virtuals.push(virtual)
           probabilities.push(probability)
           gifts.push(gift)
           types.push(type)
@@ -61,7 +61,8 @@ Page({
         that.setData({
           gifts,
           probabilities,
-          types
+          types,
+          virtuals
         })
     })
 
@@ -109,9 +110,11 @@ Page({
       }
     })
   },
-  rand:function() {
+  rand:function(isAdmin) {
+    console.log("isAdmin", isAdmin)
     var total = 0;
-    let probabilities = this.data.probabilities 
+    var probabilities = isAdmin ? this.data.virtuals : this.data.probabilities
+    // let probabilities = this.data.probabilities 
     for(var p of probabilities) {
       total += p;
     }
@@ -138,6 +141,7 @@ Page({
     var that = this
     let objectId = this.data.objectId
     let integral = this.data.integral
+    let isAdmin = this.data.isAdmin
     if(integral < 20){
       wx.showToast({
         title: '您的积分不足,下单可获得积分',
@@ -160,7 +164,7 @@ Page({
         state: "luckybtn-disable",
         integral: integral - 20
       })
-      const result = that.rand();
+      const result = that.rand(isAdmin);
       const total = 8000;
       var t = 0;
       var index = 0;

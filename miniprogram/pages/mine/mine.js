@@ -64,10 +64,47 @@ Page({
     wx.navigateTo({
       url: '../address/address',
     })
+    // wx.getStorage({
+    //   key: 'address',
+    //   success: function(res){
+    //     if(res.data == null || res.data.length == 0){
+    //       wx.navigateTo({
+    //         url: '../addressAdd/addressAdd',
+    //       })
+    //     }else{
+    //       wx.navigateTo({
+    //         url: '../address/address',
+    //       })
+    //     }
+       
+    //   },
+    //   fail: (err)=>{
+    //     console.log(err)
+    //     wx.navigateTo({
+    //       url: '../addressAdd/addressAdd',
+    //     })
+    //   }
+    // })
   },
   goMyGift: function(e){
-   wx.navigateTo({
-     url: '../myGift/myGift',
-   })
+    let isLogin = this.data.isLogin
+    if(isLogin){
+      wx.navigateTo({
+        url: '../myGift/myGift',
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      })
+    }
+  
   },
+
+  onShareAppMessage: function(options){
+    return{
+      imageUrl: '../../icon/share.jpg',
+      path:'/pages/home/home'
+    }
+  }
 })

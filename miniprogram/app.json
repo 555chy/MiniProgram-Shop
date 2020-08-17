@@ -1,30 +1,28 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/recovery/recovery",
+    "pages/login/login",
+    "pages/declare/declare",
+    "pages/draw/draw",
+    "pages/recognize/recognize",
     "pages/mine/mine",
     "pages/myGift/myGift",
     "pages/goodDetail/goodDetail",
-    "pages/login/login",
     "pages/register/register",
-    "pages/draw/draw",
-    "pages/recovery/recovery",
     "pages/sign/sign",
-    "pages/index/index",
-    "pages/shop/shop",
     "pages/servicelist/servicelist",
     "pages/city/city",
     "pages/rubbish/rubbish",
-    "pages/recognize/recognize",
     "pages/order/order",
     "pages/reserve/reserve",
     "pages/myorder/myorder",
     "pages/forget/forget",
     "pages/detail/detail",
-    "pages/tip/tip",
     "pages/through/through",
     "pages/address/address",
-    "pages/addressAdd/addressAdd",
-    "pages/find/find"
+    "pages/addressAdd/addressAdd"
+    
   ],
   "permission": {
     "scope.userLocation": {

@@ -67,6 +67,11 @@ image {
   height: 90rpx;
 }
 
+.myimage{
+  width: 100rpx;
+  height: 90rpx;
+}
+
 .todoor-recycle {
   width: 90%;
   background:linear-gradient(-48deg,rgba(40,137,199,1),rgba(90,174,227,1));
@@ -108,12 +113,13 @@ image {
 }
 
 .todoor-btn {
-  font-size: 35rpx;
+  font-size: 40rpx;
   color: white;
   margin-top: 20rpx;
   margin-bottom: 40rpx;
   width: 280rpx;
   padding: 10rpx;
+  font-weight: bolder;
   text-align: center;
   border-radius: 50rpx;
   background-image: linear-gradient(rgba(91,174,227,1), rgba(90,174,227,1));
@@ -159,52 +165,9 @@ image {
   color: gray;
 }
 
-.mywaste{
-  margin-top: 20rpx;
-}
-
-.wasteinfo{
+.require{
+  color: gray;
   font-size: small;
-  color: gray;
-  margin-top: 30rpx;
 }
 
-.wastetext{
-  margin-top: 10rpx;
-}
 
-/*首页跑马灯效果*/
-@keyframes around {
-  from {
-   margin-left: 100%;
-  }
-  to {
-   /* var接受传入的变量 */
-   margin-left: var(--marqueeWidth--);
-  }
- }
- 
-.marquee_container{
-  color: gray;
-  height: 50rpx;
-  line-height: 44rpx;
-  position: relative;
-  width: 100%;
-  margin-top: 10rpx;
-  margin-top:0rpx;
-}
-.marquee_container:hover{
-  
-  animation-play-state: paused;
-}
-.marquee_text{
-  margin-top: 10rpx;
-  font-size: 28rpx;
-  display: inline-block;
-  white-space: nowrap;
-  animation-name: around;
-  animation-duration: 5s;  /*过渡时间*/
-  animation-iteration-count: infinite;
-  animation-timing-function:linear;
-}
-/*首页跑马灯效果*/

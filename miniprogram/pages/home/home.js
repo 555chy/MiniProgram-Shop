@@ -10,11 +10,10 @@ Page({
    */
   data: {
     address: "获取定位中...",
-    currentmoney: 0.00,
+    currentmoney: 0,
     objectId: '',
-    count:0,
+    count: 0,
     swiperList: [],
-    wasteInfo: "加载中请稍后...",
     time: 0
   },
 
@@ -26,10 +25,9 @@ Page({
     const query = Bmob.Query("Data");
     query.order("id")
     query.find().then(res => {
-        that.setData({
-          swiperList: res[0].value,
-          wasteInfo: res[1].value.toString()
-        })
+      that.setData({
+        swiperList: res[0].value
+      })
     });
 
     wx.getLocation({
@@ -46,7 +44,7 @@ Page({
             longitude: result.longitude
           },
           success: function (res) {
-          
+
             that.setData({
               address: res.result.address
             })
@@ -58,68 +56,110 @@ Page({
     })
 
     let user = Bmob.User.current()
-    if(user != null){
+    if (user != null) {
       let objectId = user.objectId
       this.setData({
         objectId
       })
-    }
 
-    if(user.admin){
-      let BmobSocketIo = new Bmob.Socket("4d7bba7512733061b4ca6c9f9b0a50d9")
-      BmobSocketIo.onInitListen = function () {
-        console.log("监听注册成功")
-        BmobSocketIo.updateTable("Recycle_Order"); 
-      };
+      if (user.admin) {
+        let BmobSocketIo = new Bmob.Socket("4d7bba7512733061b4ca6c9f9b0a50d9")
+        BmobSocketIo.onInitListen = function () {
+          console.log("监听注册成功")
+          BmobSocketIo.updateTable("Recycle_Order");
+        };
   
-      //监听服务器返回的更新表的数据
-      BmobSocketIo.onUpdateTable = function (tablename, data) {
-        if (tablename == "Recycle_Order") {
-          if(data.state == "open"){
-            console.log("listen",data)
+        //监听服务器返回的更新表的数据
+        BmobSocketIo.onUpdateTable = function (tablename, data) {
+          if (tablename == "Recycle_Order") {
+            if (data.state == "open") {
+              console.log("listen", data)
               let currentTime = Math.round(new Date().getTime() / 1000)
               let time = that.data.time
-              if(currentTime - time > 10){
+              if (currentTime - time > 10) {
                 that.setData({
                   time: currentTime
                 })
                 // play voice
-                innerAudioContext.autoplay = true;//音频自动播放设置
-                innerAudioContext.src = 'http://www.jipin.cloud/2020/08/08/60f8da794043b66c8042a307763e939b.mp3';//链接到音频的地址
+                innerAudioContext.autoplay = true; //音频自动播放设置
+                innerAudioContext.src = 'http://www.jipin.cloud/2020/08/08/60f8da794043b66c8042a307763e939b.mp3'; //链接到音频的地址
                 innerAudioContext.play()
               }
+            }
           }
-        }
-      };  
-
-    }
+        };
   
+      }
+    }
+
+    
+
   },
 
   goThrough: function (e) {
-    wx.navigateTo({
-      url: '../through/through',
+    wx.getStorage({
+      key: 'address',
+      success: function(res){
+        if(res.data.length > 0){
+          wx.navigateTo({
+            url: '../draw/draw',
+          })
+        }else{
+          wx.showModal({
+            title:'提示',
+            content: '填写地址，工作人员好给您送奖品哦！',
+            confirmText: '填写地址',
+            success: (res)=>{
+              if(res.confirm){
+                wx.navigateTo({
+                  url: '../addressAdd/addressAdd',
+                })
+              }
+            }
+          })
+        }
+      },
+      fail: (err)=>{
+        wx.showModal({
+          title:'提示',
+          content: '填写地址，工作人员好给您送奖品哦！',
+          confirmText: '填写地址',
+          success: (res)=>{
+            if(res.confirm){
+              wx.navigateTo({
+                url: '../addressAdd/addressAdd',
+              })
+            }
+          }
+        })
+      }
     })
   },
 
-  goRecognize: function(e){
+  goRecognize: function (e) {
     wx.navigateTo({
       url: '../recognize/recognize',
     })
   },
-  goCityService: function(e){
+  goCityService: function (e) {
     wx.navigateTo({
       url: '../city/city',
     })
   },
 
-  daySign: function(e){
+  goReserve: function(e){
+    wx.navigateTo({
+      url: '../reserve/reserve',
+    })
+  },
+
+  daySign: function (e) {
     let user = Bmob.User.current()
-    if(user != null){
+    if (user != null) {
       wx.navigateTo({
         url: '../sign/sign',
       })
-    }else{
+    } else {
       wx.showToast({
         title: '请先登录',
         icon: 'none'
@@ -132,26 +172,25 @@ Page({
     let objectId = this.data.objectId
     const query = Bmob.Query('_User');
     query.get(objectId).then(res => {
-     
-      that.setData({
-        currentmoney: res.money
-      })
-    }).catch(err => {
-    
+      let integral = res.integral
+      const query2 = Bmob.Query('Recycle_Order');
+      query2.equalTo('user', '==', objectId)
+      query2.count().then(res => {
+        that.setData({
+          count: res,
+          currentmoney: integral
+        })
+      });
+   
     })
 
-    const query2 = Bmob.Query('Recycle_Order');
-    query2.equalTo('user','==',objectId)
-    query2.count().then(res => {
-    
-      that.setData({count: res})
-    });
-
   },
-  onUnload: function(option){
+  onUnload: function (option) {
     innerAudioContext.destroy()
-  }
-
-
+  },
+  onShareAppMessage: function(options){
+  
+  },
+ 
 
 })
