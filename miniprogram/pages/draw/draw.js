@@ -111,7 +111,7 @@ Page({
     })
   },
   rand:function(isAdmin) {
-    console.log("isAdmin", isAdmin)
+    // console.log("isAdmin", isAdmin)
     var total = 0;
     var probabilities = isAdmin ? this.data.virtuals : this.data.probabilities
     // let probabilities = this.data.probabilities 
@@ -138,6 +138,13 @@ Page({
     })
   },
   luckyRun: function() {
+//test******
+    // for(var i = 1; i <= 100; i++){
+    //   let r = this.rand(false)
+    //   console.log(i,this.data.gifts[r])
+    // }
+    // return
+//test******
     var that = this
     let objectId = this.data.objectId
     let integral = this.data.integral

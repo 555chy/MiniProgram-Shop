@@ -1,38 +1,55 @@
-<view wx:if="{{isShow}}">
-	<view class="box-empty" wx:if="{{!hasData}}">
-		<block>
-			<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
-			<block wx:if="{{isAdmin}}">
-				<text class="tip">您还没有接单~</text>
-				<text class="btn" bindtap="goOrderShop">去订单广场</text>
-			</block>
-			<block wx:else>
-				<text class="tip">您还没有上门回收的订单哦~</text>
-				<text class="btn" bindtap="goOrder">来单上门回收吧</text>
-			</block>
-		</block>
-	</view>
-
-	<view wx:else>
-		<view class="box" wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:if="{{isShow}}">
-			<view class="order-item" bindtap="goDetail" data-index="{{index}}">
-				<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
-				<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
-				<text class="garbage green" wx:else>已回收</text>
-				<view class="info">
-					<text class="address">{{item.address}}</text>
-					<text class="time">{{item.updatedAt}}</text>
-					<text class="desc">{{item.wasteInfo}}</text>
-				</view>
+<view class="content">
+	<view class="tab-title">
+		<view wx:for="{{tabs}}" wx:key="index">
+			<view class="tab-item">
+				<text class="{{currentTab == index ? 'tab-active' : ''}}" data-index="{{index}}" bindtap="changeTab">{{item}}</text>
+				<view class="tab-line" hidden="{{currentTab != index}}"></view>
 			</view>
 		</view>
 	</view>
+	<view class="bottom">
+		<view class="tab-content">
+			<view class="box" wx:for="{{temp}}" wx:key="index" wx:for-index="index">
+				<view class="order-item" bindtap="goDetail" data-index="{{index}}">
+					<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
+					<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
+					<text class="garbage green" wx:else>已回收</text>
+					<view class="info">
+						<text class="address">{{item.address}}</text>
+						<text class="time">{{item.updatedAt}}</text>
+						<text class="desc">{{item.wasteInfo}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- <view wx:elif="{{currentTab == 1}}" class="tab-content">
+			<view class="box" wx:for="{{received}}" wx:key="index" wx:for-index="index">
+				<view class="order-item" bindtap="goDetail" data-index="{{index}}">
+					<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
+					<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
+					<text class="garbage green" wx:else>已回收</text>
+					<view class="info">
+						<text class="address">{{item.address}}</text>
+						<text class="time">{{item.updatedAt}}</text>
+						<text class="desc">{{item.wasteInfo}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:elif="{{currentTab == 2}}" class="tab-content">
+			<view class="box" wx:for="{{fixed}}" wx:key="index" wx:for-index="index">
+				<view class="order-item" bindtap="goDetail" data-index="{{index}}">
+					<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
+					<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
+					<text class="garbage green" wx:else>已回收</text>
+					<view class="info">
+						<text class="address">{{item.address}}</text>
+						<text class="time">{{item.updatedAt}}</text>
+						<text class="desc">{{item.wasteInfo}}</text>
+					</view>
+				</view>
+			</view>
+		</view> -->
+	</view>
+
 </view>
-<!-- <view class="box-empty" wx:else>
-	<block>
-		<image class="img" src="https://img-blog.csdnimg.cn/20200524144828657.png"></image>
-		<text class="tip">您还没有登录哦~</text>
-		<text class="tip">试试查询订单吧</text>
-		<text class="btn" bindtap="goLogin">点击查询</text>
-	</block>
-</view> -->

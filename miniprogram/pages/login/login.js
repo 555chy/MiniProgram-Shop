@@ -69,6 +69,7 @@ Page({
    * 登录
    */
   login: function (e) {
+    var that = this
     wx.showLoading({
       title: '加载中',
     })
@@ -104,7 +105,10 @@ Page({
             }
             wx.showToast({
               title: message,
-              icon: 'none'
+              icon: 'none',
+              complete: ()=>{
+                that.sendErrorLog("手机号登录"+message)
+              }
             })
           })
         }
@@ -132,7 +136,10 @@ Page({
         }
         wx.showToast({
           title: message,
-          icon: 'none'
+          icon: 'none',
+          complete: ()=>{
+            that.sendErrorLog("密码登录 "+message)
+          }
         })
 
       })
@@ -143,7 +150,17 @@ Page({
     wx.navigateTo({
       url: '../forget/forget',
     })
+  },
+  sendErrorLog: function(error){
+    let username = this.data.username
+    const query = Bmob.Query('Log');
+    query.set("username", username)
+    query.set("error", error)
+    query.save().then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   }
-
 
 })

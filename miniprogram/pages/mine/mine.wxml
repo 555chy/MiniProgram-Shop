@@ -24,11 +24,11 @@
 	<text class="price-btn">提现</text>
 </view>
 <block>
-	<view wx:if="{{isAdmin}}" class="func-item" bindtap="goOrderShop" >
+	<!-- <view wx:if="{{isAdmin}}" class="func-item" bindtap="goOrderShop" >
 		<text class="iconfont icon-dingdan}"></text>
 		<text class="func-text">订单广场</text>
 		<text class="iconfont icon-right}"></text>
-	</view>
+	</view> -->
 	<view  class="func-item" bindtap="goMyGift" >
 		<text class="iconfont icon-dingdan}"></text>
 		<text class="func-text">{{isAdmin ? "待发奖品" : "我的奖品"}}</text>

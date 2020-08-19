@@ -17,7 +17,9 @@ Page({
     price: 0,
     integral: 0,
     isRecharge: false,
-    imgUrl: "../../icon/car.png"
+    imgUrl: "../../icon/car.png",
+    adminName: "等待接单",
+    adminPhone: "等待接单"
   },
 
   /**
@@ -25,7 +27,7 @@ Page({
    */
   onLoad: function (options) {
     let user = Bmob.User.current()
-    let isAdmin = user == null ? false: user.admin
+    let isAdmin = user == null ? false : user.admin
     this.setData({
       isAdmin,
     }, () => {
@@ -45,9 +47,8 @@ Page({
       console.log(data)
       let latitude = location[0]
       let longitude = location[1]
-      
       let imageUrl = order.preview == null ? '../../icon/car.png' : order.preview.url
-      // let imageUrl =  '../../icon/car.png' 
+
       that.setData({
         imgUrl: imageUrl,
         order: order,
@@ -56,72 +57,44 @@ Page({
       }, () => {
         let order = that.data.order
         let user = order.user
-        if(user != null){
-          let userObjectId = user.objectId
-          const query = Bmob.Query('_User')
-          query.get(userObjectId).then(res => {
-            that.setData({
-              money: res.money,
-              integral: res.integral
-            })
-          }).catch(err => {
-  
-          })
-        }
-
-        var qqmapsdk = new QQMapWX({
-          key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
-        })
-    
-        qqmapsdk.direction({
-          mode: 'walking',
-          to: {
-            latitude: that.data.latitude,
-            longitude: that.data.longitude
-          },
-          success: (res => {
-            var coors = res.result.routes[0].polyline
-            var pl = []
-            for (var i = 2; i < coors.length; i++) {
-              coors[i] = coors[i - 2] + coors[i] / 1000000
-            }
-    
-            for (var i = 0; i < coors.length; i += 2) {
-              pl.push({
-                latitude: coors[i],
-                longitude: coors[i + 1]
+        let admin = order.admin
+        if (isAdmin) {
+          that.drawMapLine()
+          if (user != null) {
+            let userObjectId = user.objectId
+            if (userObjectId != "") {
+              const query = Bmob.Query('_User')
+              query.get(userObjectId).then(res => {
+                console.log(res)
+                that.setData({
+                  money: res.money,
+                  integral: res.integral
+                })
               })
             }
-            let start = pl[0]
-            let end = pl[pl.length - 1]
-            that.setData({
-              polyline: [{
-                points: pl,
-                color: '#5AAEE3',
-                width: 4
-              }],
-              markers: [{
-                id: 0,
-                latitude: start.latitude,
-                longitude: start.longitude,
-                iconPath: '../../icon/start.png'
-              }, {
-                id: 1,
-                latitude: end.latitude,
-                longitude: end.longitude,
-                iconPath: '../../icon/end.png'
-              }]
-              
-            })
-    
-          }),
-          fail: (err => {
-            console.log(err)
-          })
-        })
+          }
+        } else {
+          if (admin != null) {
+            let adminObjectId = admin.objectId
+            if (adminObjectId != "") {
+              console.log("213321321")
+              const query = Bmob.Query('_User')
+              query.get(adminObjectId).then(res => {
+                console.log(res)
+                that.setData({
+                  adminName: res.username,
+                  adminPhone: res.mobilePhoneNumber
+                })
+              })
+            }
+          }
+        }
       })
+
+
+
     })
-  
+
   },
   //显示对话框
   showModal: function () {
@@ -272,7 +245,7 @@ Page({
             duration: 3000
           })
         })
-      }else{
+      } else {
         wx.reLaunch({
           url: '../recovery/recovery',
         })
@@ -300,7 +273,7 @@ Page({
       price
     })
   },
-  recharge: function(e){
+  recharge: function (e) {
     let value = e.detail.value
     let length = value.length
     let isRecharge = length == 1
@@ -308,27 +281,83 @@ Page({
       isRecharge
     })
   },
-  callPhone: function(){
+  callPhone: function () {
     let isAdmin = this.data.isAdmin
-    var that = this
-    if(isAdmin){
+    let phone = isAdmin ? this.data.order.phone : this.data.adminPhone
+    console.log(phone)
+    console.log(phone != "等待接单")
+    if (phone != "等待接单") {
       wx.showModal({
         title: '提示',
         content: '是否拨打电话',
-        success (res) {
+        success(res) {
           if (res.confirm) {
             wx.makePhoneCall({
-              phoneNumber: that.data.order.phone,
+              phoneNumber: phone
             })
           }
         }
       })
-    
+
     }
   },
-  preview: function(e){
+  preview: function (e) {
     wx.previewImage({
       urls: [this.data.order.preview.url],
     })
+  },
+
+  drawMapLine: function () {
+    var qqmapsdk = new QQMapWX({
+      key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
+    })
+
+    qqmapsdk.direction({
+      mode: 'walking',
+      to: {
+        latitude: that.data.latitude,
+        longitude: that.data.longitude
+      },
+      success: (res => {
+        var coors = res.result.routes[0].polyline
+        var pl = []
+        for (var i = 2; i < coors.length; i++) {
+          coors[i] = coors[i - 2] + coors[i] / 1000000
+        }
+
+        for (var i = 0; i < coors.length; i += 2) {
+          pl.push({
+            latitude: coors[i],
+            longitude: coors[i + 1]
+          })
+        }
+        let start = pl[0]
+        let end = pl[pl.length - 1]
+        that.setData({
+          polyline: [{
+            points: pl,
+            color: '#5AAEE3',
+            width: 4
+          }],
+          markers: [{
+            id: 0,
+            latitude: start.latitude,
+            longitude: start.longitude,
+            iconPath: '../../icon/start.png'
+          }, {
+            id: 1,
+            latitude: end.latitude,
+            longitude: end.longitude,
+            iconPath: '../../icon/end.png'
+          }]
+
+        })
+
+      }),
+      fail: (err => {
+        console.log(err)
+      })
+    })
+
   }
 })

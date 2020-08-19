@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/order/order",
+    "pages/index/index",
+    "pages/draw/draw",
     "pages/recovery/recovery",
     "pages/login/login",
     "pages/declare/declare",
-    "pages/draw/draw",
     "pages/recognize/recognize",
     "pages/mine/mine",
     "pages/myGift/myGift",
@@ -14,7 +16,6 @@
     "pages/servicelist/servicelist",
     "pages/city/city",
     "pages/rubbish/rubbish",
-    "pages/order/order",
     "pages/reserve/reserve",
     "pages/myorder/myorder",
     "pages/forget/forget",
@@ -22,7 +23,6 @@
     "pages/through/through",
     "pages/address/address",
     "pages/addressAdd/addressAdd"
-    
   ],
   "permission": {
     "scope.userLocation": {

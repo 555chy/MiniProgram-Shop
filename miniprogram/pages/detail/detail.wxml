@@ -13,12 +13,12 @@
 			<text class="id">{{order.objectId}}</text>
 		</view>
 		<view class="row">
-			<text class="name">收货人</text>
-			<text class="id">{{order.name}}</text>
+			<text class="name">{{isAdmin ? "收货人" : "回收员"}}</text>
+			<text class="id">{{isAdmin ? order.name : adminName}}</text>
 		</view>
 		<view class="row" bindtap="callPhone">
 			<text class="name">电话</text>
-			<text class="id">{{order.phone}}</text>
+			<text class="id">{{isAdmin ? order.phone : adminPhone}}</text>
 		</view>
 		<view class="row">
 			<text class="name">预约时间</text>

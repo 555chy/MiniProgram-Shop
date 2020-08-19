@@ -78,7 +78,7 @@ Page({
     var that = this
     Bmob.User.register(params).then(res => {
       wx.hideLoading({
-        complete: ()=>{
+        complete: () => {
           wx.showToast({
             title: '注册成功',
           })
@@ -92,11 +92,15 @@ Page({
         console.log(err.error)
         wx.showToast({
           title: err.error,
+          icon: 'none',
+          complete: ()=>{
+            that.sendErrorLog("注册成功,登录失败 " + err.error)
+          }
         })
       })
     }).catch(err => {
       wx.hideLoading({
-        complete: ()=>{
+        complete: () => {
           let code = err.code
           var title = ""
           if (code == 202) {
@@ -107,11 +111,14 @@ Page({
           wx.showToast({
             title: title,
             icon: 'none',
-            duration: 3000
+            duration: 3000,
+            complete: () => {
+              that.sendErrorLog("注册失败 " + title)
+            }
           })
         }
       })
-     
+
     })
   },
   goLogin: function (e) {
@@ -194,4 +201,18 @@ Page({
 
     })
   },
+
+  sendErrorLog: function(error){
+    let username = this.data.username
+    let phone = this.data.phoneNumber
+    const query = Bmob.Query('Log');
+    query.set("username", username)
+    query.set("phone", phone)
+    query.set("error", error)
+    query.save().then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 })
