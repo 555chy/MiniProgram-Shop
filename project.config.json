@@ -1,5 +1,6 @@
 {
 	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -11,7 +12,7 @@
 	},
 	"appid": "wx068ea37cf2767259",
 	"projectname": "jipin2",
-	"libVersion": "2.11.0",
+	"libVersion": "2.12.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

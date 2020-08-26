@@ -68,49 +68,65 @@ Page({
           console.log("监听注册成功")
           BmobSocketIo.updateTable("Recycle_Order");
         };
-  
+
         //监听服务器返回的更新表的数据
         BmobSocketIo.onUpdateTable = function (tablename, data) {
           if (tablename == "Recycle_Order") {
-            if (data.state == "open") {
-              console.log("listen", data)
-              let currentTime = Math.round(new Date().getTime() / 1000)
-              let time = that.data.time
-              if (currentTime - time > 10) {
-                that.setData({
-                  time: currentTime
-                })
+
+            console.log("listen", data)
+            let currentTime = Math.round(new Date().getTime() / 1000)
+            let time = that.data.time
+            if (currentTime - time > 10) {
+              that.setData({
+                time: currentTime
+              })
+
+              let orderId = data.objectId
+              var state = data.state
+              if (state == "open") {
+                state = "待接单"
+              } else if (state == "received") {
+                state = "回收中"
+              } else if (state == "fixed") {
+                state = "已完成"
+              }
+              that.pushMsg(orderId, state)
+
+              if (data.state == "open") {
                 // play voice
                 innerAudioContext.autoplay = true; //音频自动播放设置
-                innerAudioContext.src = 'http://www.jipin.cloud/2020/08/08/60f8da794043b66c8042a307763e939b.mp3'; //链接到音频的地址
+                innerAudioContext.src = 'http://www.jipin.cloud/2020/08/08/60f8da794043b66c8042a307763e939b.mp3';
                 innerAudioContext.play()
               }
+
+
             }
+
           }
         };
-  
+
       }
     }
 
-    
+
 
   },
 
   goThrough: function (e) {
     wx.getStorage({
       key: 'address',
-      success: function(res){
-        if(res.data.length > 0){
+      success: function (res) {
+        if (res.data.length > 0) {
           wx.navigateTo({
             url: '../draw/draw',
           })
-        }else{
+        } else {
           wx.showModal({
-            title:'提示',
+            title: '提示',
             content: '填写地址，工作人员好给您送奖品哦！',
             confirmText: '填写地址',
-            success: (res)=>{
-              if(res.confirm){
+            success: (res) => {
+              if (res.confirm) {
                 wx.navigateTo({
                   url: '../addressAdd/addressAdd',
                 })
@@ -119,13 +135,13 @@ Page({
           })
         }
       },
-      fail: (err)=>{
+      fail: (err) => {
         wx.showModal({
-          title:'提示',
+          title: '提示',
           content: '填写地址，工作人员好给您送奖品哦！',
           confirmText: '填写地址',
-          success: (res)=>{
-            if(res.confirm){
+          success: (res) => {
+            if (res.confirm) {
               wx.navigateTo({
                 url: '../addressAdd/addressAdd',
               })
@@ -147,7 +163,7 @@ Page({
     })
   },
 
-  goReserve: function(e){
+  goReserve: function (e) {
     wx.navigateTo({
       url: '../reserve/reserve',
     })
@@ -181,16 +197,30 @@ Page({
           currentmoney: integral
         })
       });
-   
+
     })
 
   },
   onUnload: function (option) {
     innerAudioContext.destroy()
   },
-  onShareAppMessage: function(options){
-  
+  onShareAppMessage: function (options) {
+
   },
- 
+
+  pushMsg: function (orderId, state) {
+    wx.cloud.callFunction({
+      name: 'push',
+      data: {
+        orderId,
+        state
+      }
+    }).then(res => {
+      console.log('cloud res:', res)
+    }).catch(err => {
+      console.log('err:', err)
+    })
+  }
+
 
 })

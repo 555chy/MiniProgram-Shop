@@ -77,7 +77,6 @@ Page({
           if (admin != null) {
             let adminObjectId = admin.objectId
             if (adminObjectId != "") {
-              console.log("213321321")
               const query = Bmob.Query('_User')
               query.get(adminObjectId).then(res => {
                 console.log(res)
@@ -219,14 +218,15 @@ Page({
     query.set('price', price)
     query.set('state', 'fixed')
     query.save().then(res => {
-
+      
       if (hasUser) {
-        // if(!this.data.isRecharge){
-        //   wx.reLaunch({
-        //     url: '../recovery/recovery',
-        //   })
-        //   return
-        // }
+        console.log(hasUser)
+        if(!this.data.isRecharge){
+          wx.reLaunch({
+            url: '../recovery/recovery',
+          })
+          return
+        }
         let userObjectId = user.objectId
         let money = balance + price
         const query2 = Bmob.Query('_User')
@@ -277,6 +277,7 @@ Page({
     let value = e.detail.value
     let length = value.length
     let isRecharge = length == 1
+    console.log(isRecharge)
     this.setData({
       isRecharge
     })
@@ -308,6 +309,7 @@ Page({
   },
 
   drawMapLine: function () {
+    var that = this
     var qqmapsdk = new QQMapWX({
       key: "SQUBZ-56BKJ-W2SF6-KMGS7-PDR65-V5BFF"
     })

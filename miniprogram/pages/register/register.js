@@ -1,16 +1,18 @@
 const app = getApp()
 const Bmob = app.globalData.Bmob
+const uname = parseInt(Math.random() * 100000000)
+
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    headimg: "",
-    username: "用户名",
-    password: "",
+    headimg: "../../icon/circle.png",
+    username: "num"+uname,
+    password: "123456",
     confirmPassword: "",
-    phoneNumber: "",
+    phoneNumber: "null",
     disable: true
   },
   onLoad: function (options) {
@@ -25,25 +27,7 @@ Page({
 
     })
   },
-  //获取用户微信信息
-  getUserInfo: function (e) {
-    console.log(e)
-    let {
-      avatarUrl,
-      nickName
-    } = e.detail.userInfo
-    if (avatarUrl != null) {
-      this.setData({
-        headimg: avatarUrl,
-        username: nickName
-      })
-    } else {
-      wx.showToast({
-        title: '获取信息失败'
-      })
-    }
-  },
-
+ 
   /**
    * 点击注册
    */
@@ -75,6 +59,7 @@ Page({
       days: 0,
       integral: 20
     }
+   
     var that = this
     Bmob.User.register(params).then(res => {
       wx.hideLoading({
@@ -94,7 +79,7 @@ Page({
           title: err.error,
           icon: 'none',
           complete: ()=>{
-            that.sendErrorLog("注册成功,登录失败 " + err.error)
+            that.sendErrorLog("注册成功,登录失败 " + err.error == null ? err.errorMsg : err.error)
           }
         })
       })
@@ -105,9 +90,12 @@ Page({
           var title = ""
           if (code == 202) {
             title = "用户名已经注册,请更换后再注册"
-          } else {
-            title = err.error
+          } else if(code == 209){
+            title = "手机号已经注册,请更换后再注册"
+          }else {
+            title = err.error == null ? err.errorMsg : err.error
           }
+          console.log(err)
           wx.showToast({
             title: title,
             icon: 'none',

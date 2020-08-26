@@ -55,56 +55,71 @@ Page({
       })
     }
   },
-  goOrderShop: function (e) {
-    wx.navigateTo({
-      url: '../myorder/myorder',
+
+  goAddress: function (e) {
+    wx.getStorage({
+      key: 'address',
+      success: function (res) {
+        if (res.data == null || res.data.length == 0) {
+          wx.navigateTo({
+            url: '../addressAdd/addressAdd',
+          })
+        } else {
+          wx.navigateTo({
+            url: '../address/address',
+          })
+        }
+
+      },
+      fail: (err) => {
+        console.log(err)
+        wx.navigateTo({
+          url: '../addressAdd/addressAdd',
+        })
+      }
     })
   },
-  goAddress: function(e){
-    wx.navigateTo({
-      url: '../address/address',
-    })
-    // wx.getStorage({
-    //   key: 'address',
-    //   success: function(res){
-    //     if(res.data == null || res.data.length == 0){
-    //       wx.navigateTo({
-    //         url: '../addressAdd/addressAdd',
-    //       })
-    //     }else{
-    //       wx.navigateTo({
-    //         url: '../address/address',
-    //       })
-    //     }
-       
-    //   },
-    //   fail: (err)=>{
-    //     console.log(err)
-    //     wx.navigateTo({
-    //       url: '../addressAdd/addressAdd',
-    //     })
-    //   }
-    // })
-  },
-  goMyGift: function(e){
+  goMyGift: function (e) {
     let isLogin = this.data.isLogin
-    if(isLogin){
+    if (isLogin) {
       wx.navigateTo({
         url: '../myGift/myGift',
       })
-    }else{
+    } else {
       wx.showToast({
         title: '请先登录',
         icon: 'none'
       })
     }
-  
+
   },
 
-  onShareAppMessage: function(options){
-    return{
+  openPush: function () {
+    let tmplId = 'lpll2AsZ8oCsLYs7KfU8TCd6s9cPmszKef0ml2tD_wo'
+    wx.requestSubscribeMessage({
+      tmplIds: [tmplId],
+      fail(err) {
+        if (err.errCode == '20004') {
+          wx.showModal({
+            title: '温馨提示',
+            content: "您的消息订阅主开关已关闭，如需要消息推送服务，请点击确定跳转设置页面打开授权后再次尝试。",
+            success: function (modal) {
+              if (modal.confirm) { // 点击确定
+                wx.openSetting({
+                  withSubscriptions: true
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+
+  onShareAppMessage: function (options) {
+    return {
       imageUrl: '../../icon/share.jpg',
-      path:'/pages/home/home'
+      path: '/pages/home/home'
     }
   }
 })

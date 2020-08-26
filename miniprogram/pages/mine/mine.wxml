@@ -24,11 +24,6 @@
 	<text class="price-btn">提现</text>
 </view>
 <block>
-	<!-- <view wx:if="{{isAdmin}}" class="func-item" bindtap="goOrderShop" >
-		<text class="iconfont icon-dingdan}"></text>
-		<text class="func-text">订单广场</text>
-		<text class="iconfont icon-right}"></text>
-	</view> -->
 	<view  class="func-item" bindtap="goMyGift" >
 		<text class="iconfont icon-dingdan}"></text>
 		<text class="func-text">{{isAdmin ? "待发奖品" : "我的奖品"}}</text>
@@ -53,6 +48,11 @@
 	<view class="func-item">
 		<text class="iconfont icon-zhuceyonghu"></text>
 		<button class="text-button func-text" open-type="share">邀请朋友</button>
+		<text class="iconfont icon-right}"></text>
+	</view>
+	<view class="func-item" wx:if="{{isAdmin}}" bindtap="openPush">
+		<text class="iconfont icon-wenhao"></text>
+		<button class="text-button func-text" >订单通知</button>
 		<text class="iconfont icon-right}"></text>
 	</view>
 </block>

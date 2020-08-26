@@ -46,7 +46,8 @@
 		<view class="line"></view>
 	</view>
 	<image class="todoor-car" src="../../icon/car.png"></image>
-	<navigator class="todoor-btn" url="../reserve/reserve" open-type="navigate">一 键 回 收</navigator>
+	<!-- <navigator class="todoor-btn" url="../reserve/reserve" open-type="navigate">一 键 回 收</navigator> -->
+	<text class="todoor-btn">一 键 回 收</text>
 </view>
 
 

@@ -94,17 +94,32 @@ Page({
               fixed.push(order)
             }
           }
+          
         }
+
+        for(var i = 0; i < open.length; i++){
+          let time = open[i].time
+          let current = that.getCurrentTime()
+          open[i].color =  time.search(current) == -1
+        }
+
+        for(var i = 0; i < received.length; i++){
+          let time = received[i].time
+          let current = that.getCurrentTime()
+          received[i].color =  time.search(current) == -1
+        }
+
         arr.push(open,received,fixed)
         var temp = arr[0]
-        
+
         this.setData({
           order: res,
           open,
           received,
           fixed,
           arr,
-          temp
+          temp,
+          currentTab: 0
         })
       
       }).catch(err => {
@@ -192,5 +207,15 @@ Page({
       
     });
   },
+
+  
+  getCurrentTime: function(){
+    var time = parseInt(new Date().getTime());
+    let date = new Date(time)
+    var year=date.getFullYear();
+    var mon = date.getMonth()+1;
+    var day = date.getDate();
+    return year+'-' + mon + "-" + day
+  }
 
 })

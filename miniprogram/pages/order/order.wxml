@@ -16,40 +16,12 @@
 					<text class="garbage green" wx:else>已回收</text>
 					<view class="info">
 						<text class="address">{{item.address}}</text>
-						<text class="time">{{item.updatedAt}}</text>
+						<text class="time" style="{{!item.color ? '': 'color: red'}}" >{{item.time}}</text>
 						<text class="desc">{{item.wasteInfo}}</text>
 					</view>
 				</view>
 			</view>
 		</view>
-		<!-- <view wx:elif="{{currentTab == 1}}" class="tab-content">
-			<view class="box" wx:for="{{received}}" wx:key="index" wx:for-index="index">
-				<view class="order-item" bindtap="goDetail" data-index="{{index}}">
-					<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
-					<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
-					<text class="garbage green" wx:else>已回收</text>
-					<view class="info">
-						<text class="address">{{item.address}}</text>
-						<text class="time">{{item.updatedAt}}</text>
-						<text class="desc">{{item.wasteInfo}}</text>
-					</view>
-				</view>
-			</view>
-		</view>
-		<view wx:elif="{{currentTab == 2}}" class="tab-content">
-			<view class="box" wx:for="{{fixed}}" wx:key="index" wx:for-index="index">
-				<view class="order-item" bindtap="goDetail" data-index="{{index}}">
-					<text class="garbage red" wx:if="{{item.state === 'open'}}">待回收</text>
-					<text class="garbage orange" wx:elif="{{item.state === 'received'}}">回收中</text>
-					<text class="garbage green" wx:else>已回收</text>
-					<view class="info">
-						<text class="address">{{item.address}}</text>
-						<text class="time">{{item.updatedAt}}</text>
-						<text class="desc">{{item.wasteInfo}}</text>
-					</view>
-				</view>
-			</view>
-		</view> -->
 	</view>
 
 </view>
