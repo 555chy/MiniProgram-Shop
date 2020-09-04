@@ -14,6 +14,7 @@ Page({
     objectId: '',
     count: 0,
     swiperList: [],
+    city: ["福建省南平市建阳区"],
     time: 0
   },
 
@@ -25,8 +26,10 @@ Page({
     const query = Bmob.Query("Data");
     query.order("id")
     query.find().then(res => {
+      console.log(res)
       that.setData({
-        swiperList: res[0].value
+        swiperList: res[0].value,
+        city: res[5].value
       })
     });
 
@@ -164,9 +167,29 @@ Page({
   },
 
   goReserve: function (e) {
-    wx.navigateTo({
-      url: '../reserve/reserve',
-    })
+    let city = this.data.city
+    let address = this.data.address
+    console.log(city)
+    var result = false
+    for (var i = 0; i < city.length; i++) {
+      let str = city[i]
+      if (address.startsWith(str)) {
+        result = true
+        break
+      }
+    }
+    if (!result) {
+      wx.showToast({
+        title: '暂不支持该城市',
+        icon: 'none',
+        duration: 2500
+      })
+    }else{
+      wx.navigateTo({
+        url: '../reserve/reserve',
+      })
+    }
+
   },
 
   daySign: function (e) {

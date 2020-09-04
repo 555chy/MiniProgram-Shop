@@ -62,9 +62,11 @@ Page({
           //不是管理员查询当前登录用户的所有订单
           query.equalTo('user', '==', poiID)
       }
+      query.limit(80)
+      query.order("-createdAt")
       query.find().then(res => {
-        console.log(res)
         let length = res.length
+        console.log(res)
         let hasData = length !== 0
         console.log('有数据 ' + hasData)
         var open = []
@@ -110,6 +112,8 @@ Page({
         }
 
         arr.push(open,received,fixed)
+
+        console.log(arr)
         var temp = arr[0]
 
         this.setData({
@@ -200,7 +204,7 @@ Page({
     console.log(index)
     let arr = this.data.arr
     let temp = arr[index]
-
+    console.log(temp)
     this.setData({
       currentTab: index,
       temp

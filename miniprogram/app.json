@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/index/index",
-    
+    "pages/address/address",
     "pages/addressAdd/addressAdd",
+    "pages/index/index",
     "pages/order/order",
     "pages/draw/draw",
     "pages/recovery/recovery",
@@ -21,8 +21,8 @@
     "pages/reserve/reserve",
     "pages/forget/forget",
     "pages/detail/detail",
-    "pages/through/through",
-    "pages/address/address"
+    "pages/through/through"
+   
   
   ],
   "permission": {
