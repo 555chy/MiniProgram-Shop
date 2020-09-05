@@ -5,7 +5,7 @@
 		<view>{{item.address}}</view>
 		<view>{{item.detail}}</view>
 		</view>
-		<text class="default" wx:if="{{index == defaultIndex}}">√</text>
+		<image src="../../icon/gou.png"  wx:if="{{index == defaultIndex}}" mode="aspectFit"></image>
 		<text class="default" bindtap="choose" data-index="{{index}}">编辑</text>
 		<text class="delete" bindtap="delete" data-index="{{index}}">删除</text>
 

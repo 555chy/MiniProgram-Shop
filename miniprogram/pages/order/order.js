@@ -134,11 +134,11 @@ Page({
         key: 'address',
         success: function (res) {
           let arr = res.data
-          console.log(arr)
           const query = Bmob.Query('Recycle_Order');
           let queryArr= []
           for(var i = 0; i < arr.length; i++){
             let phone = arr[i].phone
+            console.log(phone)
             const mQuery = query.equalTo("phone", "==", phone);
             queryArr.push(mQuery)
           }
@@ -164,6 +164,7 @@ Page({
             var open = []
             var received = []
             var fixed = []
+            var arr = []
             for(var i = 0; i < length; i++){
               let order = res[i]
               if(order.state == "open"){
@@ -176,10 +177,14 @@ Page({
                 fixed.push(order)
               }
             }
+            arr.push(open,received,fixed)
+            let temp = arr[0]
             that.setData({
               open,
               received,
-              fixed
+              fixed,
+              arr,
+              temp
             })
           }).catch(err => {
             wx.hideLoading()

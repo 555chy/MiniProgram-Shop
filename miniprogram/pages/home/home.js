@@ -14,7 +14,7 @@ Page({
     objectId: '',
     count: 0,
     swiperList: [],
-    city: ["福建省南平市建阳区"],
+    city: [],
     time: 0
   },
 
@@ -34,7 +34,7 @@ Page({
     });
 
     wx.getLocation({
-      fail: (res) => {},
+      fail: (res) => { },
       success: (result) => {
         var that = this
         var qqmapsdk = new QQMapWX({
@@ -169,21 +169,27 @@ Page({
   goReserve: function (e) {
     let city = this.data.city
     let address = this.data.address
-    console.log(city)
-    var result = false
-    for (var i = 0; i < city.length; i++) {
-      let str = city[i]
-      if (address.startsWith(str)) {
-        result = true
-        break
+
+    if (city.length != 0) {
+      var result = false
+      for (var i = 0; i < city.length; i++) {
+        let str = city[i]
+        if (address.startsWith(str)) {
+          result = true
+          break
+        }
       }
-    }
-    if (!result) {
-      wx.showToast({
-        title: '暂不支持该城市',
-        icon: 'none',
-        duration: 2500
-      })
+      if (!result) {
+        wx.showToast({
+          title: '暂不支持该城市',
+          icon: 'none',
+          duration: 2500
+        })
+      } else {
+        wx.navigateTo({
+          url: '../reserve/reserve',
+        })
+      }
     }else{
       wx.navigateTo({
         url: '../reserve/reserve',

@@ -44,3 +44,9 @@ button {
   font-size: 35rpx;
 }
 
+image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+

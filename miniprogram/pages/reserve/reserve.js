@@ -242,7 +242,7 @@ Page({
     console.log('haslogin' + isLogin)
     let loca = [location.latitude, location.longitude]
 
-    if (name == '收件人姓名') {
+    if (name == '环保者') {
       wx.showToast({
         title: '请设置上门地址',
         icon: 'none'
@@ -295,8 +295,8 @@ Page({
       console.log(res)
       setTimeout(function () {
         wx.hideLoading()
-        wx.redirectTo({
-          url: '../recovery/recovery',
+        wx.switchTab({
+          url: '../order/order',
         })
       }, 2000)
 

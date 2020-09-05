@@ -28,26 +28,33 @@ Page({
         }
         let address = res.address
         let city = that.data.city
-        var result = false
-        for (var i = 0; i < city.length; i++) {
-          let str = city[i]
-          if (address.startsWith(str)) {
-            result = true
-            break
+
+        if(city.length != 0){
+          var result = false
+          for (var i = 0; i < city.length; i++) {
+            let str = city[i]
+            if (address.startsWith(str)) {
+              result = true
+              break
+            }
           }
-        }
-        if (!result) {
-          wx.showToast({
-            title: '暂不支持该城市',
-            icon: 'none'
-          })
-        } else {
+          if (!result) {
+            wx.showToast({
+              title: '暂不支持该城市',
+              icon: 'none'
+            })
+          } else {
+            this.setData({
+              location,
+              address
+            })
+          }
+        }else{
           this.setData({
             location,
             address
           })
         }
-
 
       },
     })
